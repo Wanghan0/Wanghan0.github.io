@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta name="description" content="安装nodejs.msi时出现进度条回滚的现象，屡试屡败，无奈只能安装nodejs.exe版本，也从中总结出一些经验。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装nodejs.exe及其环境配置">
 <meta property="og:url" content="http://yoursite.com/2017/01/14/action/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta property="og:description" content="安装nodejs.msi时出现进度条回滚的现象，屡试屡败，无奈只能安装nodejs.exe版本，也从中总结出一些经验。">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png">
-<meta property="og:updated_time" content="2017-01-14T08:48:52.667Z">
+<meta property="og:updated_time" content="2017-01-14T09:05:39.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装nodejs.exe及其环境配置">
-<meta name="twitter:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta name="twitter:description" content="安装nodejs.msi时出现进度条回滚的现象，屡试屡败，无奈只能安装nodejs.exe版本，也从中总结出一些经验。">
 <meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
 
 
@@ -319,13 +319,15 @@
       
 
       
-        <p>安装nodejs时官方有.msi后缀和.exe后缀两种文件 。<br>其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。<br>然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  </p>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> <a id="more"></a></h2><ol>
+        <p>安装nodejs.msi时出现进度条回滚的现象，屡试屡败，无奈只能安装nodejs.exe版本，也从中总结出一些经验。<br><a id="more"></a><br>安装nodejs时官方有.msi后缀和.exe后缀两种文件 。<br>其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。  </p>
+<h2 id="u7136_u800C_u6211_u5728_u5B89_u88C5-msi_u6587_u4EF6_u65F6_u51FA_u73B0_u4E86_u8FDB_u5EA6_u6761_u56DE_u6EDA_u7684_u73B0_u8C61_uFF0C_u63D0_u793A_your_system_has_not_been_modified_uFF0C_u5173_u95ED_u6740_u6BD2_u8F6F_u4EF6_uFF0C_u9632_u706B_u5899_u7B49_u4FDD_u62A4_u8F6F_u4EF6_u518D_u5B89_u88C5_u4E5F_u4E0D_u8D77_u6548_uFF0C_u5C1D_u8BD5_u5F88_u591A_u6B21_u90FD_u5B89_u88C5_u5931_u8D25_u3002_u4E8E_u662F_u53EA_u80FD_u5C1D_u8BD5_u5B89_u88C5-exe_u6587_u4EF6_u624B_u52A8_u914D_u7F6E_2C_u4E0B_u9762_u5C31_u662F_u6211_u7684_u4E00_u4E9B_u5B89_u88C5_u7ECF_u9A8C_u3002"><a href="#u7136_u800C_u6211_u5728_u5B89_u88C5-msi_u6587_u4EF6_u65F6_u51FA_u73B0_u4E86_u8FDB_u5EA6_u6761_u56DE_u6EDA_u7684_u73B0_u8C61_uFF0C_u63D0_u793A_your_system_has_not_been_modified_uFF0C_u5173_u95ED_u6740_u6BD2_u8F6F_u4EF6_uFF0C_u9632_u706B_u5899_u7B49_u4FDD_u62A4_u8F6F_u4EF6_u518D_u5B89_u88C5_u4E5F_u4E0D_u8D77_u6548_uFF0C_u5C1D_u8BD5_u5F88_u591A_u6B21_u90FD_u5B89_u88C5_u5931_u8D25_u3002_u4E8E_u662F_u53EA_u80FD_u5C1D_u8BD5_u5B89_u88C5-exe_u6587_u4EF6_u624B_u52A8_u914D_u7F6E_2C_u4E0B_u9762_u5C31_u662F_u6211_u7684_u4E00_u4E9B_u5B89_u88C5_u7ECF_u9A8C_u3002" class="headerlink" title="然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  "></a>然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  </h2><ol>
 <li>任意盘新建一个文件夹，我在D盘新建名为nodejs的文件夹  </li>
 <li>官网下载.exe文件，存入nodejs文件夹  </li>
 <li>下载<a href="http://nodejs.org/dist/npm/" target="_blank" rel="external">npm</a>文件，解压到nodejs文件夹，得到 node_modules文件与npm.cmd指令文件  </li>
 <li>配置环境   <ul>
-<li>新建一个变量名为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png" alt=""><br>附 <a href="http://jingyan.baidu.com/album/b24f6c82cba6dc86bfe5da9f.html?picindex=2" target="_blank" rel="external">配置方法</a>  </li>
+<li>新建两个变量分别为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png" alt=""><br>附 <a href="http://jingyan.baidu.com/album/b24f6c82cba6dc86bfe5da9f.html?picindex=2" target="_blank" rel="external">配置方法</a>  </li>
+</ul>
+<ul>
 <li>重新进nodejs目录，输入 node -v如果输出nodejs的版本则安装成功，npm同理<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png" alt=""><br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png" alt=""><br>附<a href="http://jingyan.baidu.com/article/425e69e6918df1be15fc1695.html" target="_blank" rel="external">如何使用cmd进入文件目录</a>       </li>
 </ul>
 </li>
@@ -363,22 +365,6 @@
         </div>
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/01/13/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -445,7 +431,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -491,7 +477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u7136_u800C_u6211_u5728_u5B89_u88C5-msi_u6587_u4EF6_u65F6_u51FA_u73B0_u4E86_u8FDB_u5EA6_u6761_u56DE_u6EDA_u7684_u73B0_u8C61_uFF0C_u63D0_u793A_your_system_has_not_been_modified_uFF0C_u5173_u95ED_u6740_u6BD2_u8F6F_u4EF6_uFF0C_u9632_u706B_u5899_u7B49_u4FDD_u62A4_u8F6F_u4EF6_u518D_u5B89_u88C5_u4E5F_u4E0D_u8D77_u6548_uFF0C_u5C1D_u8BD5_u5F88_u591A_u6B21_u90FD_u5B89_u88C5_u5931_u8D25_u3002_u4E8E_u662F_u53EA_u80FD_u5C1D_u8BD5_u5B89_u88C5-exe_u6587_u4EF6_u624B_u52A8_u914D_u7F6E_2C_u4E0B_u9762_u5C31_u662F_u6211_u7684_u4E00_u4E9B_u5B89_u88C5_u7ECF_u9A8C_u3002"><span class="nav-number">1.</span> <span class="nav-text">然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  </span></a></li></ol></div>
             
 
           </div>
