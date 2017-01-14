@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rolling back action,nodejs.exe," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装nodejs.exe及其环境配置">
+<meta property="og:url" content="http://yoursite.com/2017/01/14/2017-1-14/index.html">
+<meta property="og:site_name" content="Higanbana">
+<meta property="og:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png">
+<meta property="og:updated_time" content="2017-01-14T09:17:08.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安装nodejs.exe及其环境配置">
+<meta name="twitter:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/14/2017-1-14/"/>
+
+
+
+
+
+  <title> 安装nodejs.exe及其环境配置 | Higanbana </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Higanbana</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/14/2017-1-14/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wanghan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Higanbana">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Higanbana" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                安装nodejs.exe及其环境配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-14T17:15:24+08:00">
+                2017-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>安装nodejs时官方有.msi后缀和.exe后缀两种文件 。<br>其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。<br>然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  </p>
+<h2 id=""><a href="#" class="headerlink" title="  "></a>  <a id="more"></a></h2><ol>
+<li>任意盘新建一个文件夹，我在D盘新建名为nodejs的文件夹  </li>
+<li>官网下载.exe文件，存入nodejs文件夹  </li>
+<li>下载<a href="http://nodejs.org/dist/npm/" target="_blank" rel="external">npm</a>文件，解压到nodejs文件夹，得到 node_modules文件与npm.cmd指令文件  </li>
+<li>配置环境   <ul>
+<li>新建两个变量分别为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png" alt=""><br>附 <a href="http://jingyan.baidu.com/album/b24f6c82cba6dc86bfe5da9f.html?picindex=2" target="_blank" rel="external">配置方法</a>  </li>
+</ul>
+<ul>
+<li>重新进nodejs目录，输入 node -v如果输出nodejs的版本则安装成功，npm同理<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png" alt=""><br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png" alt=""><br>附<a href="http://jingyan.baidu.com/article/425e69e6918df1be15fc1695.html" target="_blank" rel="external">如何使用cmd进入文件目录</a>       </li>
+</ul>
+</li>
+</ol>
+<p>这样就大功告成啦</p>
+<hr>
+<p>   然而我从cmd验证node,npm都安装成功，git bash上却检测不到npm，环境变量也都设置好了，折腾了一整天都没解决。那天，我坐在电脑前思考人生，我想，我可能是装了假系统。<br>   重做了系统之后直接安装.msi，麻利儿装好，一切都很正常，可见，<strong>装一个正版的系统有多么的重要。</strong><br>   我虽然是以这样的方式解决了问题，但是安装nodejs.exe的方法原则上是没错的，如果你的系统没有什么问题的话应该有一些参考价值，但是话又说回来，如果你的系统没有问题，那么从一开始就不会出现进度条回滚的现象，嘻嘻。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rolling-back-action/" rel="tag"># rolling back action</a>
+          
+            <a href="/tags/nodejs-exe/" rel="tag"># nodejs.exe</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="wanghan" />
+          <p class="site-author-name" itemprop="name">wanghan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">  </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanghan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
