@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[搭建属于自己的博客hexo]]></title>
+      <url>%2F2017%2F01%2F15%2Fbuildhexo%2F</url>
+      <content type="text"><![CDATA[博客是个好东西啊，很多时候遇到难以解决的技术问题，都是在别人的博客上找到答案的，浏览别人的博客可以学到很多知识。身边认识的大牛都有自己的专属博客，我也想学着折腾一番，也总结了一些经验。 注册GitHub账号 号称全球最大的同性交友网站，作为一个程序员，一个GitHub账号是必须的。 新建仓库 仓库名称格式是username.github.io 注意，此处username要对应你的GitHub用户名 安装node.js 安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。若需要安装.exe可以参考我的另一篇博客。官网下载速度略慢，可用淘宝镜像。 安装Git 去官网或者常用的下载软件的网站都可以下载，安装的时候一路next即可。 安装成功之后运行Git Bash 初始化设置$ git config --global user.name “your name” $ git config --global user.email “your email” 注意，此时输入的email必须与注册GitHub账号的邮箱一致 生成密钥$ ssh-keygen -t rsa -C “your email” 按三个回车，密码为空 得到两个文件 id_rsa和id_rsa.pub （这两个文件一般生成在c/user/administrator/ssh文件夹） 添加密钥 打开你的GitHub找到 ssh and gpg key 点击 new ssh key 刚才得到的id_rsa.pub就是要添加的密钥（添加方法：可将id_rsa.pub文件直接拖入浏览器，出现一串字符，将字符copy到需要填写的地方即可） 测试： $ ssh git@github.com 成功后，GitHub上的ssh小钥匙变成绿色 搭建hexo 新建一个文件夹存放你的hexo相关文件（我将它命名为blog） 安装：$ npm install -g hexo 初始化:$ cd blog $ hexo init 如果你cd进入blog之后，执行的是$ hexo init blog,将自动在blog文件夹下生成另一个blog文件，造成混乱 以下命令都在blog中执行 安装插件：$ npm install hexo-generator-index --save #索引生成器 $ npm install hexo-generator-archive --save #归档生成器 $ install hexo-generator-category --save #分类生成器 $ npm install hexo-generator-tag --save #标签生成器 $ npm install hexo-server --save #本地服务 $ npm install hexo-deployer-git --save #hexo通过git发布（必装） $ npm install hexo-renderer-marked@0.2.7--save #渲染器 $ npm install hexo-renderer-stylus@0.3.0 --save #渲染器 生成静态页面$ hexo generate #简写 $ hexo g 本地启动$ hexo server #简写 $ hexo s 浏览器输入http://localhost:4000即可看到效果。 发布 找到blog根目录下的_config.yml文件，找到下面的deploy: 并更改为 deploy: type: git repo: https://github.com/Wanghan0/Wanghan0.github.io.git #建好的仓库地址.git branch: master 注意冒号后面有一个字符的空格即英文输入下的一个空格 更改完毕执行下列代码 $ hexo g #生成 $ hexo d #发布 #两行简写 $ hexo d -g 对blog中文件做了更改或者发布文章，都要执行这两行代码才能更新到你的博客好啦现在你可以参观你的博客啦，你的地址就是 https://your_github_username.github.io 写文章编辑器下载Markdown编辑器，windows下推荐MarkdownPad 新建文章在命令行模式下cd至博客的根目录，然后执行以下代码 $ hexo new &quot;postName&quot; 打开刚刚生成的文件 title: postName #文章页面上的显示名称，可以任意修改 date: 2016-02-18 15:30:16 tags: #文章标签，可空，多标签请用格式[tag1,tag2,tag3] categories: #文章分类目录，可空 --- 此处编辑正文 注意冒号后面一个字符的空格 文章摘要如果不想自己的文章在主页全部显示，可在截断处添加 &lt;!--more--&gt; 更多markdown语法 发布文章$ hexo clean $ hexo g $ hexo d 至此，第一篇博文完成 搭建这个博客花了我两天多时间，其实你看这个搭建的步骤并不是很麻烦，而且很多人本来就有github账号，也安装过git,那么搭建起hexo来还不是两行代码的事儿。但是我好菜，我的大部分时间竟然花在安装nodejs上面，最后发现是电脑系统有问题，嗨呀，好气呀，重做系统之后两个小时就装好了。不过如果你是第一次接触hexo总是要摸索一下的，碰到问题也没关系，多百度，多请教别人，只要坚持下来就总会解决的。我这种菜鸡都搭好了，你有什么理由不成功？]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[安装nodejs.exe及其环境配置]]></title>
+      <url>%2F2017%2F01%2F14%2F2017-1-14%2F</url>
+      <content type="text"><![CDATA[安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。 任意盘新建一个文件夹，我在D盘新建名为nodejs的文件夹 官网下载.exe文件，存入nodejs文件夹 下载npm文件，解压到nodejs文件夹，得到 node_modules文件与npm.cmd指令文件 配置环境 新建两个变量分别为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录附 配置方法 重新进nodejs目录，输入 node -v如果输出nodejs的版本则安装成功，npm同理附如何使用cmd进入文件目录 这样就大功告成啦 然而我从cmd验证node,npm都安装成功，git bash上却检测不到npm，环境变量也都设置好了，折腾了一整天都没解决。那天，我坐在电脑前思考人生，我想，我可能是装了假系统。 重做了系统之后直接安装.msi，麻利儿装好，一切都很正常，可见，装一个正版的系统有多么的重要。 我虽然是以这样的方式解决了问题，但是安装nodejs.exe的方法原则上是没错的，如果你的系统没有什么问题的话应该有一些参考价值，但是话又说回来，如果你的系统没有问题，那么从一开始就不会出现进度条回滚的现象，嘻嘻。]]></content>
+    </entry>
+
+    
+  
+  
+</search>
