@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/8bd1b6eff1d8867f.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/73da2fdba2c8d914.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/b71d6aa74434ffdc.png">
-<meta property="og:updated_time" content="2017-03-31T13:19:52.739Z">
+<meta property="og:updated_time" content="2017-03-31T13:22:47.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈我对盒模型的理解">
 <meta name="twitter:description" content="盒子是无处不在的。html任何一个元素都可以看作一个盒子，这个盒子不可见，但是它存在于页面的每个角落，也正是由于它不可见、不直观，很多人在初学CSS的时候不能透彻得理解盒模型的概念，导致在页面布局中出现各种各样的问题。">
@@ -376,7 +376,7 @@
 <h3 id="border_uFF08_u8FB9_u6846_uFF09_uFF1A"><a href="#border_uFF08_u8FB9_u6846_uFF09_uFF1A" class="headerlink" title="border（边框）："></a>border（边框）：</h3><p>元素的边框是围绕元素内容的内边距的一条或多条线。边框由粗细、样式和颜色三部分组成。</p>
 <h3 id="padding_uFF08_u5185_u8FB9_u8DDD_uFF09_uFF1A"><a href="#padding_uFF08_u5185_u8FB9_u8DDD_uFF09_uFF1A" class="headerlink" title="padding（内边距）："></a>padding（内边距）：</h3><p>清除内容周围的区域，内边距是透明的，取值不能为负，受盒子的Background属性影响，padding是有背景的。</p>
 <h3 id="margin_uFF08_u5916_u8FB9_u8DDD_uFF09_uFF1A"><a href="#margin_uFF08_u5916_u8FB9_u8DDD_uFF09_uFF1A" class="headerlink" title="margin（外边距）："></a>margin（外边距）：</h3><p>在元素外创建额外的空白，空白通常指不能放其他元素的区域，而且在这个区域中可以看到父元素的背景（padding所带的是本身的背景而非父元素）。margin经常取负值实现定位的作用。<br>外边距有一个合并问题，经常使人们混淆，简单来说，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
-<h1 id="u4E24_u79CD_u76D2_u6A21_u578B"><a href="#u4E24_u79CD_u76D2_u6A21_u578B" class="headerlink" title="两种盒模型"></a>两种盒模型</h1><p>其实盒模型有两种，分别是  <strong>ie 盒子模型</strong>  (IE6以下版本浏览器) 和<strong>标准 w3c 盒子模型</strong>（Firefox,Safari,Chrome,Opera,IE6+th），区别在于前者content的宽度和高度包括了border和padding。<br>margin（外边界）虽不可见，但是它确实在文档中占据了空间，我们要区分两个概念即：盒子所占空间（计入margin ）和盒子实际的大小（不计入margin） 。  </p>
+<h1 id="u4E24_u79CD_u76D2_u6A21_u578B"><a href="#u4E24_u79CD_u76D2_u6A21_u578B" class="headerlink" title="两种盒模型"></a>两种盒模型</h1><p>其实盒模型有两种，分别是<strong>ie盒子模型</strong>(IE6以下版本浏览器)和<strong>标准 w3c 盒子模型</strong>（Firefox,Safari,Chrome,Opera,IE6+th），区别在于前者content的宽度和高度包括了border和padding。<br>margin（外边界）虽不可见，但是它确实在文档中占据了空间，我们要区分两个概念即：盒子所占空间（计入margin ）和盒子实际的大小（不计入margin） 。  </p>
 <h2 id="u5B9E_u4F8B_u533A_u5206_u4E24_u79CD_u76D2_u6A21_u578B"><a href="#u5B9E_u4F8B_u533A_u5206_u4E24_u79CD_u76D2_u6A21_u578B" class="headerlink" title="实例区分两种盒模型"></a>实例区分两种盒模型</h2><p>下面举个例子来区分两种盒模型：一个盒子的 margin 为 20px，border 为 2px，padding 为 10px，content 的宽为 200px、高为 50px。  </p>
 <h3 id="ie_u76D2_u5B50_u6A21_u578B"><a href="#ie_u76D2_u5B50_u6A21_u578B" class="headerlink" title="ie盒子模型"></a>ie盒子模型</h3><pre><code>盒子所占空间：width=20ｘ2+200=240      　　          height=20ｘ2+50=90  
 
