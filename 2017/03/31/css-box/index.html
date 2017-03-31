@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/8bd1b6eff1d8867f.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/73da2fdba2c8d914.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/b71d6aa74434ffdc.png">
-<meta property="og:updated_time" content="2017-03-31T13:01:30.877Z">
+<meta property="og:updated_time" content="2017-03-31T13:05:48.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈我对盒模型的理解">
 <meta name="twitter:description" content="盒子是无处不在的。html任何一个元素都可以看作一个盒子，这个盒子不可见，但是它存在于页面的每个角落，也正是由于它不可见、不直观，很多人在初学CSS的时候不能透彻得理解盒模型的概念，导致在页面布局中出现各种各样的问题。">
@@ -370,12 +370,12 @@
 
       
         <p>盒子是无处不在的。<br>html任何一个元素都可以看作一个盒子，这个盒子不可见，但是它存在于页面的每个角落，也正是由于它不可见、不直观，很多人在初学CSS的时候不能透彻得理解盒模型的概念，导致在页面布局中出现各种各样的问题。<br><a id="more"></a>  </p>
-<p>##　一、盒子模型简介<br><img src="http://i1.piimg.com/567571/fe8d041dca7801bb.png" alt="">  </p>
+<h1 id="u4E00_u3001_u76D2_u5B50_u6A21_u578B_u7B80_u4ECB"><a href="#u4E00_u3001_u76D2_u5B50_u6A21_u578B_u7B80_u4ECB" class="headerlink" title="一、盒子模型简介"></a>一、盒子模型简介</h1><p><img src="http://i1.piimg.com/567571/fe8d041dca7801bb.png" alt="">  </p>
 <p>上面是一个盒子模型图，一个盒子包括了content（实际内容）、border（边框）、padding（内边距）和margin（外边距）。  </p>
-<p>###　1.content（实际内容）：<br>盒子的内容，显示文本和图像。我们给元素设置的width和height其实是content的宽高， 如果指定高度大于显示内容所需高度，多余的高度会产生类似内边距一样的效果；如果指定高度小于显示内容所需高度，会出现滚动条。如果元素内容的高度大于元素框的高度，浏览器的具体行为取决于overflow属性。</p>
-<p>###　2.border（边框）：<br>元素的边框是围绕元素内容的内边距的一条或多条线。边框由粗细、样式和颜色三部分组成。</p>
-<p>###　3.padding（内边距）：<br>清除内容周围的区域，内边距是透明的，取值不能为负，受盒子的Background属性影响，padding是有背景的。</p>
-<p>###　4.margin（外边距）：<br>在元素外创建额外的空白，空白通常指不能放其他元素的区域，而且在这个区域中可以看到父元素的背景（padding所带的是本身的背景而非父元素）。margin经常取负值实现定位的作用。<br>外边距有一个合并问题，经常使人们混淆，简单来说，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
+<h3 id="1-content_uFF08_u5B9E_u9645_u5185_u5BB9_uFF09_uFF1A"><a href="#1-content_uFF08_u5B9E_u9645_u5185_u5BB9_uFF09_uFF1A" class="headerlink" title="1.content（实际内容）："></a>1.content（实际内容）：</h3><p>盒子的内容，显示文本和图像。我们给元素设置的width和height其实是content的宽高， 如果指定高度大于显示内容所需高度，多余的高度会产生类似内边距一样的效果；如果指定高度小于显示内容所需高度，会出现滚动条。如果元素内容的高度大于元素框的高度，浏览器的具体行为取决于overflow属性。</p>
+<h3 id="2-border_uFF08_u8FB9_u6846_uFF09_uFF1A"><a href="#2-border_uFF08_u8FB9_u6846_uFF09_uFF1A" class="headerlink" title="2.border（边框）："></a>2.border（边框）：</h3><p>元素的边框是围绕元素内容的内边距的一条或多条线。边框由粗细、样式和颜色三部分组成。</p>
+<p> ###　3.padding（内边距）：<br>清除内容周围的区域，内边距是透明的，取值不能为负，受盒子的Background属性影响，padding是有背景的。</p>
+<h3 id="4-margin_uFF08_u5916_u8FB9_u8DDD_uFF09_uFF1A"><a href="#4-margin_uFF08_u5916_u8FB9_u8DDD_uFF09_uFF1A" class="headerlink" title="4.margin（外边距）："></a>4.margin（外边距）：</h3><p>在元素外创建额外的空白，空白通常指不能放其他元素的区域，而且在这个区域中可以看到父元素的背景（padding所带的是本身的背景而非父元素）。margin经常取负值实现定位的作用。<br>外边距有一个合并问题，经常使人们混淆，简单来说，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
 <p>##　二、两种盒模型<br>其实盒模型有两种，分别是 <strong>ie 盒子模型</strong> (IE6以下版本浏览器) 和<strong>标准 w3c 盒子模型</strong>（Firefox,Safari,Chrome,Opera,IE6+th），区别在于前者content的宽度和高度包括了border和padding。<br>margin（外边界）虽不可见，但是它确实在文档中占据了空间，我们要区分两个概念即：盒子所占空间（计入margin ）和盒子实际的大小（不计入margin） 。  </p>
 <p>###　1.实例区分两种盒模型<br>下面举个例子来区分两种盒模型：一个盒子的 margin 为 20px，border 为 2px，padding 为 10px，content 的宽为 200px、高为 50px。  </p>
 <ul>
@@ -576,8 +576,17 @@ var duoshuoQuery = {short_name:"higanbana"};
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/33610914-file_1484387196671_a795.jpg"
@@ -640,6 +649,22 @@ var duoshuoQuery = {short_name:"higanbana"};
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u4E00_u3001_u76D2_u5B50_u6A21_u578B_u7B80_u4ECB"><span class="nav-number">1.</span> <span class="nav-text">一、盒子模型简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-content_uFF08_u5B9E_u9645_u5185_u5BB9_uFF09_uFF1A"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.content（实际内容）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-border_uFF08_u8FB9_u6846_uFF09_uFF1A"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.border（边框）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-margin_uFF08_u5916_u8FB9_u8DDD_uFF09_uFF1A"><span class="nav-number">1.0.3.</span> <span class="nav-text">4.margin（外边距）：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
