@@ -92,7 +92,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
 CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出">
-<meta property="og:updated_time" content="2017-04-25T05:08:40.031Z">
+<meta property="og:updated_time" content="2017-04-25T05:15:28.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS各种居中实现方式">
 <meta name="twitter:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
@@ -434,8 +434,10 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
         居中元素
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><h2 id="u6C34_u5E73_u5C45_u4E2D-1"><a href="#u6C34_u5E73_u5C45_u4E2D-1" class="headerlink" title="水平居中"></a>水平居中</h2><h3 id="u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><a href="#u5B9A_u5BBD_u5757_u72B6_u5143_u7D20" class="headerlink" title="定宽块状元素"></a>定宽块状元素</h3><ul>
-<li><p>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中</p>
+</code></pre><h2 id="u6C34_u5E73_u5C45_u4E2D-1"><a href="#u6C34_u5E73_u5C45_u4E2D-1" class="headerlink" title="水平居中"></a>水平居中</h2><hr>
+<h3 id="u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><a href="#u5B9A_u5BBD_u5757_u72B6_u5143_u7D20" class="headerlink" title="定宽块状元素"></a>定宽块状元素</h3><ul>
+<li>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中</li>
+</ul>
 <pre><code>.out{
    display:flex;    
    justify-content:center;
@@ -463,8 +465,6 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
     margin-left: -50px;
 }
 </code></pre></li>
-</ul>
-</li>
 </ul>
 <h3 id="u4E0D_u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><a href="#u4E0D_u5B9A_u5BBD_u5757_u72B6_u5143_u7D20" class="headerlink" title="不定宽块状元素"></a>不定宽块状元素</h3><ul>
 <li><p>对于包含文字的块元素可将其父元素设置为text-align:center  </p>
@@ -494,8 +494,9 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 }
 </code></pre></li>
 </ul>
-<h2 id="u5782_u76F4_u5C45_u4E2D-1"><a href="#u5782_u76F4_u5C45_u4E2D-1" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><a href="#u5B9A_u9AD8_u5757_u72B6_u5143_u7D20" class="headerlink" title="定高块状元素"></a>定高块状元素</h3><ul>
-<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中   </li>
+<h2 id="u5782_u76F4_u5C45_u4E2D-1"><a href="#u5782_u76F4_u5C45_u4E2D-1" class="headerlink" title="垂直居中"></a>垂直居中</h2><hr>
+<h3 id="u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><a href="#u5B9A_u9AD8_u5757_u72B6_u5143_u7D20" class="headerlink" title="定高块状元素"></a>定高块状元素</h3><ul>
+<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中     </li>
 </ul>
 <pre><code>.out{
     display:flex; 
@@ -537,7 +538,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 </code></pre></li>
 </ul>
 <h3 id="u4E0D_u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><a href="#u4E0D_u5B9A_u9AD8_u5757_u72B6_u5143_u7D20" class="headerlink" title="不定高块状元素"></a>不定高块状元素</h3><ul>
-<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中   </li>
+<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中  </li>
 </ul>
 <pre><code>.out{
     display:flex; 
@@ -563,7 +564,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 </code></pre></li>
 </ul>
 <hr>
-<h2 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h2><ol>
+<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><ol>
 <li>总结到这里就会发现令元素居中的办法千奇百怪，其中无论水平还是垂直，无论有没有指定宽高，总能奏效的办法就是display:flex办法，这也是flex布局的优势之一，有时候使用flex布局甚至比bootstrap这种框架更加顺手，有机会我也会对flex的使用做个总结。   </li>
 <li>另外在上面的很多居中的办法中都用到了position: absolute，但是其实不建议经常使用绝对定位进行布局，因为它脱离了文档流，并且页面复杂的话也会对其他元素造成影响，有时改变窗口大小布局也会受到影响。因为关于position的不同取值带来的效果经常使人困扰，后面我也会对它进行总结。</li>
 <li>还有，居中的办法有这么多，但并不代表你需要懂得每一种，甚至去学会一些奇怪或者复杂的居中方式，而是在布局的过程中选择最适合、最简单、你用的最顺手的方法实现你想要的效果，俗话说黑猫白猫，能抓住耗子的就是好猫，居中方式也是一样的道理。</li>
@@ -769,7 +770,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5185_u8054_u5143_u7D20"><span class="nav-number">1.</span> <span class="nav-text">内联元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5185_u8054_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">1.1.</span> <span class="nav-text">内联元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D"><span class="nav-number">1.2.</span> <span class="nav-text">水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D"><span class="nav-number">1.3.</span> <span class="nav-text">垂直居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20"><span class="nav-number">2.</span> <span class="nav-text">块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">2.1.</span> <span class="nav-text">块级元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D-1"><span class="nav-number">2.2.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.2.1.</span> <span class="nav-text">定宽块状元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E0D_u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.2.2.</span> <span class="nav-text">不定宽块状元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D-1"><span class="nav-number">2.3.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.3.1.</span> <span class="nav-text">定高块状元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E0D_u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.3.2.</span> <span class="nav-text">不定高块状元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5185_u8054_u5143_u7D20"><span class="nav-number">1.</span> <span class="nav-text">内联元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5185_u8054_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">1.1.</span> <span class="nav-text">内联元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D"><span class="nav-number">1.2.</span> <span class="nav-text">水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D"><span class="nav-number">1.3.</span> <span class="nav-text">垂直居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20"><span class="nav-number">2.</span> <span class="nav-text">块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">2.1.</span> <span class="nav-text">块级元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D-1"><span class="nav-number">2.2.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.2.1.</span> <span class="nav-text">定宽块状元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E0D_u5B9A_u5BBD_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.2.2.</span> <span class="nav-text">不定宽块状元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D-1"><span class="nav-number">2.3.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.3.1.</span> <span class="nav-text">定高块状元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E0D_u5B9A_u9AD8_u5757_u72B6_u5143_u7D20"><span class="nav-number">2.3.2.</span> <span class="nav-text">不定高块状元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
