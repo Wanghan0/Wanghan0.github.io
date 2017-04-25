@@ -92,7 +92,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
 CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出">
-<meta property="og:updated_time" content="2017-04-25T05:28:06.120Z">
+<meta property="og:updated_time" content="2017-04-25T05:38:45.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS各种居中实现方式">
 <meta name="twitter:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
@@ -436,14 +436,13 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><h2 id="u6C34_u5E73_u5C45_u4E2D-1"><a href="#u6C34_u5E73_u5C45_u4E2D-1" class="headerlink" title="水平居中"></a>水平居中</h2><hr>
-<h4 id="u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20"><a href="#u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20" class="headerlink" title="定宽块级元素"></a>定宽块级元素</h4><ul>
-<li>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中</li>
-</ul>
-<pre><code>.out{
-   display:flex;    
-   justify-content:center;
+<h4 id="u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20"><a href="#u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20" class="headerlink" title="定宽块级元素"></a>定宽块级元素</h4><ol>
+<li><p>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中  </p>
+<pre><code>  .out{
+    display:flex;    
+    justify-content:center;
 }  
-</code></pre><ul>
+</code></pre></li>
 <li><p>该元素样式设置为 margin：0 auto；      </p>
 <pre><code>  .in{
     width: 100px;  
@@ -466,8 +465,8 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
     margin-left: -50px;
 }
 </code></pre></li>
-</ul>
-<h4 id="u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20"><a href="#u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20" class="headerlink" title="不定宽块级元素"></a>不定宽块级元素</h4><ul>
+</ol>
+<h4 id="u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20"><a href="#u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20" class="headerlink" title="不定宽块级元素"></a>不定宽块级元素</h4><ol>
 <li><p>对于包含文字的块元素可将其父元素设置为text-align:center  </p>
 <pre><code>.out{
       text-align:center;    
@@ -494,16 +493,15 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
    transform: translate(-50%,0);
 }
 </code></pre></li>
-</ul>
+</ol>
 <h2 id="u5782_u76F4_u5C45_u4E2D-1"><a href="#u5782_u76F4_u5C45_u4E2D-1" class="headerlink" title="垂直居中"></a>垂直居中</h2><hr>
-<h4 id="u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20"><a href="#u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20" class="headerlink" title="定高块级元素"></a>定高块级元素</h4><ul>
-<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中     </li>
-</ul>
+<h4 id="u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20"><a href="#u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20" class="headerlink" title="定高块级元素"></a>定高块级元素</h4><ol>
+<li><p>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中   </p>
 <pre><code>.out{
     display:flex; 
     align-items: center;
 }
-</code></pre><ul>
+</code></pre></li>
 <li><p>该元素样式设置为 position: relative;top: 50%；margin-top: -0.5*height（负的该元素高度的一半）  </p>
 <pre><code>.in{
    height:100px;
@@ -537,15 +535,14 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
     margin: auto;
  }
 </code></pre></li>
-</ul>
-<h4 id="u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20"><a href="#u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20" class="headerlink" title="不定高块级元素"></a>不定高块级元素</h4><ul>
-<li>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中  </li>
-</ul>
+</ol>
+<h4 id="u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20"><a href="#u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20" class="headerlink" title="不定高块级元素"></a>不定高块级元素</h4><ol>
+<li><p>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中  </p>
 <pre><code>.out{
     display:flex; 
     align-items: center;
 }
-</code></pre><ul>
+</code></pre></li>
 <li><p>该元素样式设置为 position: relative;top: 50%;transform: translate(0,-50%)   </p>
 <pre><code>.in{
     position: relative;
@@ -563,7 +560,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
     transform: translate(0,-50%);
   }
 </code></pre></li>
-</ul>
+</ol>
 <hr>
 <h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><ol>
 <li>总结到这里就会发现令元素居中的办法千奇百怪，其中无论水平还是垂直，无论有没有指定宽高，总能奏效的办法就是display:flex办法，这也是flex布局的优势之一，有时候使用flex布局甚至比bootstrap这种框架更加顺手，有机会我也会对flex的使用做个总结。   </li>
