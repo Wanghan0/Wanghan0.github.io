@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://i4.buimg.com/567571/f1f48c9074e588f4.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/2b16f8fdff209fbd.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/acc3eef5f3c299bb.png">
-<meta property="og:updated_time" content="2017-04-26T06:32:23.830Z">
+<meta property="og:updated_time" content="2017-04-26T06:43:37.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解绝对定位和相对定位">
 <meta name="twitter:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
@@ -419,8 +419,8 @@
 <pre><code>.box-2{
       background-color: #00A5FF;
       position: absolute;
-      left: 0px;
-      top:0px;
+      left: 0;
+      top:0;
   }   
 </code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/1c236a0b4a7a558e.png" alt="">   </p>
 <ul>
@@ -471,7 +471,7 @@
 }   
 </code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/acc3eef5f3c299bb.png" alt="">   </p>
 <ul>
-<li>当祖先元素不止一个设置了定位的时候，选择最近的一个作为参照物。 </li>
+<li><strong>当祖先元素不止一个设置了定位的时候，选择最近的一个作为参照物</strong>。 </li>
 </ul>
 </li>
 </ol>
