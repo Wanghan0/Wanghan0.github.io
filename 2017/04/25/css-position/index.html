@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,21 +84,25 @@
 
 
 
-<meta name="description" content="博客是个好东西啊，很多时候遇到难以解决的技术问题，都是在别人的博客上找到答案的，浏览别人的博客可以学到很多知识。身边认识的大牛都有自己的专属博客，我也想学着折腾一番，也总结了一些经验。">
+<meta name="description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建属于自己的博客hexo">
-<meta property="og:url" content="http://yoursite.com/2017/01/15/buildhexo/index.html">
+<meta property="og:title" content="详解绝对定位和相对定位">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/css-position/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="博客是个好东西啊，很多时候遇到难以解决的技术问题，都是在别人的博客上找到答案的，浏览别人的博客可以学到很多知识。身边认识的大牛都有自己的专属博客，我也想学着折腾一番，也总结了一些经验。">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/45382385-file_1484448997662_b3fb.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/65195987-file_1484448909372_123d4.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/63465638-file_1484448914212_560f.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/89306135-file_1484455703818_17576.png">
-<meta property="og:updated_time" content="2017-01-15T06:19:48.441Z">
+<meta property="og:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
+<meta property="og:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/18c32c5aa0ad754e.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/4fc39b922c9d5b77.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/fd605722d2831cee.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/1c236a0b4a7a558e.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/f1f48c9074e588f4.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/2b16f8fdff209fbd.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/acc3eef5f3c299bb.png">
+<meta property="og:updated_time" content="2017-04-26T06:32:23.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建属于自己的博客hexo">
-<meta name="twitter:description" content="博客是个好东西啊，很多时候遇到难以解决的技术问题，都是在别人的博客上找到答案的，浏览别人的博客可以学到很多知识。身边认识的大牛都有自己的专属博客，我也想学着折腾一番，也总结了一些经验。">
-<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/45382385-file_1484448997662_b3fb.png">
+<meta name="twitter:title" content="详解绝对定位和相对定位">
+<meta name="twitter:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
+<meta name="twitter:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/15/buildhexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/25/css-position/"/>
 
 
 
 
 
-  <title> 搭建属于自己的博客hexo | Higanbana </title>
+  <title> 详解绝对定位和相对定位 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +282,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/15/buildhexo/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/css-position/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -302,7 +306,7 @@
             
             
               
-                搭建属于自己的博客hexo
+                详解绝对定位和相对定位
               
             
           </h1>
@@ -317,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T10:51:21+08:00">
-                2017-01-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T23:11:44+08:00">
+                2017-04-25
               </time>
             
 
@@ -336,8 +340,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/15/buildhexo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/15/buildhexo/" itemprop="commentCount"></span>
+                <a href="/2017/04/25/css-position/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/css-position/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,67 +372,111 @@
       
 
       
-        <p>博客是个好东西啊，很多时候遇到难以解决的技术问题，都是在别人的博客上找到答案的，浏览别人的博客可以学到很多知识。身边认识的大牛都有自己的专属博客，我也想学着折腾一番，也总结了一些经验。</p>
-<a id="more"></a>
-<h2 id="u6CE8_u518CGitHub_u8D26_u53F7"><a href="#u6CE8_u518CGitHub_u8D26_u53F7" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h2><p>   号称全球最大的同性交友网站，作为一个程序员，一个GitHub账号是必须的。  </p>
-<h3 id="u65B0_u5EFA_u4ED3_u5E93"><a href="#u65B0_u5EFA_u4ED3_u5E93" class="headerlink" title="新建仓库"></a>新建仓库</h3><p>   仓库名称格式是username.github.io<br>   注意，此处username要对应你的GitHub用户名    <img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/45382385-file_1484448997662_b3fb.png" alt=""></p>
-<h2 id="u5B89_u88C5node-js"><a href="#u5B89_u88C5node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>   安装nodejs时官方有.msi后缀和.exe后缀两种文件 。<br>其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。若需要安装.exe可以参考<a href="https://wanghan0.github.io/2017/01/14/2017-1-14/#more" target="_blank" rel="external">我的另一篇博客</a>。官网下载速度略慢，可用<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝镜像</a>。</p>
-<h2 id="u5B89_u88C5Git"><a href="#u5B89_u88C5Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>   去官网或者常用的下载软件的网站都可以下载，安装的时候一路next即可。<br>   安装成功之后运行Git Bash</p>
-<h3 id="u521D_u59CB_u5316_u8BBE_u7F6E"><a href="#u521D_u59CB_u5316_u8BBE_u7F6E" class="headerlink" title="初始化设置"></a>初始化设置</h3><pre><code>$ git config --global user.name “your name”  
-$ git config --global user.email “your email” 
-</code></pre><p>   注意，此时输入的email必须与注册GitHub账号的邮箱一致  </p>
-<h3 id="u751F_u6210_u5BC6_u94A5"><a href="#u751F_u6210_u5BC6_u94A5" class="headerlink" title="生成密钥"></a>生成密钥</h3><pre><code>$ ssh-keygen -t rsa -C “your email”   
-</code></pre><p>   <img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/65195987-file_1484448909372_123d4.png" alt="">  </p>
-<p>   按三个回车，密码为空<br>  得到两个文件 id_rsa和id_rsa.pub （这两个文件一般生成在c/user/administrator/ssh文件夹）   </p>
-<h3 id="u6DFB_u52A0_u5BC6_u94A5"><a href="#u6DFB_u52A0_u5BC6_u94A5" class="headerlink" title="添加密钥"></a>添加密钥</h3><p>  打开你的GitHub找到  <em>ssh and gpg key</em><br>  点击 <em>new ssh key</em><br>  刚才得到的id_rsa.pub就是要添加的密钥（添加方法：可将id_rsa.pub文件直接拖入浏览器，出现一串字符，将字符copy到需要填写的地方即可）<br>   测试： </p>
-<pre><code>$ ssh git@github.com    
-</code></pre><p>  <img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/63465638-file_1484448914212_560f.png" alt=""><br>   成功后，GitHub上的ssh小钥匙变成绿色     </p>
-<h2 id="u642D_u5EFAhexo"><a href="#u642D_u5EFAhexo" class="headerlink" title="搭建hexo"></a>搭建hexo</h2><p>   新建一个文件夹存放你的hexo相关文件（我将它命名为blog）   </p>
-<h3 id="u5B89_u88C5_uFF1A"><a href="#u5B89_u88C5_uFF1A" class="headerlink" title="安装："></a>安装：</h3><pre><code>$ npm install -g hexo 
-</code></pre><h3 id="u521D_u59CB_u5316_3A"><a href="#u521D_u59CB_u5316_3A" class="headerlink" title="初始化:"></a>初始化:</h3><pre><code>$ cd blog
-$ hexo init
-</code></pre><p>   如果你cd进入blog之后，执行的是<strong>$ hexo init blog</strong>,将自动在blog文件夹下生成另一个blog文件，造成混乱<br>   以下命令都在blog中执行    </p>
-<h3 id="u5B89_u88C5_u63D2_u4EF6_uFF1A"><a href="#u5B89_u88C5_u63D2_u4EF6_uFF1A" class="headerlink" title="安装插件："></a>安装插件：</h3><pre><code>$ npm install hexo-generator-index --save        #索引生成器
-$ npm install hexo-generator-archive --save       #归档生成器
-$ install hexo-generator-category --save     #分类生成器
-$ npm install hexo-generator-tag --save             #标签生成器
-$ npm install hexo-server --save                        #本地服务
-$ npm install hexo-deployer-git --save             #hexo通过git发布（必装）
-$ npm install hexo-renderer-marked@0.2.7--save   #渲染器
-$ npm install hexo-renderer-stylus@0.3.0 --save     #渲染器    
-</code></pre><h3 id="u751F_u6210_u9759_u6001_u9875_u9762"><a href="#u751F_u6210_u9759_u6001_u9875_u9762" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><pre><code>$ hexo generate     #简写 $ hexo g
-</code></pre><h3 id="u672C_u5730_u542F_u52A8"><a href="#u672C_u5730_u542F_u52A8" class="headerlink" title="本地启动"></a>本地启动</h3><pre><code>$ hexo server      #简写 $ hexo s
-</code></pre><p>   浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>即可看到效果。    </p>
-<h3 id="u53D1_u5E03"><a href="#u53D1_u5E03" class="headerlink" title="发布"></a>发布</h3><p>  找到blog根目录下的_config.yml文件，找到下面的deploy: 并更改为</p>
-<pre><code>deploy:
-type: git
-repo: https://github.com/Wanghan0/Wanghan0.github.io.git     #建好的仓库地址.git
-branch: master
-</code></pre><p>注意冒号后面有一个字符的空格即英文输入下的一个空格</p>
-<p>更改完毕执行下列代码  </p>
-<pre><code>$ hexo g   #生成
-$ hexo d   #发布   #两行简写 $ hexo d -g  
-</code></pre><p>对blog中文件做了更改或者发布文章，都要执行这两行代码才能更新到你的博客<br>好啦现在你可以参观你的博客啦，你的地址就是 <a href="https://your_github_username.github.io" target="_blank" rel="external">https://your_github_username.github.io</a></p>
-<h2 id="u5199_u6587_u7AE0"><a href="#u5199_u6587_u7AE0" class="headerlink" title="写文章"></a>写文章</h2><h3 id="u7F16_u8F91_u5668"><a href="#u7F16_u8F91_u5668" class="headerlink" title="编辑器"></a>编辑器</h3><p>下载Markdown编辑器，windows下推荐MarkdownPad  </p>
-<h3 id="u65B0_u5EFA_u6587_u7AE0"><a href="#u65B0_u5EFA_u6587_u7AE0" class="headerlink" title="新建文章"></a>新建文章</h3><p>在命令行模式下cd至博客的根目录，然后执行以下代码  </p>
-<pre><code>$ hexo new &quot;postName&quot;      
-</code></pre><p><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-15/89306135-file_1484455703818_17576.png" alt=""><br>打开刚刚生成的文件 </p>
-<pre><code>title: postName             #文章页面上的显示名称，可以任意修改
-date: 2016-02-18 15:30:16   
-tags:                       #文章标签，可空，多标签请用格式[tag1,tag2,tag3]
-categories:                 #文章分类目录，可空
- ---
-此处编辑正文
-</code></pre><p>注意冒号后面一个字符的空格</p>
-<h3 id="u6587_u7AE0_u6458_u8981"><a href="#u6587_u7AE0_u6458_u8981" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>如果不想自己的文章在主页全部显示，可在截断处添加   </p>
-<pre><code>&lt;!--more--&gt;
-</code></pre><p>更多<a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">markdown语法</a></p>
-<h3 id="u53D1_u5E03_u6587_u7AE0"><a href="#u53D1_u5E03_u6587_u7AE0" class="headerlink" title="发布文章"></a>发布文章</h3><pre><code>$ hexo clean 
-$ hexo g 
-$ hexo d 
-</code></pre><p>至此，第一篇博文完成</p>
+        <p>上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。<br><a id="more"></a></p>
+<h1 id="position_u7684_u4E0D_u540C_u53D6_u503C"><a href="#position_u7684_u4E0D_u540C_u53D6_u503C" class="headerlink" title="position的不同取值"></a>position的不同取值</h1><blockquote>
+<p>不管是哪种定位，都必须有一个参照物，理清参照物我们就对这些定位方式了解了一半。  </p>
+</blockquote>
+<ol>
+<li>static，默认值。位置设置为static的元素，它始终会处于页面流给予的位置（static 元素会忽略任何 top、bottom、left、right和z-index 声明）。</li>
+<li>inherit，规定应该从父元素继承 position 属性的值。但是任何的版本的 Internet Explorer （包括 IE8）都不支持属性值 “inherit”。</li>
+<li>fixed，生成绝对定位的元素，可定位于相对于<strong>浏览器窗口</strong>的指定坐标。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。不论窗口滚动与否，元素都会留在那个位置。</li>
+<li>absolute，生成绝对定位的元素，相对于<strong>距该元素最近的已定位（position不为static）的祖先元素</strong>进行定位。此元素的位置可通过 “left”、”top”、”right” 以及 “bottom” 属性来规定。</li>
+<li>relative，生成相对定位的元素，相对于<strong>该元素在文档中的初始位置</strong>进行定位。通过 “left”、”top”、”right” 以及 “bottom” 属性来设置此元素相对于自身位置的偏移。    </li>
+</ol>
+<h1 id="u76F8_u5BF9_u5B9A_u4F4Drelative"><a href="#u76F8_u5BF9_u5B9A_u4F4Drelative" class="headerlink" title="相对定位relative"></a>相对定位relative</h1><blockquote>
+<p>相对定位的参照物是它本身  </p>
+</blockquote>
+<p>每一个元素都可以看作一个盒子，文档流就是由这些盒子堆砌而成，而每个盒子都在这个文档流中占据了一个位置，如果我们把这个盒子设置成相对定位，那么就可以拿起这个盒子相对于它原来所占据的位置向别的地方移动，如设置left:50px就是相对于盒子原来位置向左移动了50个像素，我们用具体的例子来说明。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i2.muimg.com/567571/93940c469d4a4df1.png" alt=""> </p>
+<p>我们把box-2设置成相对定位并向左移动60像素，向下移动120像素。   </p>
+<pre><code> .box-2{
+    background-color: #00A5FF;
+    position: relative;
+    left: 110px;
+    top:60px;
+}
+</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/18c32c5aa0ad754e.png" alt="">   </p>
+<ul>
+<li>从上图我们可以发现box-2相对于它原来的位置向下且向右移动了，并且原来的位置留下了一片空白，但是其他的元素并没有占据它，说明<strong>元素设置相对定位后，可以相对于其在普通流中的位置偏移，原本所占的空间仍保留</strong>。</li>
+<li>同时我们从图上可以看出，box-2移动之后覆盖了其他的元素，这说明<strong>当元素被设置相对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。此时如果给box-5也设置 position: relative，那么box-5又会覆盖box-2。<h1 id="u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><a href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute" class="headerlink" title="绝对定位absolute"></a>绝对定位absolute</h1><blockquote>
+<p>绝对定位的参照物是相对于该元素最近的已定位的祖先元素，如果没有一个祖先元素设置定位，那么参照物是body。</p>
+</blockquote>
+</li>
+</ul>
+<p>绝对定位与相对定位的一大不同之处就是，当我们把一个元素设置成相对定位，那么这个元素将会脱离文档流，漂浮在文档流上方，并且后面的元素将会填充它原来的位置。绝对定位元素根据它的参照物移动自己的位置，而参照物则需要根据它祖先元素的定位设置来确定。我们就用实例说明绝对定位的特点和需要注意的地方。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i4.buimg.com/567571/4fc39b922c9d5b77.png" alt=""> </p>
+<ol>
+<li><p>祖先元素都没有设置定位，元素相对于body转移位置。<br>给box-2设置成position: absolute;   </p>
+<pre><code>  .box-2{
+    background-color: #00A5FF;
+    position: absolute;
+}     
+</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/fd605722d2831cee.png" alt="">      </p>
+<ul>
+<li>我们可以看到最后一个box存在的位置空了出来，这是因为box-2脱离文档流漂浮到文档上方，并且后面的元素填补了上去，说明<strong>元素设置绝对定位后脱离文档流，后面的元素将填补它的位置</strong>。</li>
+<li>接着你可能就会发现box-3失踪了，其实它没有失踪，它是在box-2下面，就像相对定位一样，<strong>当元素被设置绝对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。</li>
+</ul>
+</li>
+<li><p>你可能会问了，不是说祖先元素都没有定位时，元素会相对于body来改变自己的位置吗，为什么它还是飘在原来的位置，而没有飘到body顶头呢，那么请看，我把left和top属性加上会出现什么样的结果。         </p>
+<pre><code>.box-2{
+      background-color: #00A5FF;
+      position: absolute;
+      left: 0px;
+      top:0px;
+  }   
+</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/1c236a0b4a7a558e.png" alt="">   </p>
+<ul>
+<li>现在可以看到它与body顶头了，因为光设置一个元素的相对定位它只会漂浮到原来位置的上空，并不会漂浮到参照物的文档流最前方，而只有设置了left、top、right、bottom这些参数的时候才能激活它相对于参照物移动的效果。   </li>
+</ul>
+</li>
+<li><p>祖先元素grandpa设置定位，元素相对于grandpa转移位置。 </p>
+<pre><code>.grandpa{
+    background-color: #55a532;
+    height: 500px;
+    width: 600px;
+    margin: 40px;
+    position: relative;
+} 
+.box-2{
+    background-color: #00A5FF;
+    position: absolute;
+    left: 20px;
+    top:20px;
+}   
+</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/f1f48c9074e588f4.png" alt="">   </p>
+</li>
+<li><p>祖先元素father设置定位，元素相对于father转移位置。 </p>
+<pre><code>.father{
+    background-color: #55a532;
+    height: 400px;
+    width: 500px;
+    margin: 50px;
+    position: relative;
+} 
+.box-2{
+    background-color: #00A5FF;
+    position: absolute;
+    left: 20px;
+    top:20px;
+}   
+</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/2b16f8fdff209fbd.png" alt="">   </p>
+</li>
+<li><p>父元素son以及祖先元素father、grandpa都设置定位，元素相对于son转移位置。 </p>
+<pre><code>.grandpa,.father,.son{
+       position: relative;
+}
+.box-2{
+    background-color: #00A5FF;
+    position: absolute;
+    left: 20px;
+    top:20px;
+}   
+</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/acc3eef5f3c299bb.png" alt="">   </p>
+<ul>
+<li>当祖先元素不止一个设置了定位的时候，选择最近的一个作为参照物。 </li>
+</ul>
+</li>
+</ol>
 <hr>
-<p>搭建这个博客花了我两天多时间，其实你看这个搭建的步骤并不是很麻烦，而且很多人本来就有github账号，也安装过git,那么搭建起hexo来还不是两行代码的事儿。但是我好菜，我的大部分时间竟然花在安装nodejs上面，最后发现是电脑系统有问题，嗨呀，好气呀，重做系统之后两个小时就装好了。不过如果你是第一次接触hexo总是要摸索一下的，碰到问题也没关系，多百度，多请教别人，只要坚持下来就总会解决的。我这种菜鸡都搭好了，你有什么理由不成功？</p>
+<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>现在你应该就能明白为什么上一篇博文中那么多居中方式都要设置其父元素的position为relative了吧，其实虽然absolute要求的是祖先元素的定位方式是除static都可以，但是最好还是设置成相对定位，因为你只设置relative而不设置left、top等参数的话对元素自身和其他元素是没有影响的，但如果你设置成fixed，元素就有可能受到浏览器窗口的影响（如果有特殊需要当然可以使用），而你设置成inherit也没有什么意义，况且浏览器对它的支持性也不是很好，显然用来限制absolute的话用relative是最合适的。</p>
 
       
     </div>
@@ -450,19 +498,13 @@ $ hexo d
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/14/2017-1-14/" rel="next" title="安装nodejs.exe及其环境配置">
-                <i class="fa fa-chevron-left"></i> 安装nodejs.exe及其环境配置
+              <a href="/2017/04/24/css-center/" rel="next" title="CSS各种居中实现方式">
+                <i class="fa fa-chevron-left"></i> CSS各种居中实现方式
               </a>
             
           </div>
@@ -470,10 +512,6 @@ $ hexo d
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/11/danmu/" rel="prev" title="一个简易弹幕">
-                一个简易弹幕 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,10 +526,10 @@ $ hexo d
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/01/15/buildhexo/"
-     data-title="搭建属于自己的博客hexo"
+        <div class="ds-share flat" data-thread-key="2017/04/25/css-position/"
+     data-title="详解绝对定位和相对定位"
      data-content=""
-     data-url="http://yoursite.com/2017/01/15/buildhexo/">
+     data-url="http://yoursite.com/2017/04/25/css-position/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -520,7 +558,7 @@ $ hexo d
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/01/15/buildhexo/" data-title="搭建属于自己的博客hexo" data-url="http://yoursite.com/2017/01/15/buildhexo/"></div>
+	<div class="ds-thread" data-thread-key="2017/04/25/css-position/" data-title="详解绝对定位和相对定位" data-url="http://yoursite.com/2017/04/25/css-position/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -640,7 +678,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6CE8_u518CGitHub_u8D26_u53F7"><span class="nav-number">1.</span> <span class="nav-text">注册GitHub账号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B0_u5EFA_u4ED3_u5E93"><span class="nav-number">1.1.</span> <span class="nav-text">新建仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5node-js"><span class="nav-number">2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5Git"><span class="nav-number">3.</span> <span class="nav-text">安装Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u521D_u59CB_u5316_u8BBE_u7F6E"><span class="nav-number">3.1.</span> <span class="nav-text">初始化设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u751F_u6210_u5BC6_u94A5"><span class="nav-number">3.2.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6DFB_u52A0_u5BC6_u94A5"><span class="nav-number">3.3.</span> <span class="nav-text">添加密钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u642D_u5EFAhexo"><span class="nav-number">4.</span> <span class="nav-text">搭建hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5_uFF1A"><span class="nav-number">4.1.</span> <span class="nav-text">安装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u521D_u59CB_u5316_3A"><span class="nav-number">4.2.</span> <span class="nav-text">初始化:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5_u63D2_u4EF6_uFF1A"><span class="nav-number">4.3.</span> <span class="nav-text">安装插件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u751F_u6210_u9759_u6001_u9875_u9762"><span class="nav-number">4.4.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u672C_u5730_u542F_u52A8"><span class="nav-number">4.5.</span> <span class="nav-text">本地启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53D1_u5E03"><span class="nav-number">4.6.</span> <span class="nav-text">发布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5199_u6587_u7AE0"><span class="nav-number">5.</span> <span class="nav-text">写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7F16_u8F91_u5668"><span class="nav-number">5.1.</span> <span class="nav-text">编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B0_u5EFA_u6587_u7AE0"><span class="nav-number">5.2.</span> <span class="nav-text">新建文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6587_u7AE0_u6458_u8981"><span class="nav-number">5.3.</span> <span class="nav-text">文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53D1_u5E03_u6587_u7AE0"><span class="nav-number">5.4.</span> <span class="nav-text">发布文章</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#position_u7684_u4E0D_u540C_u53D6_u503C"><span class="nav-number">1.</span> <span class="nav-text">position的不同取值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u76F8_u5BF9_u5B9A_u4F4Drelative"><span class="nav-number">2.</span> <span class="nav-text">相对定位relative</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><span class="nav-number">3.</span> <span class="nav-text">绝对定位absolute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
