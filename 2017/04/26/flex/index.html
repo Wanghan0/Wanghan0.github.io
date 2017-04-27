@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://i4.buimg.com/567571/93b203692d35cc3d.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/25cebf5c1de00b40.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/2a476b50217da9bc.png">
-<meta property="og:updated_time" content="2017-04-27T08:02:06.371Z">
+<meta property="og:updated_time" content="2017-04-27T08:15:19.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flex布局语法篇">
 <meta name="twitter:description" content="之前写过一篇关于实现元素居中的博文，我们发现每种布局要求都可以运用flex布局实现。其实令元素居中只是flex强大的其中一个体现，可以说不管是什么布局，flex往往都可以几行命令搞定。今天我就来总结一下关于flex语法方面的内容。">
@@ -396,8 +396,8 @@
 <pre><code>flex-wrap: nowrap | wrap | wrap-reverse    
 </code></pre></li>
 <li>nowrap(默认值)：不换行。</li>
-<li>wrap：换行，第一行在上/左方。</li>
-<li><p>wrap-reverse：换行，第一行在下/右方。  </p>
+<li>wrap：换行，第一行在上方。</li>
+<li><p>wrap-reverse：换行，第一行在下方。  </p>
 <p><img src="http://i2.muimg.com/567571/9ab2a8ad8df13f0e.png" alt=""></p>
 <h2 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h2><p>flex-flow是flex-direction和flex-wrap属性的缩写；同时定义了伸缩容器的主轴和侧轴，其默认值为row nowrap。</p>
 <pre><code>flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;   
@@ -427,25 +427,29 @@
 <li><p>baseline: 项目的第一行文字的基线对齐。<br>下面例图基于主轴方向为flex-direction：row，水平对齐方式为justify-content: space-between，依次改变侧轴对齐方式 align-items：   </p>
 <p><img src="http://i4.buimg.com/567571/9cda57d3b4f2c001.png" alt="">   </p>
 <h2 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h2><p>align-content定义了多根轴线（多行排列）的对齐方式。如果项目只有一根轴线（单行），该属性不起作用，即必须设置换行flex-wrap: wrap。这个属性与上面的align-items相似，把一根轴线（行）看作是一个项目就好理解了。   </p>
-<p> align-content: flex-start | flex-end | center | space-between | space-around | stretch   </p>
+<pre><code>align-content: flex-start | flex-end | center | space-between | space-around | stretch  
+</code></pre></li>
+<li><p>stretch（默认值）：轴线占满整个侧轴。</p>
 </li>
-<li>stretch（默认值）：轴线占满整个侧轴。</li>
 <li>flex-start：与侧轴的起点对齐。</li>
 <li>flex-end：与侧轴的终点对齐。</li>
 <li>center：与侧轴的中点对齐。</li>
 <li>space-between：与侧轴两端对齐，轴线之间的间隔平均分布。</li>
 <li><p>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<br><img src="http://i1.piimg.com/567571/e2de127c144d5dba.png" alt="">   </p>
 <h1 id="u9879_u76EE_u7684_u5C5E_u6027"><a href="#u9879_u76EE_u7684_u5C5E_u6027" class="headerlink" title="项目的属性"></a>项目的属性</h1><h2 id="order"><a href="#order" class="headerlink" title="order"></a>order</h2><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认值为0，伸缩项目是按照文档流出现先后顺序排列。可以取负值。      </p>
-<p> order: <integer><br>举个栗子：<br><img src="http://i2.muimg.com/567571/898ea30e84a95fc7.png" alt=""><br>下面让第一个元素排在最后，最后一个元素排在第一个 </integer></p>
-<p> .container{</p>
-<pre><code>display: flex;
-</code></pre><p> }        </p>
-<p> .container .item-6{</p>
-<pre><code>order: -1;
-</code></pre><p> }<br> .container .item-1{</p>
-<pre><code>order: 1;
-</code></pre><p> }      </p>
-</li>
+<pre><code>order: &lt;integer&gt;    
+</code></pre><p>举个栗子：<br><img src="http://i2.muimg.com/567571/898ea30e84a95fc7.png" alt=""><br>下面让第一个元素排在最后，最后一个元素排在第一个 </p>
+<pre><code>.container{
+    display: flex;
+}        
+
+.container .item-6{
+    order: -1;
+}
+.container .item-1{
+    order: 1;
+}      
+</code></pre></li>
 </ul>
 <p><img src="http://i2.muimg.com/567571/0d37fb8c30bd58cb.png" alt="">   </p>
 <h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p>flex-grow定义项目的扩展比例，项目根据容器的剩余空间按比例扩展。默认值为0，即如果存在剩余空间，也不扩展。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。负值对该属性无效。    </p>
@@ -502,9 +506,9 @@
 </code></pre><p><img src="http://i2.muimg.com/567571/2a476b50217da9bc.png" alt=""></p>
 <h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p>flex-basis定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。它可以设为跟width或height属性一样的值，则项目将占据固定空间。 </p>
 <pre><code>flex-basis: &lt;length&gt; | auto  
-</code></pre><h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><pre><code>flex: none | [ &lt;flex-grow&gt; &lt;flex-shrink&gt; || &lt;flex-basis&gt; ]   
-</code></pre><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。  </p>
-<hr>
+</code></pre><h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。  </p>
+<pre><code>flex: none | [ &lt;flex-grow&gt; &lt;flex-shrink&gt; || &lt;flex-basis&gt; ]   
+</code></pre><hr>
 <h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>今天的flex语法就说这么多吧，写这篇文章参考了<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">阮一峰老师的flex语法教程</a>，他写的真的特别好，清晰有条理，也通俗易懂，我参照他的教程加入自己的理解，写出这篇博文，文章里所有的例子图片都是我自己敲着代码做出来的，也算是收获巨大，后面有时间的话还会再写一篇关于flex实例的文章，学以致用。</p>
 
       
