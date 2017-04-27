@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://i4.buimg.com/567571/93b203692d35cc3d.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/25cebf5c1de00b40.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/2a476b50217da9bc.png">
-<meta property="og:updated_time" content="2017-04-27T08:15:19.242Z">
+<meta property="og:updated_time" content="2017-04-27T08:19:42.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flex布局语法篇">
 <meta name="twitter:description" content="之前写过一篇关于实现元素居中的博文，我们发现每种布局要求都可以运用flex布局实现。其实令元素居中只是flex强大的其中一个体现，可以说不管是什么布局，flex往往都可以几行命令搞定。今天我就来总结一下关于flex语法方面的内容。">
@@ -448,11 +448,11 @@
 }
 .container .item-1{
     order: 1;
-}      
-</code></pre></li>
+}   
+</code></pre><p><img src="http://i2.muimg.com/567571/0d37fb8c30bd58cb.png" alt="">   </p>
+<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2></li>
 </ul>
-<p><img src="http://i2.muimg.com/567571/0d37fb8c30bd58cb.png" alt="">   </p>
-<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p>flex-grow定义项目的扩展比例，项目根据容器的剩余空间按比例扩展。默认值为0，即如果存在剩余空间，也不扩展。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。负值对该属性无效。    </p>
+<p>flex-grow定义项目的扩展比例，项目根据容器的剩余空间按比例扩展。默认值为0，即如果存在剩余空间，也不扩展。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。负值对该属性无效。    </p>
 <pre><code>flex-grow: &lt;number&gt;   
 </code></pre><p>举个栗子：</p>
 <pre><code>.container-1,.container-2,.container-3{
