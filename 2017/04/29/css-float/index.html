@@ -85,34 +85,25 @@
 
 
 <meta name="description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
-float：left | right | none | inherit     
-   
-
-当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
-当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
+float：left | right | none | inherit        
+举个栗子：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浮动与清除浮动">
 <meta property="og:url" content="http://yoursite.com/2017/04/29/css-float/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
-float：left | right | none | inherit     
-   
-
-当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
-当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
+float：left | right | none | inherit        
+举个栗子：">
 <meta property="og:image" content="http://i2.muimg.com/567571/12cf680d92bddb98.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/e60e008811894460.png">
 <meta property="og:image" content="http://i4.buimg.com/567571/0bb23758df610ecb.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/307bed609bb36a1c.png">
-<meta property="og:updated_time" content="2017-04-29T14:43:58.791Z">
+<meta property="og:updated_time" content="2017-04-29T14:51:22.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浮动与清除浮动">
 <meta name="twitter:description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
-float：left | right | none | inherit     
-   
-
-当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
-当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
+float：left | right | none | inherit        
+举个栗子：">
 <meta name="twitter:image" content="http://i2.muimg.com/567571/12cf680d92bddb98.png">
 
 
@@ -384,8 +375,8 @@ float：left | right | none | inherit
 
       
         <h1 id="u6D6E_u52A8"><a href="#u6D6E_u52A8" class="headerlink" title="浮动"></a>浮动</h1><h2 id="u6D6E_u52A8_u7684_u6982_u5FF5"><a href="#u6D6E_u52A8_u7684_u6982_u5FF5" class="headerlink" title="浮动的概念"></a>浮动的概念</h2><p>浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     </p>
-<pre><code>float：left | right | none | inherit     
-</code></pre><p><img src="http://i2.muimg.com/567571/12cf680d92bddb98.png" alt="">   </p>
+<pre><code>float：left | right | none | inherit        
+</code></pre><p>举个栗子：<br><a id="more"></a><br><img src="http://i2.muimg.com/567571/12cf680d92bddb98.png" alt="">   </p>
 <ul>
 <li>当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   </li>
 <li>当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空间，框2填补了它的位置且被覆盖，使框 2 从视图中消失。   </li>
@@ -452,9 +443,9 @@ float：left | right | none | inherit
 <li>content属性，表示伪元素的内容,设置:before和:after时必须设置其content属性，否则伪元素就不起作用，本例content: “”表示给父元素结尾放了一个空白字符。</li>
 <li>after添加的内容默认是inline元素，但是行内元素会找空隙插入浮动元素，依然撑不起父容器高度，所以我们需要把插入的元素设置成块元素block。</li>
 <li>height: 0是让这个这个空白字符不显示出来。</li>
-<li>由于IE6不支持after，我们添加一条IE6的独有命令”zoom:1”就行了，这条命令的作用是触发父元素的”hasLayout”属性（即令hasLayout的值为true），让父元素拥有自己的布局，IE6会读取这条命令，其他浏览器则会直接忽略它。 （haslayout为true时，它就不得不去渲染它自己，因此元素不得不扩展去包含它的流出的内容，例如浮动，而zoom:1是最常用，最安全，成本最少的触发hasLayout的方式。）<h3 id="u65B9_u6CD5_u4E09_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Eoverflow_3A_auto/hidden"><a href="#u65B9_u6CD5_u4E09_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Eoverflow_3A_auto/hidden" class="headerlink" title="方法三：父元素设置overflow: auto/hidden"></a>方法三：父元素设置overflow: auto/hidden</h3></li>
+<li>由于IE6不支持after，我们添加一条IE6的独有命令”zoom:1”就行了，这条命令的作用是触发父元素的”hasLayout”属性（即令hasLayout的值为true），让父元素拥有自己的布局，IE6会读取这条命令，其他浏览器则会直接忽略它。 （haslayout为true时，它就不得不去渲染它自己，因此元素不得不扩展去包含它的流出的内容，例如浮动，而zoom:1是最常用，最安全，成本最少的触发hasLayout的方式。）   </li>
 </ul>
-<p>给浮动元素的父元素添加overflow: auto或者overflow: hidden属性之后会自动计算超出的大小，所以父容器会自动撑开自己把所有的子元素放进去，浮动元素也回到了容器层，达到了清理浮动的效果。但是如果子元素的大小超过父容器的大小，就会出现显示问题,不推荐使用。 </p>
+<h3 id="u65B9_u6CD5_u4E09_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Eoverflow_3A_auto/hidden"><a href="#u65B9_u6CD5_u4E09_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Eoverflow_3A_auto/hidden" class="headerlink" title="方法三：父元素设置overflow: auto/hidden"></a>方法三：父元素设置overflow: auto/hidden</h3><p>给浮动元素的父元素添加overflow: auto或者overflow: hidden属性之后会自动计算超出的大小，所以父容器会自动撑开自己把所有的子元素放进去，浮动元素也回到了容器层，达到了清理浮动的效果。但是如果子元素的大小超过父容器的大小，就会出现显示问题,不推荐使用。 </p>
 <pre><code>.out{
     overflow: auto;
     zoom: 1;          /*处理ie6兼容问题*/
