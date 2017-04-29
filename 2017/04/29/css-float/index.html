@@ -84,19 +84,36 @@
 
 
 
-<meta name="description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
-CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出">
+<meta name="description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
+float：left | right | none | inherit     
+   
+
+当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
+当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS各种居中实现方式">
-<meta property="og:url" content="http://yoursite.com/2017/04/24/css-center/index.html">
+<meta property="og:title" content="浮动与清除浮动">
+<meta property="og:url" content="http://yoursite.com/2017/04/29/css-float/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
-CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出">
-<meta property="og:updated_time" content="2017-04-26T06:40:57.738Z">
+<meta property="og:description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
+float：left | right | none | inherit     
+   
+
+当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
+当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
+<meta property="og:image" content="http://i2.muimg.com/567571/12cf680d92bddb98.png">
+<meta property="og:image" content="http://i2.muimg.com/567571/e60e008811894460.png">
+<meta property="og:image" content="http://i4.buimg.com/567571/0bb23758df610ecb.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/307bed609bb36a1c.png">
+<meta property="og:updated_time" content="2017-04-29T14:35:13.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS各种居中实现方式">
-<meta name="twitter:description" content="很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  
-CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出">
+<meta name="twitter:title" content="浮动与清除浮动">
+<meta name="twitter:description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
+float：left | right | none | inherit     
+   
+
+当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   
+当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空">
+<meta name="twitter:image" content="http://i2.muimg.com/567571/12cf680d92bddb98.png">
 
 
 
@@ -124,13 +141,13 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/24/css-center/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/29/css-float/"/>
 
 
 
 
 
-  <title> CSS各种居中实现方式 | Higanbana </title>
+  <title> 浮动与清除浮动 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +293,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/css-center/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/29/css-float/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -300,7 +317,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
             
             
               
-                CSS各种居中实现方式
+                浮动与清除浮动
               
             
           </h1>
@@ -315,8 +332,8 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T18:45:40+08:00">
-                2017-04-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-29T16:35:48+08:00">
+                2017-04-29
               </time>
             
 
@@ -334,8 +351,8 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/24/css-center/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/24/css-center/" itemprop="commentCount"></span>
+                <a href="/2017/04/29/css-float/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/29/css-float/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,205 +383,92 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
       
 
       
-        <p>很多人刚学CSS的时候可能会觉得它很简单，心想不就是一个“背”字吗，把这些样式全记下不就行了吗？其实你一段时间之后就会明白，背是远远不够的，你需要弄清每一个属性的不同值分别得到什么效果，几个属性的组合又会带来什么结果，只有由内而外地理解这些属性，才能找到最便捷的方法达到你想要的效果，理解不是背出来的，是无数次的实践和踩坑得到的。  </p>
-<p>CSS居中是每次布局都需要面对的问题，我也是踩了无数次的坑才得出一点感悟和经验，今天我就对它做个总结，我相信一个全面的总结会对以后的学习和实践带来很大的帮助。<br><a id="more"></a></p>
-<hr>
-<h1 id="u5185_u8054_u5143_u7D20"><a href="#u5185_u8054_u5143_u7D20" class="headerlink" title="内联元素"></a>内联元素</h1><hr>
-<h2 id="u5185_u8054_u5143_u7D20_u7684_u7279_u70B9"><a href="#u5185_u8054_u5143_u7D20_u7684_u7279_u70B9" class="headerlink" title="内联元素的特点"></a>内联元素的特点</h2><ul>
-<li>和其他元素都在一行上   </li>
-<li>设置高度height 无效，可以通过line-height来设置</li>
-<li>设置margin和padding只有左右有效，上下无效  </li>
-<li>宽度就是它的文字或图片的宽度，不可改变  </li>
-<li>内联元素只能容纳文本或者其他内联元素  </li>
+        <h1 id="u6D6E_u52A8"><a href="#u6D6E_u52A8" class="headerlink" title="浮动"></a>浮动</h1><h2 id="u6D6E_u52A8_u7684_u6982_u5FF5"><a href="#u6D6E_u52A8_u7684_u6982_u5FF5" class="headerlink" title="浮动的概念"></a>浮动的概念</h2><p>浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     </p>
+<pre><code>float：left | right | none | inherit     
+</code></pre><p><img src="http://i2.muimg.com/567571/12cf680d92bddb98.png" alt="">   </p>
+<ul>
+<li>当框 1 向右浮动时，它脱离文档流并且向右移动，直到它的右边缘碰到包含框的右边缘。   </li>
+<li>当框 1 向左浮动时，它脱离文档流并且向左移动，直到它的左边缘碰到包含框的左边缘。因为它不再处于文档流中，所以它不占据空间，框2填补了它的位置且被覆盖，使框 2 从视图中消失。   </li>
+<li>如果把所有三个框都向左浮动，那么框 1 向左浮动直到碰到包含框，另外两个框向左浮动直到碰到前一个浮动框。</li>
 </ul>
-<p>以下实例都是基于下面的html代码：  </p>
+<h2 id="u6D6E_u52A8_u7684_u7279_u6027"><a href="#u6D6E_u52A8_u7684_u7279_u6027" class="headerlink" title="浮动的特性"></a>浮动的特性</h2><ol>
+<li>脱离文档：元素设置为浮动后脱离文档流，并不占据空间，而此浮动元素在文档流空出的位置，由后续的非浮动元素填充，块级元素直接填充上去，内联元素则有空隙就插入。</li>
+<li>浮动可以内联排列：浮动会向左/向右浮动，直到碰到另一个浮动元素为止，这是浮动可以内联排列的特征。也就是说，浮动可以设置宽高，并且能够一行多个，类似于inline-block属性的效果。</li>
+<li><p>父元素高度坍塌：浮动元素脱离了文档流，并不占据文档流的位置，自然父元素也就不能被撑开，所以没了高度。</p>
+<h1 id="u6E05_u9664_u6D6E_u52A8"><a href="#u6E05_u9664_u6D6E_u52A8" class="headerlink" title="清除浮动"></a>清除浮动</h1><h2 id="u6E05_u9664_u6D6E_u52A8_u7684_u6982_u5FF5"><a href="#u6E05_u9664_u6D6E_u52A8_u7684_u6982_u5FF5" class="headerlink" title="清除浮动的概念"></a>清除浮动的概念</h2><p>在非IE浏览器（如Firefox）下，当容器的高度为auto，且容器的内容中有浮动（float为left或right）的元素，在这种情况下，容器的高度不能自动伸长以适应内容的高度，使得内容溢出到容器外面而影响（甚至破坏）布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的CSS处理，就叫CSS清除浮动。<br>举个栗子：<br>html：   </p>
 <pre><code>&lt;div class=&quot;out&quot;&gt;
-    &lt;span class=&quot;in&quot;&gt;
-        居中元素
-    &lt;/span&gt;
-&lt;/div&gt;
-</code></pre><h2 id="u6C34_u5E73_u5C45_u4E2D"><a href="#u6C34_u5E73_u5C45_u4E2D" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
-<li><p>父元素样式设置为text-align:center，里面包含的行内元素居中,如果父元素内部还存在包含文字且不定宽的块元素，那么这个块元素也会居中。 </p>
+    &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;4&lt;/div&gt;
+&lt;/div&gt;      
+</code></pre><p>css：    </p>
 <pre><code>.out{
-   text-align: center;
-  }
-</code></pre></li>
-<li><p>父元素样式设置为display:flex; justify-content:center，里面包含的行内元素居中。  </p>
-<pre><code>.out{
-    display:flex;
-    justify-content:center
+    width: 300px;
+    border: 2px solid #55a532;
+}
+.box{
+    background-color: #f7c942;
+    height: 50px;
+    width: 50px;
+} 
+</code></pre><p><img src="http://i2.muimg.com/567571/e60e008811894460.png" alt=""><br>上面是未设置浮动时的效果，下面我们给容器里面的子元素设置向左浮动：   </p>
+<pre><code>.box{
+    background-color: #f7c942;
+    height: 50px;
+    width: 50px;
+    float: left;
 }   
+</code></pre><p><img src="http://i4.buimg.com/567571/0bb23758df610ecb.png" alt=""><br>我们可以看到，子元素设置浮动后父元素只剩下了重合后的边框，这是因为元素脱离了文档流，不能撑开父元素，所以父元素的高度坍塌了，而子元素也溢出到容器外面，这就是浮动溢出现象。要消除这个现象就得清除浮动。</p>
+<h2 id="u6E05_u9664_u6D6E_u52A8_u7684_u65B9_u6CD5"><a href="#u6E05_u9664_u6D6E_u52A8_u7684_u65B9_u6CD5" class="headerlink" title="清除浮动的方法"></a>清除浮动的方法</h2><h3 id="u65B9_u6CD5_u4E00_uFF1A_u6DFB_u52A0_u5E26clear_u5C5E_u6027_u7684_u7A7A_u5143_u7D20"><a href="#u65B9_u6CD5_u4E00_uFF1A_u6DFB_u52A0_u5E26clear_u5C5E_u6027_u7684_u7A7A_u5143_u7D20" class="headerlink" title="方法一：添加带clear属性的空元素"></a>方法一：添加带clear属性的空元素</h3><p>clear 属性规定元素的哪一侧不允许其他浮动元素。  </p>
+<pre><code>clear ：left | right | both | none | inherit   
 </code></pre></li>
 </ol>
-<h2 id="u5782_u76F4_u5C45_u4E2D"><a href="#u5782_u76F4_u5C45_u4E2D" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
-<li><p>单行文本：可将其父元素的高度和行高设置为相等的值 height = line-height  </p>
-<pre><code>.out{
-   height: 100px;
-   line-height: 100px;
-}
-</code></pre></li>
-<li><p>多行文本：用一个span标签将所有的文字封装起来，再用一个容器包裹span，设置属性display: table-cell;vertical-align: middle。这种方法同样适用于使图片居中。   </p>
-<pre><code>.out{
-    display: table-cell;
-    vertical-align: middle;
- }
-</code></pre></li>
-<li><p>父元素样式设置为display: flex;align-items: center，里面包含的行内元素居中。  </p>
-<pre><code>.out{
-   height: 100px;
-   line-height: 100px;
-}
-</code></pre></li>
-<li><p>父元素样式设置为display:flex; align-items: center，里面包含的行内元素居中。  </p>
-<pre><code>.out{
-    display:flex;
-    align-items: center;
-}   
-</code></pre></li>
-</ol>
-<h1 id="u5757_u7EA7_u5143_u7D20"><a href="#u5757_u7EA7_u5143_u7D20" class="headerlink" title="块级元素"></a>块级元素</h1><hr>
-<h2 id="u5757_u7EA7_u5143_u7D20_u7684_u7279_u70B9"><a href="#u5757_u7EA7_u5143_u7D20_u7684_u7279_u70B9" class="headerlink" title="块级元素的特点"></a>块级元素的特点</h2><ul>
-<li>总是在新行上开始，占据一整行  </li>
-<li>高度，行高以及外边距和内边距都可控制</li>
-<li>宽度缺省是它的容器的100%，除非设定一个宽度  </li>
-<li>它可以容纳内联元素和其他块元素     </li>
-</ul>
-<p>以下实例都基于下面的html代码：  </p>
+<p>我们给浮动元素后面添加一个空元素   </p>
 <pre><code>&lt;div class=&quot;out&quot;&gt;
-    &lt;div class=&quot;in&quot;&gt;
-        居中元素
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><h2 id="u6C34_u5E73_u5C45_u4E2D-1"><a href="#u6C34_u5E73_u5C45_u4E2D-1" class="headerlink" title="水平居中"></a>水平居中</h2><h4 id="u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D"><a href="#u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D" class="headerlink" title="定宽块级元素水平居中"></a>定宽块级元素水平居中</h4><ol>
-<li><p>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中  </p>
-<pre><code>  .out{
-    display:flex;    
-    justify-content:center;
-}  
-</code></pre></li>
-<li><p>该元素样式设置为 margin：0 auto；      </p>
-<pre><code>  .in{
-    width: 100px;  
-    margin: 0 auto;
-}  
-</code></pre></li>
-<li><p>该元素样式设置为 position: relative;left: 50%；margin-left: -0.5*width（负的该元素宽度的一半）   </p>
-<pre><code>  .in{
-    width: 100px;
-    position: relative;
-    left: 50%;
-    margin-left: -50px;
-}
-</code></pre></li>
-<li><p>上述方法把relative改为absolute也同样适用，根据实际情况选择适合自己的方法。</p>
-<pre><code>   .in{
-    width: 100px;
-    position: absolute;
-    left: 50%;
-    margin-left: -50px;
-}
-</code></pre></li>
-</ol>
-<h4 id="u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D"><a href="#u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D" class="headerlink" title="不定宽块级元素水平居中"></a>不定宽块级元素水平居中</h4><ol>
-<li><p>对于包含文字的块元素可将其父元素设置为text-align:center  </p>
-<pre><code>.out{
-      text-align:center;    
-}
-</code></pre></li>
-<li><p>若不包含文字，可把该块级元素变成行内元素，即设置display:inine，再给其父元素设置text-align:center  </p>
-<pre><code>.out{
-      text-align:center;    
-}
-.in{
-      display:inine;    
-}
-</code></pre></li>
-<li><p>父元素样式设置为display:flex; justify-content:center，则里面包含的块元素居中</p>
-<pre><code>.out{
-   display:flex;    
-   justify-content:center;
-}
-</code></pre></li>
-<li><p>该元素样式设置为 position: absolute;left: 50%;transform: translate(-50%,0)  </p>
-<pre><code>.in{
-      position: absolute; 
-   left: 50%;  
-   transform: translate(-50%,0);
-}
-</code></pre></li>
-</ol>
-<h2 id="u5782_u76F4_u5C45_u4E2D-1"><a href="#u5782_u76F4_u5C45_u4E2D-1" class="headerlink" title="垂直居中"></a>垂直居中</h2><h4 id="u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D"><a href="#u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D" class="headerlink" title="定高块级元素垂直居中"></a>定高块级元素垂直居中</h4><ol>
-<li><p>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中   </p>
-<pre><code>.out{
-    display:flex; 
-    align-items: center;
-}
-</code></pre></li>
-<li><p>该元素样式设置为 position: relative;top: 50%；margin-top: -0.5*height（负的该元素高度的一半）  </p>
-<pre><code>.in{
-   height:100px;
-      position: relative; 
-   top: 50%;  
-   margin-top:-50px;
-}
-</code></pre></li>
-<li><p>该元素的父元素的position值设置为relative，将该元素样式设置为position: absolute;top:50%;margin-top: -0.5*height    </p>
-<pre><code>.out{
-     position: relative;    
-  }
-   .in{
-     height:100px;
-     position: absolute; 
-     top:50%;   
-     margin-top: -50px
-  }
-</code></pre></li>
-<li><p>该元素的父元素的position值设置为relative，将该元素样式设置为position: absolute;top:0;bottom: 0;left: 0;right: 0;margin: auto;  </p>
-<pre><code>.out{
-    position: relative;    
- }
-.in{
-    height:100px;
-    position: absolute; 
-    top:0;   
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
- }
-</code></pre></li>
-</ol>
-<h4 id="u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D"><a href="#u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D" class="headerlink" title="不定高块级元素垂直居中"></a>不定高块级元素垂直居中</h4><ol>
-<li><p>父元素样式设置为display:flex; align-items: center，则里面包含的块元素居中  </p>
-<pre><code>.out{
-    display:flex; 
-    align-items: center;
-}
-</code></pre></li>
-<li><p>该元素样式设置为 position: relative;top: 50%;transform: translate(0,-50%)   </p>
-<pre><code>.in{
-    position: relative;
-    top: 50%;
-    transform: translate(0,-50%);
-}
-</code></pre></li>
-<li><p>该元素的父元素的position值设置为relative，将该元素样式设置为position: absolute;top:50%;translate(0,-50%)   </p>
-<pre><code>.out{
-     position: relative;
+    &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;4&lt;/div&gt;
+    &lt;div class=&quot;none&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;   
+</code></pre><p>给空元素设置clear属性   </p>
+<pre><code>.none{
+    clear: both;
+}   
+</code></pre><p><img src="http://i1.piimg.com/567571/307bed609bb36a1c.png" alt=""><br>原理是设置clear后，父容器必须考虑非浮动子元素的位置，而后者肯定出现在浮动元素下方，所以显示出来，父容器就把所有子元素都包括进去了</p>
+<p><strong>另外，如果浮动元素后面存在着不浮动的块元素，那么直接给后者添加clear: both属性即可，不必添加空元素多此一举。</strong>   </p>
+<h3 id="u65B9_u6CD5_u4E8C_uFF1Aafter_u4F2A_u5143_u7D20"><a href="#u65B9_u6CD5_u4E8C_uFF1Aafter_u4F2A_u5143_u7D20" class="headerlink" title="方法二：after伪元素"></a>方法二：after伪元素</h3><p>after伪元素可以在父容器的尾部自动创建一个子元素，也就是说我们不必修改html，可以直接通过css来添加新元素，达到跟上一种方法同样的效果。   </p>
+<pre><code>.out:after {
+        content: &quot;&quot;;
+        display: block;
+        height: 0;
+        clear: both;
+    }   
+.clearfix {
+       zoom: 1;
    }
-.in{
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-  }
-</code></pre></li>
-</ol>
-<hr>
-<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><ul>
-<li>总结到这里就会发现令元素居中的办法千奇百怪，其中无论水平还是垂直，无论有没有指定宽高，总能奏效的办法就是display:flex办法，这也是flex布局的优势之一，有时候使用flex布局甚至比bootstrap这种框架更加顺手，有机会我也会对flex做个总结。   </li>
-<li>另外在上面的很多居中的办法中都用到了position: absolute，但是其实不建议经常使用绝对定位进行布局，因为它脱离了文档流，有时会造成元素的塌陷。因为关于position的不同取值带来的效果经常使人困扰，后面我也会对它进行总结。</li>
-<li>还有，居中的办法有这么多，但并不代表你需要懂得每一种，甚至去学会一些奇怪或者复杂的居中方式，而是在布局的过程中选择最适合、最简单、你用的最顺手的方法实现你想要的效果，俗话说黑猫白猫，能抓住耗子的就是好猫，居中方式也是一样的道理。</li>
+</code></pre><ul>
+<li>content属性，表示伪元素的内容,设置:before和:after时必须设置其content属性，否则伪元素就不起作用，本例content: “”表示给父元素结尾放了一个空白字符。</li>
+<li>after添加的内容默认是inline元素，但是行内元素会找空隙插入浮动元素，依然撑不起父容器高度，所以我们需要把插入的元素设置成块元素block。</li>
+<li>height: 0是让这个这个空白字符不显示出来。</li>
+<li>由于IE6不支持after，我们添加一条IE6的独有命令”zoom:1”就行了，这条命令的作用是触发父元素的”hasLayout”属性（即令hasLayout的值为true），让父元素拥有自己的布局，IE6会读取这条命令，其他浏览器则会直接忽略它。 （haslayout为true时，它就不得不去渲染它自己，因此元素不得不扩展去包含它的流出的内容，例如浮动，而zoom:1是最常用，最安全，成本最少的触发hasLayout的方式。）<br>###方法三：父元素设置overflow: auto/hidden ###</li>
 </ul>
+<p>给浮动元素的父元素添加overflow: auto或者overflow: hidden属性之后会自动计算超出的大小，所以父容器会自动撑开自己把所有的子元素放进去，浮动元素也回到了容器层，达到了清理浮动的效果。但是如果子元素的大小超过父容器的大小，就会出现显示问题。 </p>
+<pre><code>.out{
+    overflow: auto;
+    zoom: 1;          /*处理ie6兼容问题*/
+}   
+</code></pre><h3 id="u65B9_u6CD5_u56DB_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6E_u6D6E_u52A8"><a href="#u65B9_u6CD5_u56DB_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6E_u6D6E_u52A8" class="headerlink" title="方法四：父元素设置浮动"></a>方法四：父元素设置浮动</h3><p>给浮动元素的容器也添加上浮动属性即可清除内部浮动，但是这样会使其整体浮动，影响布局，也容易出现新的浮动问题，不推荐使用。   </p>
+<pre><code>.out{
+    float: left;
+}   
+</code></pre><h3 id="u65B9_u6CD5_u4E94_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Edisplay_3Atable"><a href="#u65B9_u6CD5_u4E94_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Edisplay_3Atable" class="headerlink" title="方法五：父元素设置display:table"></a>方法五：父元素设置display:table</h3><p>将div属性变成表格可以清除浮动，但是非表格内容用table来装，不符合标签语义化要求，还可能会出现未知问题，故不推荐使用。   </p>
+<pre><code>.out{
+    display: table;
+}   
+</code></pre><hr>
+<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>据说浮动诞生的时候主要是用来实现文字围绕图片的效果，但是后来越来越多的人用它来布局，虽说存在的即合理的，用浮动布局确实有它的道理和好处，但是对我来说，我还是不太喜欢用浮动来布局，绝对定位也是一样，他们总给我一种不安全感，让我觉得我的页面不是一个整体，随时都有可能崩坏。总之打好基础才是做出一个稳定页面的前提，道阻且长。</p>
 
       
     </div>
@@ -591,8 +495,8 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/31/css-box/" rel="next" title="谈谈我对盒模型的理解">
-                <i class="fa fa-chevron-left"></i> 谈谈我对盒模型的理解
+              <a href="/2017/04/26/flex/" rel="next" title="flex布局语法篇">
+                <i class="fa fa-chevron-left"></i> flex布局语法篇
               </a>
             
           </div>
@@ -600,10 +504,6 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/25/css-position/" rel="prev" title="详解绝对定位和相对定位">
-                详解绝对定位和相对定位 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -618,10 +518,10 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/04/24/css-center/"
-     data-title="CSS各种居中实现方式"
+        <div class="ds-share flat" data-thread-key="2017/04/29/css-float/"
+     data-title="浮动与清除浮动"
      data-content=""
-     data-url="http://yoursite.com/2017/04/24/css-center/">
+     data-url="http://yoursite.com/2017/04/29/css-float/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -650,7 +550,7 @@ CSS居中是每次布局都需要面对的问题，我也是踩了无数次的�
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/04/24/css-center/" data-title="CSS各种居中实现方式" data-url="http://yoursite.com/2017/04/24/css-center/"></div>
+	<div class="ds-thread" data-thread-key="2017/04/29/css-float/" data-title="浮动与清除浮动" data-url="http://yoursite.com/2017/04/29/css-float/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -770,7 +670,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5185_u8054_u5143_u7D20"><span class="nav-number">1.</span> <span class="nav-text">内联元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5185_u8054_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">1.1.</span> <span class="nav-text">内联元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D"><span class="nav-number">1.2.</span> <span class="nav-text">水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D"><span class="nav-number">1.3.</span> <span class="nav-text">垂直居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20"><span class="nav-number">2.</span> <span class="nav-text">块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5757_u7EA7_u5143_u7D20_u7684_u7279_u70B9"><span class="nav-number">2.1.</span> <span class="nav-text">块级元素的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6C34_u5E73_u5C45_u4E2D-1"><span class="nav-number">2.2.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">定宽块级元素水平居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E0D_u5B9A_u5BBD_u5757_u7EA7_u5143_u7D20_u6C34_u5E73_u5C45_u4E2D"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">不定宽块级元素水平居中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5782_u76F4_u5C45_u4E2D-1"><span class="nav-number">2.3.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">定高块级元素垂直居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E0D_u5B9A_u9AD8_u5757_u7EA7_u5143_u7D20_u5782_u76F4_u5C45_u4E2D"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">不定高块级元素垂直居中</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u6D6E_u52A8"><span class="nav-number">1.</span> <span class="nav-text">浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6D6E_u52A8_u7684_u6982_u5FF5"><span class="nav-number">1.1.</span> <span class="nav-text">浮动的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6D6E_u52A8_u7684_u7279_u6027"><span class="nav-number">1.2.</span> <span class="nav-text">浮动的特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6E05_u9664_u6D6E_u52A8"><span class="nav-number">2.</span> <span class="nav-text">清除浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6E05_u9664_u6D6E_u52A8_u7684_u6982_u5FF5"><span class="nav-number">2.1.</span> <span class="nav-text">清除浮动的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6E05_u9664_u6D6E_u52A8_u7684_u65B9_u6CD5"><span class="nav-number">2.2.</span> <span class="nav-text">清除浮动的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B9_u6CD5_u4E00_uFF1A_u6DFB_u52A0_u5E26clear_u5C5E_u6027_u7684_u7A7A_u5143_u7D20"><span class="nav-number">2.2.1.</span> <span class="nav-text">方法一：添加带clear属性的空元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B9_u6CD5_u4E8C_uFF1Aafter_u4F2A_u5143_u7D20"><span class="nav-number">2.2.2.</span> <span class="nav-text">方法二：after伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B9_u6CD5_u56DB_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6E_u6D6E_u52A8"><span class="nav-number">2.2.3.</span> <span class="nav-text">方法四：父元素设置浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B9_u6CD5_u4E94_uFF1A_u7236_u5143_u7D20_u8BBE_u7F6Edisplay_3Atable"><span class="nav-number">2.2.4.</span> <span class="nav-text">方法五：父元素设置display:table</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
