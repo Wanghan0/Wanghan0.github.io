@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/02/js-scopeChain/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
-<meta property="og:updated_time" content="2017-05-02T16:09:29.318Z">
+<meta property="og:updated_time" content="2017-05-02T16:32:49.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解javascript作用域">
 <meta name="twitter:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
@@ -377,7 +377,8 @@
     } 
     alert(color);
 }
-</code></pre><ul>
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> (<span class="literal">true</span>)&#123;</div><div class="line">     <span class="keyword">var</span> color=<span class="string">"blue"</span>;</div><div class="line">   &#125; </div><div class="line">	 alert(color);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
 <li>在Java、C或C++中，if语句内部是一个块作用域，color变量在if语句中声明，并在if语句执行完毕后被销毁，即就是说if语句外部不可访问内部的变量，因此本例alert(color)将出现报错undefined。</li>
 <li><p>在javascript中，test()函数内部是一个函数作用域，由于没有块作用域，if语句中的变量声明也属于当前的函数作用域，alert命令在该作用域内部，可以访问color变量，因此本例alert(color)将输出“blue”。 </p>
 <p>再举个栗子：   </p>
