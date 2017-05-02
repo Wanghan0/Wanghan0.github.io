@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/02/js-scopeChain/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
-<meta property="og:updated_time" content="2017-05-02T16:32:49.910Z">
+<meta property="og:updated_time" content="2017-05-02T16:39:00.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解javascript作用域">
 <meta name="twitter:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
@@ -371,26 +371,15 @@
 <p>举个栗子：    </p>
 </li>
 </ol>
-<pre><code>function test() {
-    if (true){
-        var color=&quot;blue&quot;;
-    } 
-    alert(color);
-}
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> (<span class="literal">true</span>)&#123;</div><div class="line">     <span class="keyword">var</span> color=<span class="string">"blue"</span>;</div><div class="line">   &#125; </div><div class="line">	 alert(color);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> (<span class="literal">true</span>)&#123;</div><div class="line">     <span class="keyword">var</span> color=<span class="string">"blue"</span>;</div><div class="line">   &#125; </div><div class="line">	 alert(color);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>在Java、C或C++中，if语句内部是一个块作用域，color变量在if语句中声明，并在if语句执行完毕后被销毁，即就是说if语句外部不可访问内部的变量，因此本例alert(color)将出现报错undefined。</li>
 <li><p>在javascript中，test()函数内部是一个函数作用域，由于没有块作用域，if语句中的变量声明也属于当前的函数作用域，alert命令在该作用域内部，可以访问color变量，因此本例alert(color)将输出“blue”。 </p>
 <p>再举个栗子：   </p>
 </li>
 </ul>
-<pre><code>function test() {
-    for(var i=0; i&lt;10;i++){
-        doSomething(i);
-    }
-    alert(i);
-}   
-</code></pre><ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        doSomething(i);</div><div class="line">    &#125;</div><div class="line">    alert(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
 <li>在Java、C或C++中，for语句内部是一个块作用域，其初始化变量的表达式所定义的变量（本例中是变量i），只会存在于循环的环境之中（即该块作用域），因此本例alert（i）将出现报错undefined。</li>
 <li>在javascript中，test()函数内部是一个函数作用域，由于没有块作用域，由for语句创建的变量i即使在for循环执行结束后也依旧会存在于循环外部的函数作用域中，因此本例alert（i）将输出10。</li>
 <li>如果本例中用let替代var定义变量i，那么alert（i）也会报错，因为用let替代var可以申明一个块级作用域的变量。   <h1 id="u5168_u5C40_u4F5C_u7528_u57DF"><a href="#u5168_u5C40_u4F5C_u7528_u57DF" class="headerlink" title="全局作用域"></a>全局作用域</h1>在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下3种变量对象拥有全局作用域： </li>
@@ -401,54 +390,17 @@
 <li>所有window对象的内置属性，例如window.name、window.location、window.top等等都是全局变量，并且所有属于全局作用域的变量都是window对象的属性。   </li>
 </ol>
 <p>举个栗子：   </p>
-<pre><code>var a=1;
-function test() {
-    var b =2;
-    c=3;
-    alert(&quot;执行了test1函数&quot;);
-}
-
-
-alert(a);    //输出1，因为变量a是最外层函数外面定义的变量
-alert(b);    //报错undefined
-test();      //弹出“执行了test1函数”，因为test()是最外层函数
-alert(c);    //输出3，因为末定义直接赋值的变量将被自动添加到全局作用域
-alert(window.location);  //弹出了文档当前地址和相关信息，因为window的内置属性是全局变量
-alert(window.a);         //输出1，因为全局作用域变量a也是window对象的属性  
-</code></pre><p>上例需要注意一点，如果在调用test()之前alert(c)会报错，因为你如果没有调用过这个函数，浏览器根本不会读取到函数里面的这个变量c。</p>
-<h1 id="u5C40_u90E8_u4F5C_u7528_u57DF"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF" class="headerlink" title="局部作用域"></a>局部作用域</h1><p>只在函数内部才能访问到的对象拥有局部作用域。<br>举个栗子：  </p>
-<pre><code>function test() {
-    var b =2;
-    alert(b);
-}
-
-alert(b); //报错undefined，因为这个alert命令位于函数外部，访问不到函数内部的变量b
-test();   //2，因为调用这个函数时，执行了函数内部的alert命令，可以访问到变量b
-</code></pre><h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>前面的例子都很好理解，因为我定义的变量都是不同的，互不干扰，但是如果局部变量跟全局变量重名了就会比较难以判断。<br>举个栗子：  </p>
-<pre><code>var a =1;
-function test(){
-    alert(a);
-    var a = 2;
-    alert(a);
-}
-
-test();  //undefined,2
-</code></pre><p>估计很多人都会以为在调用test()函数时会弹出1，2，但事实上弹出了undefined,2，要理解其中的缘由，那必须理解作用域链。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b =<span class="number">2</span>;</div><div class="line">    c=<span class="number">3</span>;</div><div class="line">    alert(<span class="string">"执行了test1函数"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">alert(a);    <span class="comment">//输出1，因为变量a是最外层函数外面定义的变量</span></div><div class="line">alert(b);    <span class="comment">//报错undefined</span></div><div class="line">test();      <span class="comment">//弹出“执行了test1函数”，因为test()是最外层函数</span></div><div class="line">alert(c);    <span class="comment">//输出3，因为末定义直接赋值的变量将被自动添加到全局作用域</span></div><div class="line">alert(<span class="built_in">window</span>.location);  <span class="comment">//弹出了文档当前地址和相关信息，因为window的内置属性是全局变量</span></div><div class="line">alert(<span class="built_in">window</span>.a);         <span class="comment">//输出1，因为全局作用域变量a也是window对象的属性</span></div></pre></td></tr></table></figure>
+<p>上例需要注意一点，如果在调用test()之前alert(c)会报错，因为你如果没有调用过这个函数，浏览器根本不会读取到函数里面的这个变量c。</p>
+<h1 id="u5C40_u90E8_u4F5C_u7528_u57DF"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF" class="headerlink" title="局部作用域"></a>局部作用域</h1><p>只在函数内部才能访问到的对象拥有局部作用域。<br>举个栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b =<span class="number">2</span>;</div><div class="line">    alert(b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">alert(b); <span class="comment">//报错undefined，因为这个alert命令位于函数外部，访问不到函数内部的变量b</span></div><div class="line">test();   <span class="comment">//2，因为调用这个函数时，执行了函数内部的alert命令，可以访问到变量b</span></div></pre></td></tr></table></figure></p>
+<h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>前面的例子都很好理解，因为我定义的变量都是不同的，互不干扰，但是如果局部变量跟全局变量重名了就会比较难以判断。<br>举个栗子：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a =<span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(a);</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    alert(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line">test();  <span class="comment">//undefined,2</span></div></pre></td></tr></table></figure>
+<p>估计很多人都会以为在调用test()函数时会弹出1，2，但事实上弹出了undefined,2，要理解其中的缘由，那必须理解作用域链。    </p>
 <p><strong>概念：</strong><br><strong>作用域链的作用就是保证对作用域内有权访问的变量和函数的有序访问（这句话贼绕）。通俗地说，作用域链可以被看作一种有秩序的路径,在变量解析过程中首先查找当前局部的作用域，然后查找上层作用域，内到外地查找，直到到找到最近定义的的该变量。</strong>      </p>
 <p>那么现在再去理解一下上面的例子，第一次alert(a)的时候，先在当前作用域中也就是函数test()内部查找到变量a已经被定义，但是此时并没有赋值，所以输出undefined；第二次alert(a)的时候，当前局部作用域中查找到已经赋值的变量a,所以输出2。   </p>
 <p>再举个栗子：  </p>
-<pre><code>var a =1;
-function test(){
-    var b = 2;
-    alert(a);
-    alert(b);
-    alert(c);
-    function test2() {
-        var c = 3;
-    }
-}
-test();  //1,2,undefined
-</code></pre><ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a =<span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">    alert(a);</div><div class="line">    alert(b);</div><div class="line">    alert(c);</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> c = <span class="number">3</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">test();  <span class="comment">//1,2,undefined</span></div></pre></td></tr></table></figure>
+<ul>
 <li>alert(a)：当前局部作用域test()内部查找变量a没有找到，上层全局作用域查找到a =1，输出1。</li>
 <li>alert(b)：当前局部作用域test()内部查找变量b得到b=2，输出2。</li>
 <li>alert(c)：当前局部作用域test()内部查找变量c没有找到，上层全局作用域也没有找到，输出undefined。</li>
