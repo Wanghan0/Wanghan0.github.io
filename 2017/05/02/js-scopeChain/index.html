@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/02/js-scopeChain/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
-<meta property="og:updated_time" content="2017-05-02T09:21:58.958Z">
+<meta property="og:updated_time" content="2017-05-02T09:28:01.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解javascript作用域">
 <meta name="twitter:description" content="任何程序设计语言都有作用域的概念，简单的说，作用域就是变量或函数的有权访问其他数据的范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种，并且局部作用域是按照函数划分的，而不是块级作用域，下面我们就来详细区分一下这些作用域。">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-05-02T11:14:38+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-02T11:14:38+08:00">
                 2017-05-02
               </time>
             
@@ -369,25 +369,27 @@
 <li>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。 </li>
 <li><p>为了解决块级作用域，ES6引入了新的关键字let，用let替代var可以申明一个块级作用域的变量。</p>
 <p>举个栗子：    </p>
-<p> function test() {</p>
-<pre><code>if (true){
-    var color=&quot;blue&quot;;
-} 
-alert(color);
-</code></pre><p> }</p>
 </li>
 </ol>
-<ul>
+<pre><code>function test() {
+    if (true){
+        var color=&quot;blue&quot;;
+    } 
+    alert(color);
+}
+</code></pre><ul>
 <li>在Java、C或C++中，if语句内部是一个块作用域，color变量在if语句中声明，并在if语句执行完毕后被销毁，即就是说if语句外部不可访问内部的变量，因此本例alert(color)将出现报错undefined。</li>
 <li><p>在javascript中，test()函数内部是一个函数作用域，由于没有块作用域，if语句中的变量声明也属于当前的函数作用域，alert命令在该作用域内部，可以访问color变量，因此本例alert(color)将输出“blue”。 </p>
 <p>再举个栗子：   </p>
-<p> function test() {</p>
-<pre><code>for(var i=0; i&lt;10;i++){
-    doSomething(i);
-}
-alert(i);
-</code></pre><p> }   </p>
 </li>
+</ul>
+<pre><code>function test() {
+    for(var i=0; i&lt;10;i++){
+        doSomething(i);
+    }
+    alert(i);
+}   
+</code></pre><ul>
 <li>在Java、C或C++中，for语句内部是一个块作用域，其初始化变量的表达式所定义的变量（本例中是变量i），只会存在于循环的环境之中（即该块作用域），因此本例alert（i）将出现报错undefined。</li>
 <li>在javascript中，test()函数内部是一个函数作用域，由于没有块作用域，由for语句创建的变量i即使在for循环执行结束后也依旧会存在于循环外部的函数作用域中，因此本例alert（i）将输出10。</li>
 <li>如果本例中用let替代var定义变量i，那么alert（i）也会报错，因为用let替代var可以申明一个块级作用域的变量。   <h1 id="u5168_u5C40_u4F5C_u7528_u57DF"><a href="#u5168_u5C40_u4F5C_u7528_u57DF" class="headerlink" title="全局作用域"></a>全局作用域</h1>在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下3种变量对象拥有全局作用域： </li>
@@ -430,7 +432,9 @@ function test(){
 }
 
 test();  //undefined,2
-</code></pre><p>估计很多人都会以为在调用test()函数时会弹出1，2，但事实上弹出了undefined,2，要理解其中的缘由，那必须理解作用域链。<br><strong>作用域链的作用就是保证对作用域内有权访问的变量和函数的有序访问（这句话贼绕）。通俗地说，作用域链可以被看作一种有秩序的路径,在变量解析过程中首先查找当前局部的作用域，然后查找上层作用域，内到外地查找，直到到找到最近定义的的该变量。</strong><br>那么现在再去理解一下上面的例子，第一次alert(a)的时候，先在当前作用域中也就是函数test()内部查找到变量a已经被定义，但是此时并没有赋值，所以输出undefined；第二次alert(a)的时候，当前局部作用域中查找到已经赋值的变量a,所以输出2。   </p>
+</code></pre><p>估计很多人都会以为在调用test()函数时会弹出1，2，但事实上弹出了undefined,2，要理解其中的缘由，那必须理解作用域链。    </p>
+<p><strong>概念：</strong><br><strong>作用域链的作用就是保证对作用域内有权访问的变量和函数的有序访问（这句话贼绕）。通俗地说，作用域链可以被看作一种有秩序的路径,在变量解析过程中首先查找当前局部的作用域，然后查找上层作用域，内到外地查找，直到到找到最近定义的的该变量。</strong>      </p>
+<p>那么现在再去理解一下上面的例子，第一次alert(a)的时候，先在当前作用域中也就是函数test()内部查找到变量a已经被定义，但是此时并没有赋值，所以输出undefined；第二次alert(a)的时候，当前局部作用域中查找到已经赋值的变量a,所以输出2。   </p>
 <p>再举个栗子：  </p>
 <pre><code>var a =1;
 function test(){
