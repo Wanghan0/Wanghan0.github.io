@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/63965784-file_1493966440096_8670.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/96408226-file_1493969489933_112e0.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/78457861-file_1493971618959_f7e4.png">
-<meta property="og:updated_time" content="2017-05-05T08:44:51.545Z">
+<meta property="og:updated_time" content="2017-05-05T08:50:41.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（一）铺垫">
 <meta name="twitter:description" content="前两天写了一篇关于作用域和作用域链的文章，还自以为理解透了，这两天一直在琢磨闭包，才发现我之前对作用域和作用域链的理解简直不忍直视，甚至那个时候我还以为执行上下文跟作用域是同一个东西，哇现在真想死一死。看了那么多讲闭包的文章之后我也得出一个经验，一篇文章是讲不清闭包的，因为你需要理解的不仅仅是闭包，还有前面需要铺垫的很多知识，所以我打算写一个系列文，今天我就先回忆一些基础知识。">
@@ -398,8 +398,9 @@ n.a = <span class="number">30</span>;
 <ol>
 <li>当我们定义一个变量时，会为它分配一个内存空间用来储存变量的值</li>
 <li>当我们读取或使用这个变量时，会使用它的内存空间</li>
-<li>使用完毕时会释放内存空间<br>上面生命周期的最后一步，其实就是垃圾回收。JavaScript有自动垃圾收集机制，就是找出那些不再继续使用的值，然后释放其占用的内存，那么怎么判断什么值不再使用呢，一般来说，当一个函数执行完毕，那么这个局部作用域内的变量就没有存在的必要了，它的内存空间就会释放，但是有一种情况可以阻止这一进程，那就是——闭包。</li>
+<li>使用完毕时会释放内存空间  </li>
 </ol>
+<p>上面生命周期的最后一步，其实就是垃圾回收。JavaScript有自动垃圾收集机制，就是找出那些不再继续使用的值，然后释放其占用的内存，那么怎么判断什么值不再使用呢，一般来说，当一个函数执行完毕，那么这个局部作用域内的变量就没有存在的必要了，它的内存空间就会释放，但是有一种情况可以阻止这一进程，那就是——闭包。</p>
 
       
     </div>
