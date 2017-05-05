@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="闭包," />
 
 
 
@@ -84,25 +84,20 @@
 
 
 
-<meta name="description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
+<meta name="description" content="前两天写了一篇关于作用域和作用域链的文章，还自以为理解透了，这两天一直在琢磨闭包，才发现我之前对作用域和作用域链的理解简直不忍直视，甚至那个时候我还以为执行上下文跟作用域是同一个东西，哇现在真想死一死。看了那么多讲闭包的文章之后我也得出一个经验，一篇文章是讲不清闭包的，因为你需要理解的不仅仅是闭包，还有前面需要铺垫的很多知识，所以我打算写一个系列文，今天我就先回忆一些基础知识。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="详解绝对定位和相对定位">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/css-position/index.html">
+<meta property="og:title" content="深入理解闭包（一）铺垫">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/closure1/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
-<meta property="og:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/18c32c5aa0ad754e.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/4fc39b922c9d5b77.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/fd605722d2831cee.png">
-<meta property="og:image" content="http://i2.muimg.com/567571/1c236a0b4a7a558e.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/f1f48c9074e588f4.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/2b16f8fdff209fbd.png">
-<meta property="og:image" content="http://i2.muimg.com/567571/acc3eef5f3c299bb.png">
-<meta property="og:updated_time" content="2017-04-26T06:43:37.378Z">
+<meta property="og:description" content="前两天写了一篇关于作用域和作用域链的文章，还自以为理解透了，这两天一直在琢磨闭包，才发现我之前对作用域和作用域链的理解简直不忍直视，甚至那个时候我还以为执行上下文跟作用域是同一个东西，哇现在真想死一死。看了那么多讲闭包的文章之后我也得出一个经验，一篇文章是讲不清闭包的，因为你需要理解的不仅仅是闭包，还有前面需要铺垫的很多知识，所以我打算写一个系列文，今天我就先回忆一些基础知识。">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/63965784-file_1493966440096_8670.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/96408226-file_1493969489933_112e0.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/78457861-file_1493971618959_f7e4.png">
+<meta property="og:updated_time" content="2017-05-05T08:44:51.545Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="详解绝对定位和相对定位">
-<meta name="twitter:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
-<meta name="twitter:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
+<meta name="twitter:title" content="深入理解闭包（一）铺垫">
+<meta name="twitter:description" content="前两天写了一篇关于作用域和作用域链的文章，还自以为理解透了，这两天一直在琢磨闭包，才发现我之前对作用域和作用域链的理解简直不忍直视，甚至那个时候我还以为执行上下文跟作用域是同一个东西，哇现在真想死一死。看了那么多讲闭包的文章之后我也得出一个经验，一篇文章是讲不清闭包的，因为你需要理解的不仅仅是闭包，还有前面需要铺垫的很多知识，所以我打算写一个系列文，今天我就先回忆一些基础知识。">
+<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/63965784-file_1493966440096_8670.png">
 
 
 
@@ -130,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/25/css-position/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/05/closure1/"/>
 
 
 
 
 
-  <title> 详解绝对定位和相对定位 | Higanbana </title>
+  <title> 深入理解闭包（一）铺垫 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +277,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/css-position/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/05/closure1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -306,7 +301,7 @@
             
             
               
-                详解绝对定位和相对定位
+                深入理解闭包（一）铺垫
               
             
           </h1>
@@ -321,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T23:11:44+08:00">
-                2017-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-05T10:30:46+08:00">
+                2017-05-05
               </time>
             
 
@@ -340,8 +335,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/25/css-position/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/css-position/" itemprop="commentCount"></span>
+                <a href="/2017/05/05/closure1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/closure1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,111 +367,39 @@
       
 
       
-        <p>上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。<br><a id="more"></a></p>
-<h1 id="position_u7684_u4E0D_u540C_u53D6_u503C"><a href="#position_u7684_u4E0D_u540C_u53D6_u503C" class="headerlink" title="position的不同取值"></a>position的不同取值</h1><blockquote>
-<p>不管是哪种定位，都必须有一个参照物，理清参照物我们就对这些定位方式了解了一半。  </p>
-</blockquote>
+        <p>前两天写了一篇关于作用域和作用域链的文章，还自以为理解透了，这两天一直在琢磨闭包，才发现我之前对作用域和作用域链的理解简直不忍直视，甚至那个时候我还以为执行上下文跟作用域是同一个东西，哇现在真想死一死。看了那么多讲闭包的文章之后我也得出一个经验，一篇文章是讲不清闭包的，因为你需要理解的不仅仅是闭包，还有前面需要铺垫的很多知识，所以我打算写一个系列文，今天我就先回忆一些基础知识。<br><a id="more"></a></p>
+<h1 id="u5806_u4E0E_u6808"><a href="#u5806_u4E0E_u6808" class="headerlink" title="堆与栈"></a>堆与栈</h1><p>堆与栈是两种数据结构，栈在javascript的执行上下文中有重要体现，因此我们有必要去弄懂它。   </p>
+<h2 id="u5806"><a href="#u5806" class="headerlink" title="堆"></a>堆</h2><p>堆的存取方式比较灵活，程序员为数据分配空间进行存储，引用数据时只需要知道数据存在了那个地址就可以使用，就像是我们去图书馆找一本书，只需要知道这本书的编号就能知道书的位置，找到对应的书架找到想要的书。</p>
+<h2 id="u6808"><a href="#u6808" class="headerlink" title="栈"></a>栈</h2><p><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/63965784-file_1493966440096_8670.png" alt=""><br>栈的存取方式遵循先进后出原则。如上图：存储数据时，1最先入栈，4最后入栈；使用数据时，4最先出栈，1最后出栈。大家都打过羽毛球吧，装羽毛球的长筒就类似于这个栈，桶口就一个，我们每次只能拿出最上面的那个球，要想拿出下面的球就必须把它上面的都拿出来。     </p>
+<h1 id="u6570_u636E_u7684_u57FA_u672C_u7C7B_u578B_u548C_u5F15_u7528_u7C7B_u578B"><a href="#u6570_u636E_u7684_u57FA_u672C_u7C7B_u578B_u548C_u5F15_u7528_u7C7B_u578B" class="headerlink" title="数据的基本类型和引用类型"></a>数据的基本类型和引用类型</h1><h2 id="u57FA_u672C_u6570_u636E_u7C7B_u578B"><a href="#u57FA_u672C_u6570_u636E_u7C7B_u578B" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>基本类型值指的是简单数据段,JavaScript中有5中基本数据类型，分别是Undefined、Null、Boolean、Number、String。基本数据类型是按值访问,如果从一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，把该值复制到为新变量分配的位置上。举个栗子：      </p>
+<pre><code class="js"><span class="keyword">var</span> num1 = <span class="number">5</span>;
+<span class="keyword">var</span> num2 = num1;
+</code></pre>
+<p>num1中保存的值是5，又定义一个变量num2，并用num1的值来初始化它，那么num1的5就复制给了num2，但这两个5是互相独立的，谁都不影响谁，即使你改变了其中一个的值，另外一个也不会受到影响。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/96408226-file_1493969489933_112e0.png" alt="">      </p>
+<h2 id="u5F15_u7528_u6570_u636E_u7C7B_u578B"><a href="#u5F15_u7528_u6570_u636E_u7C7B_u578B" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><p>引用类型值指的是那些可能由多个值构成的对象，如数组。引用数据类型是按引用访问的，当一个变量向另一个变量复制引用类型值的时候，复制的不是一个值而是一个指向这个值的指针，复制操作结束后，两个变量实际上将引用同一个对象，因此改变其中一变量，另一个也随之改变。举个栗子：   </p>
+<pre><code class="js"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();
+<span class="keyword">var</span> obj2 = obj1;
+obj1.name = <span class="string">"Nicholas"</span>;
+alert(obj2.name);   <span class="comment">//"Nicholas"</span>
+</code></pre>
+<p>首先，变量obj1保存了一个对象的新实例，然后这个值被复制到了obj2中，此时它们都指向同一个对象，因此当我们给obj1添加name属性后，可以通过obj2来访问这个属性，如果你还不理解，那么你看完下图就会了然了。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-5/78457861-file_1493971618959_f7e4.png" alt="">   </p>
+<p>下面我们看两个小测试来检测一下自己对上面内容的理解      </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">10</span>;
+<span class="keyword">var</span> b = a;
+b = <span class="number">30</span>;
+<span class="built_in">console</span>.log(a);  <span class="comment">//10</span>
+</code></pre>
+<pre><code class="js"><span class="keyword">var</span> m = { <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span> }
+<span class="keyword">var</span> n = m;
+n.a = <span class="number">30</span>;
+<span class="built_in">console</span>.log(m.a);  <span class="comment">//30</span>
+</code></pre>
+<h1 id="u5783_u573E_u56DE_u6536_u673A_u5236"><a href="#u5783_u573E_u56DE_u6536_u673A_u5236" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><p>函数中局部变量经历一个生命周期：    </p>
 <ol>
-<li>static，默认值。位置设置为static的元素，它始终会处于页面流给予的位置（static 元素会忽略任何 top、bottom、left、right和z-index 声明）。</li>
-<li>inherit，规定应该从父元素继承 position 属性的值。但是任何的版本的 Internet Explorer （包括 IE8）都不支持属性值 “inherit”。</li>
-<li>fixed，生成绝对定位的元素，可定位于相对于<strong>浏览器窗口</strong>的指定坐标。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。不论窗口滚动与否，元素都会留在那个位置。</li>
-<li>absolute，生成绝对定位的元素，相对于<strong>距该元素最近的已定位（position不为static）的祖先元素</strong>进行定位。此元素的位置可通过 “left”、”top”、”right” 以及 “bottom” 属性来规定。</li>
-<li>relative，生成相对定位的元素，相对于<strong>该元素在文档中的初始位置</strong>进行定位。通过 “left”、”top”、”right” 以及 “bottom” 属性来设置此元素相对于自身位置的偏移。    </li>
+<li>当我们定义一个变量时，会为它分配一个内存空间用来储存变量的值</li>
+<li>当我们读取或使用这个变量时，会使用它的内存空间</li>
+<li>使用完毕时会释放内存空间<br>上面生命周期的最后一步，其实就是垃圾回收。JavaScript有自动垃圾收集机制，就是找出那些不再继续使用的值，然后释放其占用的内存，那么怎么判断什么值不再使用呢，一般来说，当一个函数执行完毕，那么这个局部作用域内的变量就没有存在的必要了，它的内存空间就会释放，但是有一种情况可以阻止这一进程，那就是——闭包。</li>
 </ol>
-<h1 id="u76F8_u5BF9_u5B9A_u4F4Drelative"><a href="#u76F8_u5BF9_u5B9A_u4F4Drelative" class="headerlink" title="相对定位relative"></a>相对定位relative</h1><blockquote>
-<p>相对定位的参照物是它本身  </p>
-</blockquote>
-<p>每一个元素都可以看作一个盒子，文档流就是由这些盒子堆砌而成，而每个盒子都在这个文档流中占据了一个位置，如果我们把这个盒子设置成相对定位，那么就可以拿起这个盒子相对于它原来所占据的位置向别的地方移动，如设置left:50px就是相对于盒子原来位置向左移动了50个像素，我们用具体的例子来说明。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i2.muimg.com/567571/93940c469d4a4df1.png" alt=""> </p>
-<p>我们把box-2设置成相对定位并向左移动60像素，向下移动120像素。   </p>
-<pre><code> .box-2{
-    background-color: #00A5FF;
-    position: relative;
-    left: 110px;
-    top:60px;
-}
-</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/18c32c5aa0ad754e.png" alt="">   </p>
-<ul>
-<li>从上图我们可以发现box-2相对于它原来的位置向下且向右移动了，并且原来的位置留下了一片空白，但是其他的元素并没有占据它，说明<strong>元素设置相对定位后，可以相对于其在普通流中的位置偏移，原本所占的空间仍保留</strong>。</li>
-<li>同时我们从图上可以看出，box-2移动之后覆盖了其他的元素，这说明<strong>当元素被设置相对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。此时如果给box-5也设置 position: relative，那么box-5又会覆盖box-2。<h1 id="u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><a href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute" class="headerlink" title="绝对定位absolute"></a>绝对定位absolute</h1><blockquote>
-<p>绝对定位的参照物是相对于该元素最近的已定位的祖先元素，如果没有一个祖先元素设置定位，那么参照物是body。</p>
-</blockquote>
-</li>
-</ul>
-<p>绝对定位与相对定位的一大不同之处就是，当我们把一个元素设置成相对定位，那么这个元素将会脱离文档流，漂浮在文档流上方，并且后面的元素将会填充它原来的位置。绝对定位元素根据它的参照物移动自己的位置，而参照物则需要根据它祖先元素的定位设置来确定。我们就用实例说明绝对定位的特点和需要注意的地方。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i4.buimg.com/567571/4fc39b922c9d5b77.png" alt=""> </p>
-<ol>
-<li><p>祖先元素都没有设置定位，元素相对于body转移位置。<br>给box-2设置成position: absolute;   </p>
-<pre><code>  .box-2{
-    background-color: #00A5FF;
-    position: absolute;
-}     
-</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/fd605722d2831cee.png" alt="">      </p>
-<ul>
-<li>我们可以看到最后一个box存在的位置空了出来，这是因为box-2脱离文档流漂浮到文档上方，并且后面的元素填补了上去，说明<strong>元素设置绝对定位后脱离文档流，后面的元素将填补它的位置</strong>。</li>
-<li>接着你可能就会发现box-3失踪了，其实它没有失踪，它是在box-2下面，就像相对定位一样，<strong>当元素被设置绝对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。</li>
-</ul>
-</li>
-<li><p>你可能会问了，不是说祖先元素都没有定位时，元素会相对于body来改变自己的位置吗，为什么它还是飘在原来的位置，而没有飘到body顶头呢，那么请看，我把left和top属性加上会出现什么样的结果。         </p>
-<pre><code>.box-2{
-      background-color: #00A5FF;
-      position: absolute;
-      left: 0;
-      top:0;
-  }   
-</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/1c236a0b4a7a558e.png" alt="">   </p>
-<ul>
-<li>现在可以看到它与body顶头了，因为光设置一个元素的相对定位它只会漂浮到原来位置的上空，并不会漂浮到参照物的文档流最前方，而只有设置了left、top、right、bottom这些参数的时候才能激活它相对于参照物移动的效果。   </li>
-</ul>
-</li>
-<li><p>祖先元素grandpa设置定位，元素相对于grandpa转移位置。 </p>
-<pre><code>.grandpa{
-    background-color: #55a532;
-    height: 500px;
-    width: 600px;
-    margin: 40px;
-    position: relative;
-} 
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/f1f48c9074e588f4.png" alt="">   </p>
-</li>
-<li><p>祖先元素father设置定位，元素相对于father转移位置。 </p>
-<pre><code>.father{
-    background-color: #55a532;
-    height: 400px;
-    width: 500px;
-    margin: 50px;
-    position: relative;
-} 
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/2b16f8fdff209fbd.png" alt="">   </p>
-</li>
-<li><p>父元素son以及祖先元素father、grandpa都设置定位，元素相对于son转移位置。 </p>
-<pre><code>.grandpa,.father,.son{
-       position: relative;
-}
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/acc3eef5f3c299bb.png" alt="">   </p>
-<ul>
-<li><strong>当祖先元素不止一个设置了定位的时候，选择最近的一个作为参照物</strong>。 </li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>现在你应该就能明白为什么上一篇博文中那么多居中方式都要设置其父元素的position为relative了吧，其实虽然absolute要求的是祖先元素的定位方式是除static都可以，但是最好还是设置成相对定位，因为你只设置relative而不设置left、top等参数的话对元素自身和其他元素是没有影响的，但如果你设置成fixed，元素就有可能受到浏览器窗口的影响（如果有特殊需要当然可以使用），而你设置成inherit也没有什么意义，况且浏览器对它的支持性也不是很好，显然用来限制absolute的话用relative是最合适的。</p>
 
       
     </div>
@@ -498,13 +421,19 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/闭包/" rel="tag"># 闭包</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/css-center/" rel="next" title="CSS各种居中实现方式">
-                <i class="fa fa-chevron-left"></i> CSS各种居中实现方式
+              <a href="/2017/05/02/js-scopeChain/" rel="next" title="理解javascript作用域">
+                <i class="fa fa-chevron-left"></i> 理解javascript作用域
               </a>
             
           </div>
@@ -512,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/26/flex/" rel="prev" title="flex布局语法篇">
-                flex布局语法篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -530,10 +455,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/04/25/css-position/"
-     data-title="详解绝对定位和相对定位"
+        <div class="ds-share flat" data-thread-key="2017/05/05/closure1/"
+     data-title="深入理解闭包（一）铺垫"
      data-content=""
-     data-url="http://yoursite.com/2017/04/25/css-position/">
+     data-url="http://yoursite.com/2017/05/05/closure1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -562,7 +487,7 @@
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/04/25/css-position/" data-title="详解绝对定位和相对定位" data-url="http://yoursite.com/2017/04/25/css-position/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/05/closure1/" data-title="深入理解闭包（一）铺垫" data-url="http://yoursite.com/2017/05/05/closure1/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -682,7 +607,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#position_u7684_u4E0D_u540C_u53D6_u503C"><span class="nav-number">1.</span> <span class="nav-text">position的不同取值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u76F8_u5BF9_u5B9A_u4F4Drelative"><span class="nav-number">2.</span> <span class="nav-text">相对定位relative</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><span class="nav-number">3.</span> <span class="nav-text">绝对定位absolute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5806_u4E0E_u6808"><span class="nav-number">1.</span> <span class="nav-text">堆与栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5806"><span class="nav-number">1.1.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6808"><span class="nav-number">1.2.</span> <span class="nav-text">栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6570_u636E_u7684_u57FA_u672C_u7C7B_u578B_u548C_u5F15_u7528_u7C7B_u578B"><span class="nav-number">2.</span> <span class="nav-text">数据的基本类型和引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u57FA_u672C_u6570_u636E_u7C7B_u578B"><span class="nav-number">2.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5F15_u7528_u6570_u636E_u7C7B_u578B"><span class="nav-number">2.2.</span> <span class="nav-text">引用数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5783_u573E_u56DE_u6536_u673A_u5236"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收机制</span></a></li></ol></div>
             
 
           </div>
