@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下它在执行上下文生命周期中都经历了怎样的变化：">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/43557517-file_1494005363296_c018.png">
-<meta property="og:updated_time" content="2017-05-06T14:41:19.618Z">
+<meta property="og:updated_time" content="2017-05-06T14:45:41.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（二）执行上下文(上）">
 <meta name="twitter:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下它在执行上下文生命周期中都经历了怎样的变化：">
@@ -376,33 +376,28 @@
 <li>代码执行时按照顺序，该赋值时赋值，该调用时调用，这个一看后面的栗子就明白了。   </li>
 <li>变量对象转变为了活动对象，其实这俩是一个东西，只是所处的时期不同罢了。     </li>
 </ol>
-<h1 id="u6817_u5B50_u4EEC"><a href="#u6817_u5B50_u4EEC" class="headerlink" title="栗子们"></a>栗子们</h1><ol>
-<li>栗子1：   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//a is not defined</span></div><div class="line"><span class="string">``</span><span class="string">`       </span></div><div class="line">上面代码执行环境中根本没有定义变量a   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//undefined</span></div><div class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">虽然同样没有打印a的值，但是跟上一个栗子不同的是，这里执行环境中查找到了变量a，但是在打印时它还没有进行赋值，因为查找变量a是在执行上下文创建阶段完成的，并定义为undefined，然后才进入执行阶段，但是打印a的语句在前面，赋值语句在后面，所以打印出来的是a的初始值undefined，这也就体现了前面说的执行阶段是按照顺序执行相关赋值、打印、函数调用等代码。我们可以把上面代码等效成下面的形式：   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">a = <span class="number">10</span>;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">2. 栗子2：   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(test);     <span class="comment">//function test（）&#123; return 1;&#125;</span></div><div class="line"><span class="built_in">console</span>.log(test());   <span class="comment">//1   test是函数，test()是函数调用之后返回的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">上面代码在创建阶段检查到的是函数声明   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(test);    <span class="comment">//undefined</span></div><div class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这两段代码都是要打印一个函数，但是却得到了截然不同的效果，因为下面test其实是一个变量声明，只不过给它赋值的是一个函数，但是在创建阶段它的初始值仍是undefined。  </p>
-<ol>
-<li><p>栗子3：</p>
+<h1 id="u6817_u5B50_u4EEC"><a href="#u6817_u5B50_u4EEC" class="headerlink" title="栗子们"></a>栗子们</h1><p><strong>栗子1： </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//a is not defined</span></div><div class="line"><span class="string">``</span><span class="string">`       </span></div><div class="line">上面代码执行环境中根本没有定义变量a   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//undefined</span></div><div class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">虽然同样没有打印a的值，但是跟上一个栗子不同的是，这里执行环境中查找到了变量a，但是在打印时它还没有进行赋值，因为查找变量a是在执行上下文创建阶段完成的，并定义为undefined，然后才进入执行阶段，但是打印a的语句在前面，赋值语句在后面，所以打印出来的是a的初始值undefined，这也就体现了前面说的执行阶段是按照顺序执行相关赋值、打印、函数调用等代码。我们可以把上面代码等效成下面的形式：   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">a = <span class="number">10</span>;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">**栗子2：**   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(test);     <span class="comment">//function test（）&#123; return 1;&#125;</span></div><div class="line"><span class="built_in">console</span>.log(test());   <span class="comment">//1   test是函数，test()是函数调用之后返回的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">上面代码在创建阶段检查到的是函数声明   </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="built_in">console</span>.log(test);    <span class="comment">//undefined</span></div><div class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这两段代码都是要打印一个函数，但是却得到了截然不同的效果，因为下面test其实是一个变量声明，只不过给它赋值的是一个函数，但是在创建阶段它的初始值仍是undefined。<br><strong>栗子3：</strong></p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x,y</span>) </span>{
- <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   <span class="comment">//{ '0': 1, '1': 2 }</span>
- <span class="built_in">console</span>.log(a);           <span class="comment">//undefined</span>
- <span class="built_in">console</span>.log(b);           <span class="comment">//function func(){  return 2;  }</span>
- <span class="built_in">console</span>.log(b());         <span class="comment">//2</span>
- <span class="built_in">console</span>.log(c);           <span class="comment">//unundefined</span>
- <span class="keyword">var</span> a = <span class="number">10</span>;
- <span class="built_in">console</span>.log(a);           <span class="comment">//10</span>
- <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
-     <span class="keyword">return</span> <span class="number">1</span>;
- }
- <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
-     <span class="keyword">return</span> <span class="number">2</span>;
- }
- <span class="keyword">var</span> b;
- <span class="keyword">var</span> c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-     <span class="keyword">return</span> <span class="number">3</span>;
- }
- <span class="built_in">console</span>.log(c);          <span class="comment">//function func(){  return 2;  }</span>
- <span class="built_in">console</span>.log(c());        <span class="comment">//3</span>
+    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   <span class="comment">//{ '0': 1, '1': 2 }</span>
+    <span class="built_in">console</span>.log(a);           <span class="comment">//undefined</span>
+    <span class="built_in">console</span>.log(b);           <span class="comment">//function func(){  return 2;  }</span>
+    <span class="built_in">console</span>.log(b());         <span class="comment">//2</span>
+    <span class="built_in">console</span>.log(c);           <span class="comment">//unundefined</span>
+    <span class="keyword">var</span> a = <span class="number">10</span>;
+    <span class="built_in">console</span>.log(a);           <span class="comment">//10</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }
+    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="number">2</span>;
+    }
+    <span class="keyword">var</span> b;
+    <span class="keyword">var</span> c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="number">3</span>;
+    }
+    <span class="built_in">console</span>.log(c);          <span class="comment">//function func(){  return 2;  }</span>
+    <span class="built_in">console</span>.log(c());        <span class="comment">//3</span>
 }
 test(<span class="number">1</span>,<span class="number">2</span>);
 </code></pre>
@@ -410,31 +405,30 @@ test(<span class="number">1</span>,<span class="number">2</span>);
 <li>检查到函数调用时传入了参数（1，2），以参数为属性值封装成arguments对象{ ‘0’: 1, ‘1’: 2 }。</li>
 <li>检查函数声明，先检查到第一个b函数，便以b为属性名，b函数的内存地址引用为属性值建立一个属性。但紧接着又检查到一个b函数，属性值将会被后面的b函数覆盖，因此打印b函数时得到的是后面声明的b函数。</li>
 <li>检查变量声明，得到变量a,b,c,由于函数b的存在，b属性已经被创建了，并且这里的变量b并没有赋值，因此它不会覆盖属性b的值，而是跳过。不过另外的变量a和c都顺利创建属性a和c，属性值为undefined。</li>
-<li>按顺序执行代码，第一次打印a时还没有经过赋值，因此输出undefined，第二次打印a时已经赋值，因此输出10，其他同理，不再解释。<br>如果按照执行顺序把栗子3代码做个等效的话，是下面这样的：   <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x,y</span>) </span>{
-<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
-   <span class="keyword">return</span> <span class="number">2</span>;
-}
-<span class="keyword">var</span> a；
-<span class="keyword">var</span> c；
-<span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   
-<span class="built_in">console</span>.log(a);           
-<span class="built_in">console</span>.log(b);          
-<span class="built_in">console</span>.log(b());         
-<span class="built_in">console</span>.log(c);          
-a = <span class="number">10</span>;
-<span class="built_in">console</span>.log(a);          
-c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-   <span class="keyword">return</span> <span class="number">3</span>;
-}
-<span class="built_in">console</span>.log(c);          
-<span class="built_in">console</span>.log(c());        
+<li>按顺序执行代码，第一次打印a时还没有经过赋值，因此输出undefined，第二次打印a时已经赋值，因此输出10，其他同理，不再解释。   </li>
+</ul>
+<p>如果按照执行顺序把栗子3代码做个等效的话，是下面这样的：   </p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x,y</span>) </span>{
+    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="number">2</span>;
+    }
+    <span class="keyword">var</span> a；
+    <span class="keyword">var</span> c；
+    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   
+    <span class="built_in">console</span>.log(a);           
+    <span class="built_in">console</span>.log(b);          
+    <span class="built_in">console</span>.log(b());         
+    <span class="built_in">console</span>.log(c);          
+    a = <span class="number">10</span>;
+    <span class="built_in">console</span>.log(a);          
+    c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="number">3</span>;
+    }
+    <span class="built_in">console</span>.log(c);          
+    <span class="built_in">console</span>.log(c());        
 }
 test(<span class="number">1</span>,<span class="number">2</span>);
 </code></pre>
-</li>
-</ul>
-</li>
-</ol>
 <hr>
 <h1 id="u7ED3_u8BED"><a href="#u7ED3_u8BED" class="headerlink" title="结语"></a>结语</h1><p>现在我猜你对于一段代码的执行过程应该已经了解得差不多了，你不要觉得这跟闭包看起来没有关系就忽略这里的知识点，其实你对基础的东西理解透彻，对后面难点的理解是潜移默化的，不仅仅是闭包，很多难点在夯实的基础面前都是赤身裸体的，很容易就能看得一清二楚。今天关于变量对象就说到这里，下一次我们会进一步探查执行上下文的奥秘。</p>
 
