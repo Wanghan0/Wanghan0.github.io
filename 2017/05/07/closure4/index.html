@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="弹幕," />
+  <meta name="keywords" content="闭包，javascript," />
 
 
 
@@ -84,16 +84,41 @@
 
 
 
-<meta name="description" content="这是一个用jquery写的弹幕，下面是一点心得。编写jquery的要点在于以下几个方面：1.获取随机高度和随机颜色2.绑定点击和回车事件3.获取输入内容并以动画形式添加到窗口下面贴出完整代码，一些细节都会提到">
+<meta name="description" content="执行上下文可以理解为当前代码的执行环境，JavaScript中的运行环境大概包括三种情况：    
+
+全局环境：JavaScript代码运行起来会首先进入该环境
+函数环境：当函数被调用执行时，会进入当前函数中执行代码
+eval   
+
+在代码开始执行时，首先会产生一个全局执行上下文环境，调用函数时，会产生函数执行上下文环境，函数调用完成后，它的执行上下文环境以及其中的数据都会被销毁，重新回到全局执">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个简易弹幕">
-<meta property="og:url" content="http://yoursite.com/2017/02/11/danmu/index.html">
+<meta property="og:title" content="深入理解闭包（四）——执行上下文栈">
+<meta property="og:url" content="http://yoursite.com/2017/05/07/closure4/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="这是一个用jquery写的弹幕，下面是一点心得。编写jquery的要点在于以下几个方面：1.获取随机高度和随机颜色2.绑定点击和回车事件3.获取输入内容并以动画形式添加到窗口下面贴出完整代码，一些细节都会提到">
-<meta property="og:updated_time" content="2017-02-11T14:06:32.990Z">
+<meta property="og:description" content="执行上下文可以理解为当前代码的执行环境，JavaScript中的运行环境大概包括三种情况：    
+
+全局环境：JavaScript代码运行起来会首先进入该环境
+函数环境：当函数被调用执行时，会进入当前函数中执行代码
+eval   
+
+在代码开始执行时，首先会产生一个全局执行上下文环境，调用函数时，会产生函数执行上下文环境，函数调用完成后，它的执行上下文环境以及其中的数据都会被销毁，重新回到全局执">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/99983741-file_1494133258275_bf07.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/46553172-file_1494133262949_e4df.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/40282967-file_1494133267757_8a4c.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/46553172-file_1494133262949_e4df.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/99983741-file_1494133258275_bf07.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/62261253-file_1494133272810_13b43.png">
+<meta property="og:updated_time" content="2017-05-07T05:42:53.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个简易弹幕">
-<meta name="twitter:description" content="这是一个用jquery写的弹幕，下面是一点心得。编写jquery的要点在于以下几个方面：1.获取随机高度和随机颜色2.绑定点击和回车事件3.获取输入内容并以动画形式添加到窗口下面贴出完整代码，一些细节都会提到">
+<meta name="twitter:title" content="深入理解闭包（四）——执行上下文栈">
+<meta name="twitter:description" content="执行上下文可以理解为当前代码的执行环境，JavaScript中的运行环境大概包括三种情况：    
+
+全局环境：JavaScript代码运行起来会首先进入该环境
+函数环境：当函数被调用执行时，会进入当前函数中执行代码
+eval   
+
+在代码开始执行时，首先会产生一个全局执行上下文环境，调用函数时，会产生函数执行上下文环境，函数调用完成后，它的执行上下文环境以及其中的数据都会被销毁，重新回到全局执">
+<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/99983741-file_1494133258275_bf07.png">
 
 
 
@@ -121,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/11/danmu/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/07/closure4/"/>
 
 
 
 
 
-  <title> 一个简易弹幕 | Higanbana </title>
+  <title> 深入理解闭包（四）——执行上下文栈 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +298,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/11/danmu/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/07/closure4/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -297,7 +322,7 @@
             
             
               
-                一个简易弹幕
+                深入理解闭包（四）——执行上下文栈
               
             
           </h1>
@@ -312,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-11T19:09:25+08:00">
-                2017-02-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T11:48:38+08:00">
+                2017-05-07
               </time>
             
 
@@ -331,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/11/danmu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/11/danmu/" itemprop="commentCount"></span>
+                <a href="/2017/05/07/closure4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/07/closure4/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -363,111 +388,32 @@
       
 
       
-        <p>这是一个用jquery写的弹幕，下面是一点心得。<br>编写jquery的要点在于以下几个方面：<br>1.获取随机高度和随机颜色<br>2.绑定点击和回车事件<br>3.获取输入内容并以动画形式添加到窗口<br>下面贴出完整代码，一些细节都会提到<br><a id="more"></a></p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;title&gt;弹幕&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-    body{
-        background-color: gainsboro;
+        <p>执行上下文可以理解为当前代码的执行环境，JavaScript中的运行环境大概包括三种情况：    </p>
+<ul>
+<li>全局环境：JavaScript代码运行起来会首先进入该环境</li>
+<li>函数环境：当函数被调用执行时，会进入当前函数中执行代码</li>
+<li>eval   </li>
+</ul>
+<p>在代码开始执行时，首先会产生一个全局执行上下文环境，调用函数时，会产生函数执行上下文环境，函数调用完成后，它的执行上下文环境以及其中的数据都会被销毁，重新回到全局执行环境，网页关闭后全局执行环境也会销毁。其实这是一个压栈出栈的过程，全局上下文环境永远在栈底，而当前正在执行的函数上下文在栈顶。<br><a id="more"></a><br>我们就用一个简单的栗子来体会执行上下文出栈入栈的过程：   </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;             <span class="comment">//1.进入全局上下文环境</span>
+<span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> b = <span class="number">2</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>{
+        <span class="keyword">var</span> c = <span class="number">3</span>;
+        <span class="built_in">console</span>.log(a+b+c);
     }
-    .main{
-        margin:auto;
-        background-color:rgba(71,71,71,0.95);
-        height: 500px;
-        width: 60%;
-    }
-    .screen{
-        background-color: antiquewhite;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 90%;
-        position: relative;
-        overflow: hidden;     /*overflow: hidden对screen外的部分进行裁剪，弹幕内容只出现在screen中*/
-    }
-    .input{
-        margin-left: 17%;
-        margin-top: 10px;
-        padding-left: 2%;
-        width: 50%;
-        height: 30px;
-        border-radius: 10px 0 0 10px;
-        border: none;
-    }
-    .button{
-        position: relative;
-        top:-32px;
-        padding: 0;
-        margin-left: 69%;
-        height: 32px;
-        width: 10%;
-        border-radius: 0 10px 10px 0;
-        background-color: rgba(80,188,50,0.95);
-        border: none;
-        color: white;
-    }
-    .button:hover{
-        background-color: rgba(66,156,42,0.95);
-        cursor: pointer;
-    }
-    #spa{
-        position: absolute; /*在JS中定义top,right要建立在 position: absolute基础上*/
-        width: 200px;    /*设置弹幕的宽度*/
-        right: -200px;   /*弹幕从screen边界右边200px处开始，与宽度相等，当大于宽度时会延迟到来时间，小于时会从screen内部开始*/
-    }
-
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;main&quot;&gt;
-     &lt;div class=&quot;screen&quot;&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;foot&quot;&gt;
-       &lt;input id=&quot;in&quot; class=&quot;input&quot; type=&quot;text&quot; placeholder=&quot;说点什么...&quot;&gt;
-       &lt;button id=&quot;btn&quot; class=&quot;button&quot; type=&quot;button&quot;&gt;发送&lt;/button&gt;
-     &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/body&gt;
-&lt;script language=&quot;javascript&quot; src=&quot;http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script language=&quot;JavaScript&quot;&gt;
-var screenW=parseInt($(&quot;.screen&quot;).width());     //获取screen窗口的宽度
-var screenH=parseInt($(&quot;.screen&quot;).height());    //获取screen窗口的高度
-
-
-$(&quot;#btn&quot;).bind(&quot;click&quot;,auto);                    //bind(&quot;e&quot;.function)此处function只能写函数名auto,不能写auto()
-document.onkeydown=function (e) {               //绑定点击和回车
-    if (e.keyCode == 13){
-        auto();                                    //此处需写auto()
-    }
+    inner();          <span class="comment">//3.进入inner函数上下文环境</span>
 }
-
-function auto() {
-    var inp = $(&quot;#in&quot;).val();                      //val()获取input或hidden或摁键对象的值
-    $(&quot;#in&quot;).val(&quot;&quot;);                              //val(&quot;&quot;)给input或hidden或摁键对象赋一个空值,只使用input或hidden对象，起清空作用
-    var newspan = $(&quot;&lt;span id=&apos;spa&apos;&gt;&lt;/span&gt;&quot;);     //此处设置类或ID方便在CSS文件中进行设置
-    newspan.text(inp);
-    var top = parseInt(screenH*(Math.random()));          //获取随机高度
-    newspan.css({&quot;color&quot;:getRandomColor(),&quot;top&quot;:top});    //设置随机颜色和高度
-    $(&quot;.screen&quot;).append(newspan);                         //将输入内容添加到screen
-    newspan.animate({&quot;right&quot;:screenW+200},10000,&quot;linear&quot;,function(){
-        $(this).remove();                          //左移screenW+200px的动画效果，此处200与前面对应，执行完毕后内容移除
-    });
-
-}
-
-
-function getRandomColor(){                        //获取随机颜色
-    return &apos;#&apos; + (function(h){
-            return new Array(7 - h.length).join(&quot;0&quot;) + h
-        })((Math.random() * 0x1000000 &lt;&lt; 0).toString(16));
-}
-&lt;/script&gt;
-
-&lt;/html&gt;   
+out();                <span class="comment">//2.进入out函数上下文环境</span>
 </code></pre>
+<p><strong>第一步：</strong><br>当代码开始执行时就创建全局执行上下文环境，全局上下文入栈。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/99983741-file_1494133258275_bf07.png" alt=""><br><strong>第二步：</strong><br>全局上下文入栈后，其中的代码开始执行，进行赋值、函数调用等操作，执行到out()时，激活函数out创建自己的执行上下文环境，out函数上下文入栈。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/46553172-file_1494133262949_e4df.png" alt=""><br><strong>第三步：</strong><br>out函数上下文入栈后，其中的代码开始执行，进行赋值、函数调用等操作，执行到inner()时，激活函数inner创建自己的执行上下文环境，inner函数上下文入栈。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/40282967-file_1494133267757_8a4c.png" alt=""><br><strong>第四步：</strong><br>inner函数上下文入栈后，其中的代码开始执行，进行赋值、函数调用、打印等操作，由于里面没有可以生成其他执行上下文的需要，所有代码执行完毕后，inner函数上下文出栈。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/46553172-file_1494133262949_e4df.png" alt=""><br><strong>第五步：</strong><br>inner函数上下文出栈，又回到了out函数执行上下文环境，接着执行out函数中后面剩下的代码，由于后面没有可以生成其他执行上下文的需要，所有代码执行完毕后，out函数上下文出栈。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/99983741-file_1494133258275_bf07.png" alt=""><br><strong>第六步：</strong><br>out函数上下文出栈后，又回到了全局执行上下文环境，直到浏览器窗口关闭，全局上下文出栈。   </p>
+<p><strong>总结：</strong><br>我们观察一下入栈出栈的全部过程：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/62261253-file_1494133272810_13b43.png" alt=""><br>我们可以得到一些结论：   </p>
+<ol>
+<li>全局上下文在代码开始执行时就创建，只有唯一的一个，永远在栈底，浏览器窗口关闭时出栈。</li>
+<li>函数被调用的时候创建上下文环境。</li>
+<li>只有栈顶的上下文处于活动状态，执行其中的代码。</li>
+</ol>
+
       
     </div>
 
@@ -490,7 +436,7 @@ function getRandomColor(){                        //获取随机颜色
       
         <div class="post-tags">
           
-            <a href="/tags/弹幕/" rel="tag"># 弹幕</a>
+            <a href="/tags/闭包，javascript/" rel="tag"># 闭包，javascript</a>
           
         </div>
       
@@ -499,8 +445,8 @@ function getRandomColor(){                        //获取随机颜色
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/15/buildhexo/" rel="next" title="搭建属于自己的博客hexo">
-                <i class="fa fa-chevron-left"></i> 搭建属于自己的博客hexo
+              <a href="/2017/05/07/closure3/" rel="next" title="深入理解闭包（三）——确定this指向">
+                <i class="fa fa-chevron-left"></i> 深入理解闭包（三）——确定this指向
               </a>
             
           </div>
@@ -508,10 +454,6 @@ function getRandomColor(){                        //获取随机颜色
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/31/css-box/" rel="prev" title="谈谈我对盒模型的理解">
-                谈谈我对盒模型的理解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,10 +468,10 @@ function getRandomColor(){                        //获取随机颜色
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/11/danmu/"
-     data-title="一个简易弹幕"
+        <div class="ds-share flat" data-thread-key="2017/05/07/closure4/"
+     data-title="深入理解闭包（四）——执行上下文栈"
      data-content=""
-     data-url="http://yoursite.com/2017/02/11/danmu/">
+     data-url="http://yoursite.com/2017/05/07/closure4/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -558,7 +500,7 @@ function getRandomColor(){                        //获取随机颜色
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/02/11/danmu/" data-title="一个简易弹幕" data-url="http://yoursite.com/2017/02/11/danmu/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/07/closure4/" data-title="深入理解闭包（四）——执行上下文栈" data-url="http://yoursite.com/2017/05/07/closure4/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
