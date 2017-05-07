@@ -86,14 +86,14 @@
 
 <meta name="description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下变量对象在执行上下文生命周期中都经历了怎样的变化：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解闭包（二）执行上下文(上）">
+<meta property="og:title" content="深入理解闭包（二）——变量对象">
 <meta property="og:url" content="http://yoursite.com/2017/05/05/closure2/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下变量对象在执行上下文生命周期中都经历了怎样的变化：">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/43557517-file_1494005363296_c018.png">
-<meta property="og:updated_time" content="2017-05-06T16:11:08.627Z">
+<meta property="og:updated_time" content="2017-05-07T03:39:11.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解闭包（二）执行上下文(上）">
+<meta name="twitter:title" content="深入理解闭包（二）——变量对象">
 <meta name="twitter:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下变量对象在执行上下文生命周期中都经历了怎样的变化：">
 <meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/43557517-file_1494005363296_c018.png">
 
@@ -129,7 +129,7 @@
 
 
 
-  <title> 深入理解闭包（二）执行上下文(上） | Higanbana </title>
+  <title> 深入理解闭包（二）——变量对象 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
             
             
               
-                深入理解闭包（二）执行上下文(上）
+                深入理解闭包（二）——变量对象
               
             
           </h1>
@@ -499,6 +499,10 @@ test(<span class="number">1</span>,<span class="number">2</span>);
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/07/closure3/" rel="prev" title="深入理解闭包（二）——确定this指向">
+                深入理解闭包（二）——确定this指向 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -513,7 +517,7 @@ test(<span class="number">1</span>,<span class="number">2</span>);
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2017/05/05/closure2/"
-     data-title="深入理解闭包（二）执行上下文(上）"
+     data-title="深入理解闭包（二）——变量对象"
      data-content=""
      data-url="http://yoursite.com/2017/05/05/closure2/">
   <div class="ds-share-inline">
@@ -544,7 +548,7 @@ test(<span class="number">1</span>,<span class="number">2</span>);
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/05/05/closure2/" data-title="深入理解闭包（二）执行上下文(上）" data-url="http://yoursite.com/2017/05/05/closure2/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/05/closure2/" data-title="深入理解闭包（二）——变量对象" data-url="http://yoursite.com/2017/05/05/closure2/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -604,7 +608,7 @@ var duoshuoQuery = {short_name:"higanbana"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
