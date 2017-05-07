@@ -92,9 +92,9 @@
 <meta property="og:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/83029432-file_1494005296735_1208a.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77911171-file_1494154425961_57e6.png">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png">
-<meta property="og:updated_time" content="2017-05-07T11:21:54.356Z">
+<meta property="og:updated_time" content="2017-05-07T11:27:55.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（五）——作用域、作用域链和执行上下文">
 <meta name="twitter:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
@@ -379,19 +379,20 @@
 <h2 id="u5C40_u90E8_u4F5C_u7528_u57DF"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF" class="headerlink" title="局部作用域"></a>局部作用域</h2><p>js中的局部作用域是按照函数划分的，因此也称函数作用域，其他一些语言是按照花括号{}划分的，称为块级作用域，区别如下：   </p>
 <ol>
 <li>在Java、C或C++中，花括号{}内封闭的代码块有自己的作用域，在{}外部无法访问{}内部的变量，这个作用域就称为块级作用域。 </li>
-<li><p>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。</p>
-<blockquote>
-<p>更多关于作用域的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a></p>
-<h1 id="u6267_u884C_u4E0A_u4E0B_u6587"><a href="#u6267_u884C_u4E0A_u4E0B_u6587" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文就是为代码执行做的准备工作。主要分为两类：   </p>
+<li>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。<blockquote>
+<p>更多关于作用域的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a>   </p>
 </blockquote>
 </li>
-<li><p>全局执行上下文：代码刚开始运行就会创建的执行上下文。</p>
-</li>
+</ol>
+<h1 id="u6267_u884C_u4E0A_u4E0B_u6587"><a href="#u6267_u884C_u4E0A_u4E0B_u6587" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文就是为代码执行做的准备工作。主要分为两类：   </p>
+<ol>
+<li>全局执行上下文：代码刚开始运行就会创建的执行上下文。</li>
 <li>函数执行上下文：函数被调用时创建的执行上下文。</li>
 </ol>
 <p>执行上下文前面两篇文章已经讲得非常透彻了，这里也就不再多说了。</p>
 <blockquote>
 <p>更多关于执行上下文的问题参考这两篇文章：<a href="https://wanghan0.github.io/2017/05/05/closure2/" target="_blank" rel="external">变量对象 </a>和<a href="https://wanghan0.github.io/2017/05/07/closure4/" target="_blank" rel="external">执行上下文栈  </a>。   </p>
+</blockquote>
 <h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br>举个栗子：   </p>
 <pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;             
 <span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
@@ -405,10 +406,9 @@
 out();
 </code></pre>
 <p>首先，代码开始运行时就创建了全局上下文环境，接着运行到out()时创建out函数的执行上下文，最后运行到inner()时创建inner函数的执行上下文，这三个执行上下文中的变量对象分别是：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png" alt=""><br>其中，由于函数调用时都没有传入参数，所以arguments都没有值，reference表示该函数的地址引用。   </p>
-</blockquote>
 <ol>
 <li>全局的作用域链：由于它只含全局作用域，没有上级，因此它的作用域链只包含本身的全局变量对象（因为只有一个，甚至可以理解为全局环境不存在作用域链）。查找标识符时只能从本身的全局变量对象中查找。</li>
-<li>函数out的作用域链：包括函数out本身的变量对象以及全局的变量对象。查找标识符时，先在函数out变量对象中寻找，找不到的话再去上一级全局变量对象查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77911171-file_1494154425961_57e6.png" alt="">   </li>
+<li>函数out的作用域链：包括函数out本身的变量对象以及全局的变量对象。查找标识符时，先在函数out变量对象中寻找，找不到的话再去上一级全局变量对象查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png" alt="">   </li>
 <li>函数inner的作用域链：包括函数inner本身的变量对象和上一级out函数的变量对象以及全局的变量对象。查找标识符时依次从inner，out，全局变量对象中查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png" alt="">   <blockquote>
 <p>更多关于作用域链的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a></p>
 </blockquote>
