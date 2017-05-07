@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png">
-<meta property="og:updated_time" content="2017-05-07T11:27:55.980Z">
+<meta property="og:updated_time" content="2017-05-07T11:32:48.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（五）——作用域、作用域链和执行上下文">
 <meta name="twitter:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
@@ -379,11 +379,11 @@
 <h2 id="u5C40_u90E8_u4F5C_u7528_u57DF"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF" class="headerlink" title="局部作用域"></a>局部作用域</h2><p>js中的局部作用域是按照函数划分的，因此也称函数作用域，其他一些语言是按照花括号{}划分的，称为块级作用域，区别如下：   </p>
 <ol>
 <li>在Java、C或C++中，花括号{}内封闭的代码块有自己的作用域，在{}外部无法访问{}内部的变量，这个作用域就称为块级作用域。 </li>
-<li>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。<blockquote>
+<li>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。</li>
+</ol>
+<blockquote>
 <p>更多关于作用域的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a>   </p>
 </blockquote>
-</li>
-</ol>
 <h1 id="u6267_u884C_u4E0A_u4E0B_u6587"><a href="#u6267_u884C_u4E0A_u4E0B_u6587" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文就是为代码执行做的准备工作。主要分为两类：   </p>
 <ol>
 <li>全局执行上下文：代码刚开始运行就会创建的执行上下文。</li>
@@ -409,11 +409,11 @@ out();
 <ol>
 <li>全局的作用域链：由于它只含全局作用域，没有上级，因此它的作用域链只包含本身的全局变量对象（因为只有一个，甚至可以理解为全局环境不存在作用域链）。查找标识符时只能从本身的全局变量对象中查找。</li>
 <li>函数out的作用域链：包括函数out本身的变量对象以及全局的变量对象。查找标识符时，先在函数out变量对象中寻找，找不到的话再去上一级全局变量对象查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png" alt="">   </li>
-<li>函数inner的作用域链：包括函数inner本身的变量对象和上一级out函数的变量对象以及全局的变量对象。查找标识符时依次从inner，out，全局变量对象中查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png" alt="">   <blockquote>
+<li>函数inner的作用域链：包括函数inner本身的变量对象和上一级out函数的变量对象以及全局的变量对象。查找标识符时依次从inner，out，全局变量对象中查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png" alt="">   </li>
+</ol>
+<blockquote>
 <p>更多关于作用域链的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a></p>
 </blockquote>
-</li>
-</ol>
 
       
     </div>
