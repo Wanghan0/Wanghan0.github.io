@@ -84,21 +84,16 @@
 
 
 
-<meta name="description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
+<meta name="description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解闭包（五）——作用域、作用域链和执行上下文">
-<meta property="og:url" content="http://yoursite.com/2017/05/07/closure5/index.html">
+<meta property="og:title" content="深入理解闭包（五）——闭包">
+<meta property="og:url" content="http://yoursite.com/2017/05/07/closure6/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/83029432-file_1494005296735_1208a.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png">
-<meta property="og:updated_time" content="2017-05-07T15:24:22.833Z">
+<meta property="og:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
+<meta property="og:updated_time" content="2017-05-08T11:45:09.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解闭包（五）——作用域、作用域链和执行上下文">
-<meta name="twitter:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
-<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/83029432-file_1494005296735_1208a.png">
+<meta name="twitter:title" content="深入理解闭包（五）——闭包">
+<meta name="twitter:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
 
 
 
@@ -126,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/07/closure5/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/07/closure6/"/>
 
 
 
 
 
-  <title> 深入理解闭包（五）——作用域、作用域链和执行上下文 | Higanbana </title>
+  <title> 深入理解闭包（五）——闭包 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/07/closure5/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/07/closure6/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -302,7 +297,7 @@
             
             
               
-                深入理解闭包（五）——作用域、作用域链和执行上下文
+                深入理解闭包（五）——闭包
               
             
           </h1>
@@ -317,7 +312,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T13:50:45+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T21:04:06+08:00">
                 2017-05-07
               </time>
             
@@ -336,8 +331,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/07/closure5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/07/closure5/" itemprop="commentCount"></span>
+                <a href="/2017/05/07/closure6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/07/closure6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,52 +363,89 @@
       
 
       
-        <p>作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。<br><a id="more"></a><br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/83029432-file_1494005296735_1208a.png" alt="">   </p>
-<h1 id="u4F5C_u7528_u57DF"><a href="#u4F5C_u7528_u57DF" class="headerlink" title="作用域"></a>作用域</h1><p><strong>作用域是在代码编译阶段确定的，一旦代码写好，它的作用域就确定了。</strong>js中只有两种作用域，即全局作用域和局部作用域。</p>
-<h2 id="u5168_u5C40_u4F5C_u7528_u57DF"><a href="#u5168_u5C40_u4F5C_u7528_u57DF" class="headerlink" title="全局作用域"></a>全局作用域</h2><p>如果一个对象在代码的任何一个地方都可以被访问到，那么这个对象所在的作用域是全局作用域。   </p>
-<ol>
-<li>最外层函数和在最外层函数外面定义的变量。</li>
-<li>所有末定义直接赋值的变量将被自动添加到全局作用域（但是严格模式下，初始化未经声明的变量会导致错误）。</li>
-<li>所有window对象的内置属性，例如window.name、window.location、window.top等等都是全局变量，并且所有属于全局作用域的变量都是window对象的属性。   </li>
-</ol>
-<h2 id="u5C40_u90E8_u4F5C_u7528_u57DF"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF" class="headerlink" title="局部作用域"></a>局部作用域</h2><p>js中的局部作用域是按照函数划分的，因此也称函数作用域，其他一些语言是按照花括号{}划分的，称为块级作用域，区别如下：   </p>
-<ol>
-<li>在Java、C或C++中，花括号{}内封闭的代码块有自己的作用域，在{}外部无法访问{}内部的变量，这个作用域就称为块级作用域。 </li>
-<li>在javascript中不存在块级作用域，而是把每个函数作为一个作用域，在函数外部无法访问函数内部的变量。</li>
-</ol>
-<blockquote>
-<p>更多关于作用域的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a>   </p>
-</blockquote>
-<h1 id="u6267_u884C_u4E0A_u4E0B_u6587"><a href="#u6267_u884C_u4E0A_u4E0B_u6587" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文就是为代码执行做的准备工作。主要分为两类：   </p>
-<ol>
-<li>全局执行上下文：代码刚开始运行就会创建的执行上下文。</li>
-<li>函数执行上下文：函数被调用时创建的执行上下文。</li>
-</ol>
-<p>执行上下文前面两篇文章已经讲得非常透彻了，这里也就不再多说了。</p>
-<blockquote>
-<p>更多关于执行上下文的问题参考这两篇文章：<a href="https://wanghan0.github.io/2017/05/05/closure2/" target="_blank" rel="external">变量对象 </a>和<a href="https://wanghan0.github.io/2017/05/07/closure4/" target="_blank" rel="external">执行上下文栈  </a>。   </p>
-</blockquote>
-<h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>作用域链本质上是一个指向当前环境与上层环境的一系列变量对象的指针列表（它只引用但不实际包含变量对象），作用域链保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br>举个栗子：   </p>
-<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;             
-<span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
+        <p>终于讲到闭包了，这一路走来不容易。<br>从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。<br><a id="more"></a> </p>
+<h1 id="u6982_u5FF5"><a href="#u6982_u5FF5" class="headerlink" title="概念"></a>概念</h1><p>js高程对闭包的定义是：<strong>闭包是指有权访问另一个函数作用域中的变量的函数。</strong> 创建闭包的常见方式就是在一个函数内部创建另一个函数，作为返回值或参数传递到函数外部。但是根据我的经验，只要在一个函数内部使用了关键字<code>function</code>，一个闭包就被创建了。  </p>
+<h1 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h1><p>任何书面上的解释都不如一个实例来的有效。      </p>
+<h2 id="u4F8B_u4E00"><a href="#u4F8B_u4E00" class="headerlink" title="例一"></a>例一</h2><pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> b = <span class="number">2</span>;
-    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
         <span class="keyword">var</span> c = <span class="number">3</span>;
         <span class="built_in">console</span>.log(a+b+c);
     }
-    inner();          
 }
-out();
+<span class="keyword">var</span> result=test();
+result();   <span class="comment">//6</span>
 </code></pre>
-<p>首先，代码开始运行时就创建了全局上下文环境，接着运行到out()时创建out函数的执行上下文，最后运行到inner()时创建inner函数的执行上下文，这三个执行上下文中的变量对象分别是：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png" alt=""><br>其中，由于函数调用时都没有传入参数，所以arguments都没有值，reference表示该函数的地址引用。   </p>
+<p>按照我们之前的说法，函数外部是不能访问函数内部的变量的，代码执行到<code>var result=test()</code>这句时调用test函数，执行完毕后应该销毁执行上下文，其中的变量都不能再访问，但是执行<code>result()</code>时却仍然调用了test中的变量，这是因为我们在test函数中返回了一个匿名函数。<br>test函数中<strong>返回的不仅仅是一个函数，还有它的执行上下文环境</strong>，将其赋值给全局变量result后，那么result其实就等同于那个返回的匿名函数，当它被调用时可以访问匿名函数作用域链中指向的变量对象（并不是把变量对象复制给了result，只是可以被引用），这个返回的匿名函数就是闭包。<br>引用阮一峰老师对闭包的解释：<strong>闭包本质上是将函数内部和外部连接起来的桥梁</strong>。   </p>
+<h2 id="u4F8B_u4E8C"><a href="#u4F8B_u4E8C" class="headerlink" title="例二"></a>例二</h2><p>再看一个栗子：   </p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> a = <span class="number">1</span>;
+    <span class="keyword">var</span> inner=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="built_in">console</span>.log(a);
+    }
+    a++;
+    <span class="keyword">return</span> inner;
+}
+<span class="keyword">var</span> b = out();
+b();        <span class="comment">//2</span>
+</code></pre>
+<p>肯定会有人觉得输出的应该是1，想着a++在console.log(a)后面，这是一种常见的错觉，代码创建的位置和执行的顺序是不一样的，这点要谨记。这段代码里首先执行的是调用out函数，out函数执行代码，最后一步返回inner，要知道a++是在return之前执行的，a=2已经保存到了变量对象中，接下来调用b函数（等同于调用inner函数），输出的a自然就是2.   </p>
+<h2 id="u4F8B_u4E09"><a href="#u4F8B_u4E09" class="headerlink" title="例三"></a>例三</h2><p>复杂一点的栗子：</p>
+<pre><code class="js"><span class="keyword">var</span> fun1,fun2,fun3;
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> a=<span class="number">10</span>;
+    fun1=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{<span class="built_in">console</span>.log(a);};
+    fun2=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{a++;};
+    fun3=<span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span>{a=x;};
+}
+
+test();
+fun2();
+fun1();   <span class="comment">//11</span>
+fun3(<span class="number">5</span>);
+fun1();   <span class="comment">//5</span>
+<span class="keyword">var</span> fun4=fun1;
+test();
+fun1();   <span class="comment">//10</span>
+fun4();   <span class="comment">//5</span>
+</code></pre>
+<p>如果上一个栗子你已经理解，那么理解这个栗子前两次输出的11和5也不是什么难事，但后面的两个输出10和5你可能会有点疑惑。   </p>
+<ul>
+<li>我们第二次调用test函数时一个新的闭包被创建，它能访问到的变量也是重新创建的，跟前面的没有关系，因此再调用fun1时输出10。我们要记住这句话：<strong>如果你在一个函数内部声明了另一个函数，那么这个外部函数每次被调用都会产生一个闭包，创建崭新的执行上下文环境。</strong></li>
+<li>那么调用fun4怎么又输出了5呢，这是因为var fun4=fun1是在第一次调用test发生的，那么fun4可以访问的变量也是第一次调用test时创建的变量对象，即使在别的地方被调用，它的作用域链也就是可访问的变量是不变的。我们要记住这句话：<strong>一个函数可以访问的变量对象要到创建这个函数的执行环境中去找而不是调用这个函数的执行环境。</strong>   </li>
+</ul>
+<p>还有一个非常常见的栗子，那就是闭包对循环的影响：   </p>
+<pre><code class="js"><span class="keyword">var</span> arr=[];
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>{
+    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>){
+        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(i);
+        };
+    }
+}
+test();
+arr[<span class="number">0</span>](); <span class="comment">// 3</span>
+arr[<span class="number">1</span>](); <span class="comment">// 3</span>
+arr[<span class="number">2</span>](); <span class="comment">// 3</span>
+</code></pre>
+<p>函数运行之后会得到一个函数数组，你本想让每个函数都返回自己的索引值，比如运行<code>arr[0]()</code>时得到0，运行<code>arr[1]()</code>时得到1。但实际上，每个函数都输出3。这是因为<strong>闭包只能取得包含函数中任何变量的最后一个值</strong>，每个函数的作用域链中都保存着test函数中的变量对象，所以它们引用的是同一个变量i，而i的最后一个值是3，因此每个函数都输出3。我们可以通过创建一个自执行匿名函数来让闭包符合预期：   </p>
+<pre><code class="js"><span class="keyword">var</span> arr=[];
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>{
+    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>){
+        arr[i]=(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>{
+            <span class="built_in">console</span>.log(num);
+        })(i);
+    }
+}
+test();   <span class="comment">//0,1,2</span>
+</code></pre>
+<p>此处用到了自执行匿名函数<code>(function(){···})()</code>，它的写法是，在函数体外面加一对圆括号，形成一个表达式，在圆括号后面再加一个圆括号，里面可传入参数。由于函数参数是按值传递的，所以就可以把变量i的当前值赋值给匿名函数的参数num，而自执行匿名函数可以不用调用，自己执行自己，因此只要检测到参数i就会立即执行并把结果传递给arr数组。这样一来我们就能得到预期的结果了。   </p>
+<h1 id="u7F3A_u70B9"><a href="#u7F3A_u70B9" class="headerlink" title="缺点"></a>缺点</h1><p>最后一个栗子告诉我们，闭包有时也会给我们的工作带来负面效果。除此之外，还有两个缺点我们需要注意一下。</p>
 <ol>
-<li>全局的作用域链：由于它只含全局作用域，没有上级，因此它的作用域链只指向本身的全局变量对象（因为只有一个，甚至可以理解为全局环境不存在作用域链）。查找标识符时只能从本身的全局变量对象中查找。</li>
-<li>函数out的作用域链：可以引用函数out本身的变量对象以及全局的变量对象。查找标识符时，先在函数out变量对象中寻找，找不到的话再去上一级全局变量对象查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png" alt="">   </li>
-<li>函数inner的作用域链：可以引用函数inner本身的变量对象和上一级out函数的变量对象以及全局的变量对象。查找标识符时依次从inner，out，全局变量对象中查找。<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png" alt="">   </li>
+<li>内存泄漏： 在ie9之前的版本中，如果闭包的作用域链中保存着一个html元素，那么就意味着该元素将无法销毁。</li>
+<li>占用内存：由于闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存。过度使用闭包可能会导致内存占用过多，所以我们最好只在绝对必要时再考虑使用闭包。  </li>
 </ol>
-<blockquote>
-<p>更多关于作用域链的问题参考这篇文章：<a href="https://wanghan0.github.io/2017/05/02/js-scopeChain/" target="_blank" rel="external">理解javascript作用域 </a></p>
-</blockquote>
 
       
     </div>
@@ -446,8 +478,8 @@ out();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/07/closure4/" rel="next" title="深入理解闭包（四）——执行上下文栈">
-                <i class="fa fa-chevron-left"></i> 深入理解闭包（四）——执行上下文栈
+              <a href="/2017/05/07/closure5/" rel="next" title="深入理解闭包（五）——作用域、作用域链和执行上下文">
+                <i class="fa fa-chevron-left"></i> 深入理解闭包（五）——作用域、作用域链和执行上下文
               </a>
             
           </div>
@@ -455,10 +487,6 @@ out();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/07/closure6/" rel="prev" title="深入理解闭包（五）——闭包">
-                深入理解闭包（五）——闭包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,10 +501,10 @@ out();
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/05/07/closure5/"
-     data-title="深入理解闭包（五）——作用域、作用域链和执行上下文"
+        <div class="ds-share flat" data-thread-key="2017/05/07/closure6/"
+     data-title="深入理解闭包（五）——闭包"
      data-content=""
-     data-url="http://yoursite.com/2017/05/07/closure5/">
+     data-url="http://yoursite.com/2017/05/07/closure6/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -505,7 +533,7 @@ out();
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/05/07/closure5/" data-title="深入理解闭包（五）——作用域、作用域链和执行上下文" data-url="http://yoursite.com/2017/05/07/closure5/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/07/closure6/" data-title="深入理解闭包（五）——闭包" data-url="http://yoursite.com/2017/05/07/closure6/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -625,7 +653,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u4F5C_u7528_u57DF"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5168_u5C40_u4F5C_u7528_u57DF"><span class="nav-number">1.1.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5C40_u90E8_u4F5C_u7528_u57DF"><span class="nav-number">1.2.</span> <span class="nav-text">局部作用域</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6267_u884C_u4E0A_u4E0B_u6587"><span class="nav-number">2.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u4F5C_u7528_u57DF_u94FE"><span class="nav-number">3.</span> <span class="nav-text">作用域链</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u6982_u5FF5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B9E_u4F8B"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E00"><span class="nav-number">2.1.</span> <span class="nav-text">例一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E8C"><span class="nav-number">2.2.</span> <span class="nav-text">例二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E09"><span class="nav-number">2.3.</span> <span class="nav-text">例三</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7F3A_u70B9"><span class="nav-number">3.</span> <span class="nav-text">缺点</span></a></li></ol></div>
             
 
           </div>
