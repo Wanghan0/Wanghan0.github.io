@@ -767,6 +767,29 @@
         
           
             <p>先给this占个坑   </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> b = <span class="number">2</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="keyword">var</span> c = <span class="number">3</span>;
+        <span class="built_in">console</span>.log(a+b+c);
+    }
+}
+<span class="keyword">var</span> result=test();
+result();   <span class="comment">//6</span>
+</code></pre>
+<p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈   </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> b = <span class="number">2</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="keyword">var</span> c = <span class="number">3</span>;
+        <span class="built_in">console</span>.log(a+b+c);
+    }
+}
+<span class="keyword">var</span> result=test();
+result();   <span class="comment">//6</span>
+</code></pre>
 
           
         
