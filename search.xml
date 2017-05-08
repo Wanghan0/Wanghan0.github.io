@@ -26,7 +26,7 @@
     <entry>
       <title><![CDATA[深入理解闭包（三）——确定this指向]]></title>
       <url>%2F2017%2F05%2F07%2Fclosure3%2F</url>
-      <content type="text"><![CDATA[先给this占个坑 我试试怎么给代码加上行号 第一个12345678910111213141516171819202122232425var a = 1;function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125;&#125;var result=test();result(); //6``` 第二个 ```jsvar a = 1;function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125;&#125;var result=test();result(); //6 第三个1234567891011var a = 1;function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125;&#125;var result=test();result(); //6 下面啥都没有]]></content>
+      <content type="text"><![CDATA[先给this占个坑 我试试怎么给代码加上行号 第一个12345678910111213141516171819202122232425var a = 1;function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125;&#125;var result=test();result(); //6``` 第二个 ```js var a = 1; function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125; &#125; var result=test(); result(); //6 第三个1234567891011var a = 1;function test() &#123; var b = 2; return function () &#123; var c = 3; console.log(a+b+c); &#125;&#125;var result=test();result(); //6 下面啥都没有]]></content>
     </entry>
 
     
