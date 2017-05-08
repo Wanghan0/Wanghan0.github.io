@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/07/closure6/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
-<meta property="og:updated_time" content="2017-05-08T11:45:09.651Z">
+<meta property="og:updated_time" content="2017-05-08T11:49:24.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（五）——闭包">
 <meta name="twitter:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
@@ -366,7 +366,7 @@
         <p>终于讲到闭包了，这一路走来不容易。<br>从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。<br><a id="more"></a> </p>
 <h1 id="u6982_u5FF5"><a href="#u6982_u5FF5" class="headerlink" title="概念"></a>概念</h1><p>js高程对闭包的定义是：<strong>闭包是指有权访问另一个函数作用域中的变量的函数。</strong> 创建闭包的常见方式就是在一个函数内部创建另一个函数，作为返回值或参数传递到函数外部。但是根据我的经验，只要在一个函数内部使用了关键字<code>function</code>，一个闭包就被创建了。  </p>
 <h1 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h1><p>任何书面上的解释都不如一个实例来的有效。      </p>
-<h2 id="u4F8B_u4E00"><a href="#u4F8B_u4E00" class="headerlink" title="例一"></a>例一</h2><pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
 <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> b = <span class="number">2</span>;
     <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
@@ -378,7 +378,7 @@
 result();   <span class="comment">//6</span>
 </code></pre>
 <p>按照我们之前的说法，函数外部是不能访问函数内部的变量的，代码执行到<code>var result=test()</code>这句时调用test函数，执行完毕后应该销毁执行上下文，其中的变量都不能再访问，但是执行<code>result()</code>时却仍然调用了test中的变量，这是因为我们在test函数中返回了一个匿名函数。<br>test函数中<strong>返回的不仅仅是一个函数，还有它的执行上下文环境</strong>，将其赋值给全局变量result后，那么result其实就等同于那个返回的匿名函数，当它被调用时可以访问匿名函数作用域链中指向的变量对象（并不是把变量对象复制给了result，只是可以被引用），这个返回的匿名函数就是闭包。<br>引用阮一峰老师对闭包的解释：<strong>闭包本质上是将函数内部和外部连接起来的桥梁</strong>。   </p>
-<h2 id="u4F8B_u4E8C"><a href="#u4F8B_u4E8C" class="headerlink" title="例二"></a>例二</h2><p>再看一个栗子：   </p>
+<p>再看一个栗子：   </p>
 <pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> a = <span class="number">1</span>;
     <span class="keyword">var</span> inner=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
@@ -391,7 +391,7 @@ result();   <span class="comment">//6</span>
 b();        <span class="comment">//2</span>
 </code></pre>
 <p>肯定会有人觉得输出的应该是1，想着a++在console.log(a)后面，这是一种常见的错觉，代码创建的位置和执行的顺序是不一样的，这点要谨记。这段代码里首先执行的是调用out函数，out函数执行代码，最后一步返回inner，要知道a++是在return之前执行的，a=2已经保存到了变量对象中，接下来调用b函数（等同于调用inner函数），输出的a自然就是2.   </p>
-<h2 id="u4F8B_u4E09"><a href="#u4F8B_u4E09" class="headerlink" title="例三"></a>例三</h2><p>复杂一点的栗子：</p>
+<p>复杂一点的栗子：</p>
 <pre><code class="js"><span class="keyword">var</span> fun1,fun2,fun3;
 <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> a=<span class="number">10</span>;
@@ -653,7 +653,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u6982_u5FF5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B9E_u4F8B"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E00"><span class="nav-number">2.1.</span> <span class="nav-text">例一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E8C"><span class="nav-number">2.2.</span> <span class="nav-text">例二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F8B_u4E09"><span class="nav-number">2.3.</span> <span class="nav-text">例三</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7F3A_u70B9"><span class="nav-number">3.</span> <span class="nav-text">缺点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u6982_u5FF5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B9E_u4F8B"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7F3A_u70B9"><span class="nav-number">3.</span> <span class="nav-text">缺点</span></a></li></ol></div>
             
 
           </div>
