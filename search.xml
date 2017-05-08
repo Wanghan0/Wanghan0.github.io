@@ -26,7 +26,7 @@
     <entry>
       <title><![CDATA[深入理解闭包（三）——确定this指向]]></title>
       <url>%2F2017%2F05%2F07%2Fclosure3%2F</url>
-      <content type="text"><![CDATA[先给this占个坑 var a = 1; function test() { var b = 2; return function () { var c = 3; console.log(a+b+c); } } var result=test(); result(); //6 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈 var a = 1; function test() { var b = 2; return function () { var c = 3; console.log(a+b+c); } } var result=test(); result(); //6]]></content>
+      <content type="text"><![CDATA[先给this占个坑]]></content>
     </entry>
 
     
