@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
+<meta name="description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解闭包（三）——确定this指向">
 <meta property="og:url" content="http://yoursite.com/2017/05/07/closure3/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
+<meta property="og:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png">
-<meta property="og:updated_time" content="2017-05-09T06:59:26.101Z">
+<meta property="og:updated_time" content="2017-05-09T13:21:46.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（三）——确定this指向">
-<meta name="twitter:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
+<meta name="twitter:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：">
 <meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png">
 
 
@@ -365,7 +365,8 @@
       
 
       
-        <p>我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png" alt=""><br>执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以<strong>this的指向是在函数被调用时确定的</strong>。<br><a id="more"></a><br>我们知道，this对象是在运行时基于函数的执行环境绑定的：在全局环境中，this指向window，当函数被作为某个对象的方法调用时，this指向那个对象。不过实际情况中往往没有那么好判断，今天我们就来梳理一下。   </p>
+        <p>我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：<br><a id="more"></a><br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png" alt=""><br>执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以<strong>this的指向是在函数被调用时确定的</strong>。   </p>
+<p>我们知道，this对象是在运行时基于函数的执行环境绑定的：在全局环境中，this指向window，当函数被作为某个对象的方法调用时，this指向那个对象。不过实际情况中往往没有那么好判断，今天我们就来梳理一下。   </p>
 <h1 id="u5168_u5C40_u5BF9_u8C61_u4E2D_u7684this"><a href="#u5168_u5C40_u5BF9_u8C61_u4E2D_u7684this" class="headerlink" title="全局对象中的this"></a>全局对象中的this</h1><p>在全局环境下，this永远指向window。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);    <span class="comment">//window</span></div></pre></td></tr></table></figure></p>
 <h1 id="u51FD_u6570_u4E2D_u7684this"><a href="#u51FD_u6570_u4E2D_u7684this" class="headerlink" title="函数中的this"></a>函数中的this</h1><p>this指向调用这个函数的对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">&#125;</div><div class="line">test();   <span class="comment">//10</span></div></pre></td></tr></table></figure></p>
 <p>由于函数test是被全局对象（window）调用的，因此函数内部的this指向window。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">10</span>,</div><div class="line">    <span class="attr">b</span>:<span class="keyword">this</span>.a,</div><div class="line">    <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj.fn());   <span class="comment">//10</span></div><div class="line"><span class="built_in">console</span>.log(obj.b);      <span class="comment">//20</span></div></pre></td></tr></table></figure></p>
@@ -533,7 +534,7 @@ var duoshuoQuery = {short_name:"higanbana"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
