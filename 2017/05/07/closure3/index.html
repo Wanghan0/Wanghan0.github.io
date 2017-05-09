@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="先给this占个坑">
+<meta name="description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解闭包（三）——确定this指向">
 <meta property="og:url" content="http://yoursite.com/2017/05/07/closure3/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="先给this占个坑">
-<meta property="og:updated_time" content="2017-05-08T12:14:30.913Z">
+<meta property="og:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
+<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png">
+<meta property="og:updated_time" content="2017-05-09T06:55:03.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（三）——确定this指向">
-<meta name="twitter:description" content="先给this占个坑">
+<meta name="twitter:description" content="我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以this的指向是在函数被调用时确定的。">
+<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png">
 
 
 
@@ -363,7 +365,58 @@
       
 
       
-        <p>先给this占个坑   </p>
+        <p>我们在前面说过，在执行上下文创建过程中做了三件事：创建变量对象，生成作用域链，确定this指向。今天我们就来探讨一下this指向的问题。首先先回顾一下我们执行上下文的生命周期图：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-9/54694146-file_1494297188493_bca0.png" alt=""><br>执行上下文是函数被调用时创建的，创建过程包括确定this指向，所以<strong>this的指向是在函数被调用时确定的</strong>。<br><a id="more"></a><br>我们知道，this对象是在运行时基于函数的执行环境绑定的：在全局环境中，this指向window，当函数被作为某个对象的方法调用时，this指向那个对象。不过实际情况中往往没有那么好判断，今天我们就来梳理一下。   </p>
+<h1 id="u5168_u5C40_u5BF9_u8C61_u4E2D_u7684this"><a href="#u5168_u5C40_u5BF9_u8C61_u4E2D_u7684this" class="headerlink" title="全局对象中的this"></a>全局对象中的this</h1><p>在全局环境下，this永远指向window。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);    <span class="comment">//window</span></div></pre></td></tr></table></figure></p>
+<h1 id="u51FD_u6570_u4E2D_u7684this"><a href="#u51FD_u6570_u4E2D_u7684this" class="headerlink" title="函数中的this"></a>函数中的this</h1><p>this指向调用这个函数的对象。   </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">10</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> a = <span class="number">20</span>;
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);
+}
+test();   <span class="comment">//10</span>
+</code></pre>
+<p>由于函数test是被全局对象（window）调用的，因此函数内部的this指向window。   </p>
+<pre><code class="js"><span class="keyword">var</span> a = <span class="number">20</span>;
+<span class="keyword">var</span> obj = {
+    <span class="attr">a</span>: <span class="number">10</span>,
+    <span class="attr">b</span>:<span class="keyword">this</span>.a,
+    <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.a;
+    }
+}
+
+<span class="built_in">console</span>.log(obj.fn());   <span class="comment">//10</span>
+<span class="built_in">console</span>.log(obj.b);      <span class="comment">//20</span>
+</code></pre>
+<p>由于函数fn是被对象obj调用的,因此函数fn内部的this指向对象obj。<br>另外，由于obj不是个函数，不适合上面的规则，我们要单独讨论，如果obj对象在全局创建，那么obj里面的this指向window。   </p>
+<h1 id="u6784_u9020_u51FD_u6570"><a href="#u6784_u9020_u51FD_u6570" class="headerlink" title="构造函数"></a>构造函数</h1><p>构造函数和其他函数的唯一区别，就是他们的调用方式不同。任何函数，只要通过<code>new</code>操作符来调用，那它就可以作为构造函数，调用时经历以下四个步骤：   </p>
+<ol>
+<li>创建一个新对象；</li>
+<li>将构造函数的作用域赋给新对象（因此this就指向了这个新对象）；</li>
+<li>执行构造函数中的代码（为这个新对象添加属性）；</li>
+<li>返回新对象。</li>
+</ol>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>{
+    <span class="keyword">this</span>.a = <span class="number">1</span>;
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);      <span class="comment">//1</span>
+}
+<span class="keyword">var</span> fun = <span class="keyword">new</span> Test();
+<span class="built_in">console</span>.log(fun.a);          <span class="comment">//1</span>
+</code></pre>
+<p>创建新对象<code>new Test()</code>后，this指向这个新对象，然后为这个新对象添加属性<code>a = 1</code>，再执行<code>console.log(this.a)</code>，此时输出的就是刚添加的a值。返回这个新对象传递给了实例对象<code>fun</code>，此时this指向了实例<code>fun</code>，因此<code>fun.a</code>也为1。   </p>
+<h1 id="u51FD_u6570_u7528call_u6216apply_u8C03_u7528"><a href="#u51FD_u6570_u7528call_u6216apply_u8C03_u7528" class="headerlink" title="函数用call或apply调用"></a>函数用call或apply调用</h1><p>我们可以利用call或apply手动设置this的指向，这两个方法的第一个参数都是this将要指向的对象，后面的参数，都是向将要执行的函数传递参数。其中call以一个一个的形式传递，apply以数组的形式传递，这是他们唯一的不同。   </p>
+<pre><code class="js"><span class="keyword">var</span> obj = {
+    <span class="attr">num</span>: <span class="number">10</span>
+}
+<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.num + a + b);
+}
+test(<span class="number">20</span>,<span class="number">30</span>);                    <span class="comment">//NaN</span>
+test.call(obj, <span class="number">20</span>, <span class="number">30</span>);        <span class="comment">// 60</span>
+test.apply(obj, [<span class="number">20</span>, <span class="number">30</span>]);     <span class="comment">// 60</span>
+</code></pre>
+<p>这个例子很容易理解，本来调用test函数this指向全局对象，是无法访问到obj对象中的num的，但是利用call和apply方法将this指向了obj对象，所以可以顺利输出。   </p>
+<p>以上就是我目前知道的关于this指向的几种情况，以后可能会再补充。</p>
 
       
     </div>
@@ -492,8 +545,17 @@ var duoshuoQuery = {short_name:"higanbana"};
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/33610914-file_1484387196671_a795.jpg"
@@ -556,6 +618,22 @@ var duoshuoQuery = {short_name:"higanbana"};
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5168_u5C40_u5BF9_u8C61_u4E2D_u7684this"><span class="nav-number">1.</span> <span class="nav-text">全局对象中的this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u51FD_u6570_u4E2D_u7684this"><span class="nav-number">2.</span> <span class="nav-text">函数中的this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6784_u9020_u51FD_u6570"><span class="nav-number">3.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u51FD_u6570_u7528call_u6216apply_u8C03_u7528"><span class="nav-number">4.</span> <span class="nav-text">函数用call或apply调用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
