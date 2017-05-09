@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下变量对象在执行上下文生命周期中都经历了怎样的变化：">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-6/43557517-file_1494005363296_c018.png">
-<meta property="og:updated_time" content="2017-05-09T07:18:16.102Z">
+<meta property="og:updated_time" content="2017-05-09T07:21:40.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（二）——变量对象">
 <meta name="twitter:description" content="执行一个函数之前，JavaScript引擎会进行准备工作，这个准备工作指的就是执行上下文，也叫执行上下文环境，也叫执行环境。下面是一个执行上下文的周期图，其中变量对象（Variable Object）是重点之一，只有理解了它，我们才能知道一段代码的执行过程中先做什么，后做什么，我们今天就探讨一下变量对象在执行上下文生命周期中都经历了怎样的变化：">
@@ -390,29 +390,7 @@
 <li>检查变量声明，得到变量a,b,c,由于函数b的存在，b属性已经被创建了，并且这里的变量b并没有赋值，因此它不会覆盖属性b的值，而是跳过。不过另外的变量a和c都顺利创建属性a和c，属性值为undefined。</li>
 <li>按顺序执行代码，第一次打印a时还没有经过赋值，因此输出undefined，第二次打印a时已经赋值，因此输出10，其他同理，不再解释。   </li>
 </ul>
-<p>如果按照执行顺序把栗子3代码做个等效的话，是下面这样的：   </p>
-<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x,y</span>) </span>{
-    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> <span class="number">2</span>;
-    }
-    <span class="keyword">var</span> a；
-    <span class="keyword">var</span> c；
-    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   
-    <span class="built_in">console</span>.log(a);           
-    <span class="built_in">console</span>.log(b);          
-    <span class="built_in">console</span>.log(b());         
-    <span class="built_in">console</span>.log(c);          
-    a = <span class="number">10</span>;
-    <span class="built_in">console</span>.log(a);          
-    c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-        <span class="keyword">return</span> <span class="number">3</span>;
-    }
-    <span class="built_in">console</span>.log(c);          
-    <span class="built_in">console</span>.log(c());        
-}
-test(<span class="number">1</span>,<span class="number">2</span>);
-</code></pre>
-<hr>
+<p>如果按照执行顺序把栗子3代码做个等效的话，是下面这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x,y</span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> a；</div><div class="line">    <span class="keyword">var</span> c；</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   </div><div class="line">    <span class="built_in">console</span>.log(a);           </div><div class="line">    <span class="built_in">console</span>.log(b);          </div><div class="line">    <span class="built_in">console</span>.log(b());         </div><div class="line">    <span class="built_in">console</span>.log(c);          </div><div class="line">    a = <span class="number">10</span>;</div><div class="line">    <span class="built_in">console</span>.log(a);          </div><div class="line">    c=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">3</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(c);          </div><div class="line">    <span class="built_in">console</span>.log(c());        </div><div class="line">&#125;</div><div class="line">test(<span class="number">1</span>,<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
 <h1 id="u7ED3_u8BED"><a href="#u7ED3_u8BED" class="headerlink" title="结语"></a>结语</h1><p>现在我猜你对于一段代码的执行过程应该已经了解得差不多了，你不要觉得这跟闭包看起来没有关系就忽略这里的知识点，其实你对基础的东西理解透彻，对后面难点的理解是潜移默化的，不仅仅是闭包，很多难点在夯实的基础面前都是赤身裸体的，很容易就能看得一清二楚。今天关于变量对象就说到这里，下一次我们会进一步探查执行上下文的奥秘。</p>
 
       
