@@ -86,13 +86,13 @@
 
 <meta name="description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解闭包（五）——闭包">
+<meta property="og:title" content="深入理解闭包（六）——闭包">
 <meta property="og:url" content="http://yoursite.com/2017/05/07/closure6/index.html">
 <meta property="og:site_name" content="Higanbana">
 <meta property="og:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
-<meta property="og:updated_time" content="2017-05-08T12:08:42.145Z">
+<meta property="og:updated_time" content="2017-05-09T07:13:33.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解闭包（五）——闭包">
+<meta name="twitter:title" content="深入理解闭包（六）——闭包">
 <meta name="twitter:description" content="终于讲到闭包了，这一路走来不容易。从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title> 深入理解闭包（五）——闭包 | Higanbana </title>
+  <title> 深入理解闭包（六）——闭包 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -297,7 +297,7 @@
             
             
               
-                深入理解闭包（五）——闭包
+                深入理解闭包（六）——闭包
               
             
           </h1>
@@ -365,81 +365,18 @@
       
         <p>终于讲到闭包了，这一路走来不容易。<br>从前面的博文中我们知道，js的垃圾回收机制会在某个函数的执行上下文生命周期结束后将其回收，释放内存，但是闭包的存在会阻止这一过程。<br><a id="more"></a> </p>
 <h1 id="u6982_u5FF5"><a href="#u6982_u5FF5" class="headerlink" title="概念"></a>概念</h1><p>js高程对闭包的定义是：<strong>闭包是指有权访问另一个函数作用域中的变量的函数。</strong> 创建闭包的常见方式就是在一个函数内部创建另一个函数，作为返回值或参数传递到函数外部。但是根据我的经验，只要在一个函数内部使用了关键字<code>function</code>，一个闭包就被创建了。  </p>
-<h1 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h1><p>任何书面上的解释都不如一个实例来的有效。      </p>
-<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;
-<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> b = <span class="number">2</span>;
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-        <span class="keyword">var</span> c = <span class="number">3</span>;
-        <span class="built_in">console</span>.log(a+b+c);
-    }
-}
-<span class="keyword">var</span> result=test();
-result();   <span class="comment">//6</span>
-</code></pre>
+<h1 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h1><p>任何书面上的解释都不如一个实例来的有效。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> c = <span class="number">3</span>;</div><div class="line">        <span class="built_in">console</span>.log(a+b+c);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> result=test();</div><div class="line">result();   <span class="comment">//6</span></div></pre></td></tr></table></figure></p>
 <p>按照我们之前的说法，函数外部是不能访问函数内部的变量的，代码执行到<code>var result=test()</code>这句时调用test函数，执行完毕后应该销毁执行上下文，其中的变量都不能再访问，但是执行<code>result()</code>时却仍然调用了test中的变量，这是因为我们在test函数中返回了一个匿名函数。<br>test函数中<strong>返回的不仅仅是一个函数，还有它的执行上下文环境</strong>，将其赋值给全局变量result后，那么result其实就等同于那个返回的匿名函数，当它被调用时可以访问匿名函数作用域链中指向的变量对象（并不是把变量对象复制给了result，只是可以被引用），这个返回的匿名函数就是闭包。<br>引用阮一峰老师对闭包的解释：<strong>闭包本质上是将函数内部和外部连接起来的桥梁</strong>。   </p>
-<p>再看一个栗子：   </p>
-<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> a = <span class="number">1</span>;
-    <span class="keyword">var</span> inner=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-        <span class="built_in">console</span>.log(a);
-    }
-    a++;
-    <span class="keyword">return</span> inner;
-}
-<span class="keyword">var</span> b = out();
-b();        <span class="comment">//2</span>
-</code></pre>
+<p>再看一个栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> inner=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a);</div><div class="line">    &#125;</div><div class="line">    a++;</div><div class="line">    <span class="keyword">return</span> inner;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = out();</div><div class="line">b();        <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
 <p>肯定会有人觉得输出的应该是1，想着a++在console.log(a)后面，这是一种常见的错觉，代码创建的位置和执行的顺序是不一样的，这点要谨记。这段代码里首先执行的是调用out函数，out函数执行代码，最后一步返回inner，要知道a++是在return之前执行的，a=2已经保存到了变量对象中，接下来调用b函数（等同于调用inner函数），输出的a自然就是2.   </p>
-<p>复杂一点的栗子：</p>
-<pre><code class="js"><span class="keyword">var</span> fun1,fun2,fun3;
-<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> a=<span class="number">10</span>;
-    fun1=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{<span class="built_in">console</span>.log(a);};
-    fun2=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{a++;};
-    fun3=<span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span>{a=x;};
-}
-
-test();
-fun2();
-fun1();   <span class="comment">//11</span>
-fun3(<span class="number">5</span>);
-fun1();   <span class="comment">//5</span>
-<span class="keyword">var</span> fun4=fun1;
-test();
-fun1();   <span class="comment">//10</span>
-fun4();   <span class="comment">//5</span>
-</code></pre>
+<p>复杂一点的栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fun1,fun2,fun3;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a=<span class="number">10</span>;</div><div class="line">    fun1=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(a);&#125;;</div><div class="line">    fun2=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;a++;&#125;;</div><div class="line">    fun3=<span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span>&#123;a=x;&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div><div class="line">fun2();</div><div class="line">fun1();   <span class="comment">//11</span></div><div class="line">fun3(<span class="number">5</span>);</div><div class="line">fun1();   <span class="comment">//5</span></div><div class="line"><span class="keyword">var</span> fun4=fun1;</div><div class="line">test();</div><div class="line">fun1();   <span class="comment">//10</span></div><div class="line">fun4();   <span class="comment">//5</span></div></pre></td></tr></table></figure></p>
 <p>如果上一个栗子你已经理解，那么理解这个栗子前两次输出的11和5也不是什么难事，但后面的两个输出10和5你可能会有点疑惑。   </p>
 <ul>
 <li>我们第二次调用test函数时一个新的闭包被创建，它能访问到的变量也是重新创建的，跟前面的没有关系，因此再调用fun1时输出10。我们要记住这句话：<strong>如果你在一个函数内部声明了另一个函数，那么这个外部函数每次被调用都会产生一个闭包，创建崭新的执行上下文环境。</strong></li>
 <li>那么调用fun4怎么又输出了5呢，这是因为var fun4=fun1是在第一次调用test发生的，那么fun4可以访问的变量也是第一次调用test时创建的变量对象，即使在别的地方被调用，它的作用域链也就是可访问的变量是不变的。我们要记住这句话：<strong>一个函数可以访问的变量对象要到创建这个函数的执行环境中去找而不是调用这个函数的执行环境。</strong>   </li>
 </ul>
-<p>还有一个非常常见的栗子，那就是闭包对循环的影响：   </p>
-<pre><code class="js"><span class="keyword">var</span> arr=[];
-<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>{
-    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>){
-        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-            <span class="built_in">console</span>.log(i);
-        };
-    }
-}
-test();
-arr[<span class="number">0</span>](); <span class="comment">// 3</span>
-arr[<span class="number">1</span>](); <span class="comment">// 3</span>
-arr[<span class="number">2</span>](); <span class="comment">// 3</span>
-</code></pre>
-<p>函数运行之后会得到一个函数数组，你本想让每个函数都返回自己的索引值，比如运行<code>arr[0]()</code>时得到0，运行<code>arr[1]()</code>时得到1。但实际上，每个函数都输出3。这是因为<strong>闭包只能取得包含函数中任何变量的最后一个值</strong>，每个函数的作用域链中都保存着test函数中的变量对象，所以它们引用的是同一个变量i，而i的最后一个值是3，因此每个函数都输出3。我们可以通过创建一个自执行匿名函数来让闭包符合预期：   </p>
-<pre><code class="js"><span class="keyword">var</span> arr=[];
-<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>{
-    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>){
-        arr[i]=(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>{
-            <span class="built_in">console</span>.log(num);
-        })(i);
-    }
-}
-test();   <span class="comment">//0,1,2</span>
-</code></pre>
+<p>还有一个非常常见的栗子，那就是闭包对循环的影响：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr=[];</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>)&#123;</div><div class="line">        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(i);</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">test();</div><div class="line">arr[<span class="number">0</span>](); <span class="comment">// 3</span></div><div class="line">arr[<span class="number">1</span>](); <span class="comment">// 3</span></div><div class="line">arr[<span class="number">2</span>](); <span class="comment">// 3</span></div></pre></td></tr></table></figure></p>
+<p>函数运行之后会得到一个函数数组，你本想让每个函数都返回自己的索引值，比如运行<code>arr[0]()</code>时得到0，运行<code>arr[1]()</code>时得到1。但实际上，每个函数都输出3。这是因为<strong>闭包只能取得包含函数中任何变量的最后一个值</strong>，每个函数的作用域链中都保存着test函数中的变量对象，所以它们引用的是同一个变量i，而i的最后一个值是3，因此每个函数都输出3。我们可以通过创建一个自执行匿名函数来让闭包符合预期：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr=[];</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span> (i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>)&#123;</div><div class="line">        arr[i]=(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(num);</div><div class="line">        &#125;)(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">test();   <span class="comment">//0,1,2</span></div></pre></td></tr></table></figure></p>
 <p>此处用到了自执行匿名函数<code>(function(){···})()</code>，它的写法是，在函数体外面加一对圆括号，形成一个表达式，在圆括号后面再加一个圆括号，里面可传入参数。由于函数参数是按值传递的，所以就可以把变量i的当前值赋值给匿名函数的参数num，而自执行匿名函数可以不用调用，自己执行自己，因此只要检测到参数i就会立即执行并把结果传递给arr数组。这样一来我们就能得到预期的结果了。   </p>
 <h1 id="u7F3A_u70B9"><a href="#u7F3A_u70B9" class="headerlink" title="缺点"></a>缺点</h1><p>最后一个栗子告诉我们，闭包有时也会给我们的工作带来负面效果。除此之外，还有两个缺点我们需要注意一下。</p>
 <ol>
@@ -502,7 +439,7 @@ test();   <span class="comment">//0,1,2</span>
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2017/05/07/closure6/"
-     data-title="深入理解闭包（五）——闭包"
+     data-title="深入理解闭包（六）——闭包"
      data-content=""
      data-url="http://yoursite.com/2017/05/07/closure6/">
   <div class="ds-share-inline">
@@ -533,7 +470,7 @@ test();   <span class="comment">//0,1,2</span>
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/05/07/closure6/" data-title="深入理解闭包（五）——闭包" data-url="http://yoursite.com/2017/05/07/closure6/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/07/closure6/" data-title="深入理解闭包（六）——闭包" data-url="http://yoursite.com/2017/05/07/closure6/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">

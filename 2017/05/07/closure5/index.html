@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/45171509-file_1494156451663_5233.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/77744403-file_1494155010560_14e6.png">
-<meta property="og:updated_time" content="2017-05-07T15:24:22.833Z">
+<meta property="og:updated_time" content="2017-05-09T07:13:56.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包（五）——作用域、作用域链和执行上下文">
 <meta name="twitter:description" content="作用域，作用域链，执行上下文三者之间有着密切的关系，相信有一部分人对这三者只是有一种模糊的概念，今天我们就来理一理，首先我们要回顾一张图片，由这张图，你可以清楚地看到这三者分别是在什么时候创建的，其中又有什么基本的联系。">
@@ -393,18 +393,7 @@
 <blockquote>
 <p>更多关于执行上下文的问题参考这两篇文章：<a href="https://wanghan0.github.io/2017/05/05/closure2/" target="_blank" rel="external">变量对象 </a>和<a href="https://wanghan0.github.io/2017/05/07/closure4/" target="_blank" rel="external">执行上下文栈  </a>。   </p>
 </blockquote>
-<h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>作用域链本质上是一个指向当前环境与上层环境的一系列变量对象的指针列表（它只引用但不实际包含变量对象），作用域链保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br>举个栗子：   </p>
-<pre><code class="js"><span class="keyword">var</span> a = <span class="number">1</span>;             
-<span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> b = <span class="number">2</span>;
-    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>{
-        <span class="keyword">var</span> c = <span class="number">3</span>;
-        <span class="built_in">console</span>.log(a+b+c);
-    }
-    inner();          
-}
-out();
-</code></pre>
+<h1 id="u4F5C_u7528_u57DF_u94FE"><a href="#u4F5C_u7528_u57DF_u94FE" class="headerlink" title="作用域链"></a>作用域链</h1><p>作用域链本质上是一个指向当前环境与上层环境的一系列变量对象的指针列表（它只引用但不实际包含变量对象），作用域链保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br>举个栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;             </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> c = <span class="number">3</span>;</div><div class="line">        <span class="built_in">console</span>.log(a+b+c);</div><div class="line">    &#125;</div><div class="line">    inner();          </div><div class="line">&#125;</div><div class="line">out();</div></pre></td></tr></table></figure></p>
 <p>首先，代码开始运行时就创建了全局上下文环境，接着运行到out()时创建out函数的执行上下文，最后运行到inner()时创建inner函数的执行上下文，这三个执行上下文中的变量对象分别是：<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-5-7/59527742-file_1494153227968_fefb.png" alt=""><br>其中，由于函数调用时都没有传入参数，所以arguments都没有值，reference表示该函数的地址引用。   </p>
 <ol>
 <li>全局的作用域链：由于它只含全局作用域，没有上级，因此它的作用域链只指向本身的全局变量对象（因为只有一个，甚至可以理解为全局环境不存在作用域链）。查找标识符时只能从本身的全局变量对象中查找。</li>
@@ -456,8 +445,8 @@ out();
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/07/closure6/" rel="prev" title="深入理解闭包（五）——闭包">
-                深入理解闭包（五）——闭包 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/07/closure6/" rel="prev" title="深入理解闭包（六）——闭包">
+                深入理解闭包（六）——闭包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
