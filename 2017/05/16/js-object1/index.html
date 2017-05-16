@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -84,20 +84,16 @@
 
 
 
-<meta name="description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
+<meta name="description" content="对象我们常听到一句话：“在javascript中，一切皆是对象”。那么对象是什么呢？ECMA-262把对象定义为：“无序属性的集合，其属性可以包含基本值，对象或者函数”。也就是说对象是一组没有特定顺序的值，它的每个属性或者方法都有一个名字，每个名字都映射到一个值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装nodejs.exe及其环境配置">
-<meta property="og:url" content="http://yoursite.com/2017/01/14/2017-1-14/index.html">
+<meta property="og:title" content="创建对象（一）——工厂模式和构造函数模式">
+<meta property="og:url" content="http://yoursite.com/2017/05/16/js-object1/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png">
-<meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png">
-<meta property="og:updated_time" content="2017-03-31T13:07:11.540Z">
+<meta property="og:description" content="对象我们常听到一句话：“在javascript中，一切皆是对象”。那么对象是什么呢？ECMA-262把对象定义为：“无序属性的集合，其属性可以包含基本值，对象或者函数”。也就是说对象是一组没有特定顺序的值，它的每个属性或者方法都有一个名字，每个名字都映射到一个值。">
+<meta property="og:updated_time" content="2017-05-16T09:50:27.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装nodejs.exe及其环境配置">
-<meta name="twitter:description" content="安装nodejs时官方有.msi后缀和.exe后缀两种文件 。其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。">
-<meta name="twitter:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png">
+<meta name="twitter:title" content="创建对象（一）——工厂模式和构造函数模式">
+<meta name="twitter:description" content="对象我们常听到一句话：“在javascript中，一切皆是对象”。那么对象是什么呢？ECMA-262把对象定义为：“无序属性的集合，其属性可以包含基本值，对象或者函数”。也就是说对象是一组没有特定顺序的值，它的每个属性或者方法都有一个名字，每个名字都映射到一个值。">
 
 
 
@@ -125,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/14/2017-1-14/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/16/js-object1/"/>
 
 
 
 
 
-  <title> 安装nodejs.exe及其环境配置 | Higanbana </title>
+  <title> 创建对象（一）——工厂模式和构造函数模式 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/14/2017-1-14/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/16/js-object1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -301,7 +297,7 @@
             
             
               
-                安装nodejs.exe及其环境配置
+                创建对象（一）——工厂模式和构造函数模式
               
             
           </h1>
@@ -316,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-14T17:15:24+08:00">
-                2017-01-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T00:02:57+08:00">
+                2017-05-16
               </time>
             
 
@@ -335,8 +331,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/14/2017-1-14/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/14/2017-1-14/" itemprop="commentCount"></span>
+                <a href="/2017/05/16/js-object1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/16/js-object1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,22 +363,29 @@
       
 
       
-        <p>安装nodejs时官方有.msi后缀和.exe后缀两种文件 。<br>其中.msi文件直接下载安装，已经自动配置好环境，.exe文件需要手动配置环境 。<br>然而我在安装.msi文件时出现了进度条回滚的现象，提示 your system has not been modified，关闭杀毒软件，防火墙等保护软件再安装也不起效，尝试很多次都安装失败。于是只能尝试安装.exe文件手动配置,下面就是我的一些安装经验。  </p>
-<h2 id=""><a href="#" class="headerlink" title="  "></a>  <a id="more"></a></h2><ol>
-<li>任意盘新建一个文件夹，我在D盘新建名为nodejs的文件夹  </li>
-<li>官网下载.exe文件，存入nodejs文件夹  </li>
-<li>下载<a href="http://nodejs.org/dist/npm/" target="_blank" rel="external">npm</a>文件，解压到nodejs文件夹，得到 node_modules文件与npm.cmd指令文件  </li>
-<li>配置环境   <ul>
-<li>新建两个变量分别为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/46938233-file_1484380418838_11de8.png" alt=""><br>附 <a href="http://jingyan.baidu.com/album/b24f6c82cba6dc86bfe5da9f.html?picindex=2" target="_blank" rel="external">配置方法</a>  </li>
-</ul>
+        <h1 id="u5BF9_u8C61"><a href="#u5BF9_u8C61" class="headerlink" title="对象"></a>对象</h1><p>我们常听到一句话：“在javascript中，一切皆是对象”。那么对象是什么呢？ECMA-262把对象定义为：“无序属性的集合，其属性可以包含基本值，对象或者函数”。也就是说对象是一组没有特定顺序的值，它的每个属性或者方法都有一个名字，每个名字都映射到一个值。<br><a id="more"></a><br>创建对象有很多种方法，最原始的方法是这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"wanghan"</span>,</div><div class="line">    <span class="attr">age</span>: <span class="string">"20"</span>,</div><div class="line">    <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(person.age);      <span class="comment">//20    访问属性的方式一</span></div><div class="line"><span class="built_in">console</span>.log(person[<span class="string">'age'</span>]);  <span class="comment">//20    访问属性的方式二</span></div><div class="line">person.getName();              <span class="comment">//wanghan</span></div></pre></td></tr></table></figure></p>
+<p>也可以这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123; &#125;;</div><div class="line">    person.name= <span class="string">"wanghan"</span>,</div><div class="line">    person.age= <span class="string">"20"</span>,</div><div class="line">    person.getName= <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>虽然这些方式都可以简单的创建一个对象，但是它们都有明显的弊端。假如说我们要创建一组相似的对象，这些对象拥有相同的属性名，只是属性值各不相同，我们用上面的办法就需要重复很多的代码，这显然是不合理的。还好我们有更机智的办法。</p>
+<h1 id="u5DE5_u5382_u6A21_u5F0F"><a href="#u5DE5_u5382_u6A21_u5F0F" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>对于上面创建多个相似对象的问题，我们可以用一个函数来封装它所有的属性，这样我们只要给函数传入不同的参数（属性值），就能轻松创建出一个对象。就像工厂里加工产品一样，只要有一个模子，我们就可以复制出来无数个产品。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> o = &#123;&#125;;      <span class="comment">//这个对象就相当于模子</span></div><div class="line">    o.name = a;</div><div class="line">    o.age = b;</div><div class="line">    o.getName=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;       <span class="comment">//函数被调用时就会返回这个对象</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line">fun.getName();             <span class="comment">//wanghan</span></div><div class="line"><span class="built_in">console</span>.log(fun.age);      <span class="comment">//20</span></div><div class="line"><span class="built_in">console</span>.log(fun <span class="keyword">instanceof</span> <span class="built_in">Object</span>);      <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(fun <span class="keyword">instanceof</span> person);      <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>简单来说，使用工厂模式创建对象的过程就是，<strong>在函数内创建一个对象，赋予属性及方法后再将对象返回</strong>。但是工厂模式创建的实例类型全都是Object，却不能识别到底是哪种对象类型。<code>instanceof</code> 用于判断一个变量是否是某个对象的实例，从上例最后两行代码就能看出，工厂模式就像暗箱操作，实例不知道自己是被谁创造的。但是好在“构造函数模式”可以解决这个问题。</p>
+<h1 id="u6784_u9020_u51FD_u6570_u6A21_u5F0F"><a href="#u6784_u9020_u51FD_u6570_u6A21_u5F0F" class="headerlink" title="构造函数模式"></a>构造函数模式</h1><p>我们用构造函数重写上面的栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = a;</div><div class="line">    <span class="keyword">this</span>.age = b;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>)</div><div class="line">fun.getName();                          <span class="comment">//wanghan</span></div><div class="line"><span class="built_in">console</span>.log(fun.age);                 <span class="comment">//20</span></div><div class="line"><span class="built_in">console</span>.log(fun <span class="keyword">instanceof</span> <span class="built_in">Object</span>);   <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(fun <span class="keyword">instanceof</span> Person);   <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>最后两行代码可以看出，在这个模式中，可以验证fun是构造函数Person的实例,说明了构造函数可以将它的实例标识为一种特定的类型，这正是胜于工厂模式的地方。<br>我们仔细观察构造函数与工厂模式创造的函数的不同之处：   </p>
 <ul>
-<li>重新进nodejs目录，输入 node -v如果输出nodejs的版本则安装成功，npm同理<br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/87339213-file_1484380418993_e9f1.png" alt=""><br><img src="http://ojrf5xxvp.bkt.clouddn.com/17-1-14/96467925-file_1484380419111_ffa8.png" alt=""><br>附<a href="http://jingyan.baidu.com/article/425e69e6918df1be15fc1695.html" target="_blank" rel="external">如何使用cmd进入文件目录</a>       </li>
+<li>没有显式地创建对象；</li>
+<li>直接将属性和方法赋值给了this对象；</li>
+<li>没有return语句；</li>
+<li>函数首字母大写（为了区别于普通函数）；</li>
+<li>调用函数时用到<code>new</code>操作符。</li>
 </ul>
-</li>
+<h2 id="new_u64CD_u4F5C_u7B26"><a href="#new_u64CD_u4F5C_u7B26" class="headerlink" title="new操作符"></a>new操作符</h2><p>构造函数跟其他函数的唯一区别，就在于调用它们的方式不同，任何函数，只要通过<code>new</code>操作符来调用，那它就可以作为构造函数。通过<code>new</code>调用函数时会经历以下步骤：   </p>
+<ol>
+<li>创建一个新对象；</li>
+<li>将构造函数的作用域赋值给了新对象（因此this就指向了这个新对象）；</li>
+<li>执行构造函数中的代码（为这个新对象添加属性）；</li>
+<li>返回新对象</li>
 </ol>
-<p>这样就大功告成啦</p>
-<hr>
-<p>   然而我从cmd验证node,npm都安装成功，git bash上却检测不到npm，环境变量也都设置好了，折腾了一整天都没解决。那天，我坐在电脑前思考人生，我想，我可能是装了假系统。<br>   重做了系统之后直接安装.msi，麻利儿装好，一切都很正常，可见，<strong>装一个正版的系统有多么的重要。</strong><br>   我虽然是以这样的方式解决了问题，但是安装nodejs.exe的方法原则上是没错的，如果你的系统没有什么问题的话应该有一些参考价值，但是话又说回来，如果你的系统没有问题，那么从一开始就不会出现进度条回滚的现象，嘻嘻。</p>
+<h2 id="u6784_u9020_u51FD_u6570_u7684_u95EE_u9898"><a href="#u6784_u9020_u51FD_u6570_u7684_u95EE_u9898" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h2><p>构造函数模式虽然好用，但也并非没有缺点，它的主要问题就是每个方法要在每个实例上创建一遍。在上面的栗子中，实例<code>fun</code>中创建了一个<code>getName</code>方法，但是如果我们再实例化一个对象，会再次创建一个<code>getName</code>方法，并且这两个同名函数是不相等的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = a;</div><div class="line">    <span class="keyword">this</span>.age = b;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> fun2 = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line"><span class="built_in">console</span>.log(fun.getName == fun2.getName);  <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>这些<code>getName</code>方法实现的功能是完全一样的，但是由于分别属于不同的实例，就不得不为每个<code>getName</code>分配空间，这显然是不合理的，那要怎么样才能让所有的实例都访问同一个<code>getName</code>方法呢，这就要用到原型模式了。关于原型，且听下回分解。</p>
 
       
     </div>
@@ -404,20 +407,26 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/13/js-Ajax/" rel="next" title="Ajax">
+                <i class="fa fa-chevron-left"></i> Ajax
+              </a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/15/buildhexo/" rel="prev" title="搭建属于自己的博客hexo">
-                搭建属于自己的博客hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -432,10 +441,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/01/14/2017-1-14/"
-     data-title="安装nodejs.exe及其环境配置"
+        <div class="ds-share flat" data-thread-key="2017/05/16/js-object1/"
+     data-title="创建对象（一）——工厂模式和构造函数模式"
      data-content=""
-     data-url="http://yoursite.com/2017/01/14/2017-1-14/">
+     data-url="http://yoursite.com/2017/05/16/js-object1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -464,7 +473,7 @@
 
     
       <!-- ��˵���ۿ� start -->
-	<div class="ds-thread" data-thread-key="2017/01/14/2017-1-14/" data-title="安装nodejs.exe及其环境配置" data-url="http://yoursite.com/2017/01/14/2017-1-14/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/16/js-object1/" data-title="创建对象（一）——工厂模式和构造函数模式" data-url="http://yoursite.com/2017/05/16/js-object1/"></div>
 <!-- ��˵���ۿ� end -->
 <!-- ��˵����JS���� start (һ����ҳֻ������һ��) -->
 <script type="text/javascript">
@@ -584,7 +593,7 @@ var duoshuoQuery = {short_name:"higanbana"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">  </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5BF9_u8C61"><span class="nav-number">1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5DE5_u5382_u6A21_u5F0F"><span class="nav-number">2.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6784_u9020_u51FD_u6570_u6A21_u5F0F"><span class="nav-number">3.</span> <span class="nav-text">构造函数模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new_u64CD_u4F5C_u7B26"><span class="nav-number">3.1.</span> <span class="nav-text">new操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6784_u9020_u51FD_u6570_u7684_u95EE_u9898"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数的问题</span></a></li></ol></li></ol></div>
             
 
           </div>
