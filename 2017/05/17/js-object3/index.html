@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="css," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
+<meta name="description" content="上篇博文我们说到，单独使用原型模式存在着两个弊端：一个是当原型的属性值是引用类型值的时候，在实例上操作属性会修改原型对象中的属性值；其二是不能利用传入参数创建具有特定属性值的实例。而组合使构造函数和原型模式就能克服这两个弊端。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="详解绝对定位和相对定位">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/css-position/index.html">
+<meta property="og:title" content="创建对象（三）——组合使用构造函数和原型模式以及其他模式">
+<meta property="og:url" content="http://yoursite.com/2017/05/17/js-object3/index.html">
 <meta property="og:site_name" content="Higanbana">
-<meta property="og:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
-<meta property="og:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/18c32c5aa0ad754e.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/4fc39b922c9d5b77.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/fd605722d2831cee.png">
-<meta property="og:image" content="http://i2.muimg.com/567571/1c236a0b4a7a558e.png">
-<meta property="og:image" content="http://i4.buimg.com/567571/f1f48c9074e588f4.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/2b16f8fdff209fbd.png">
-<meta property="og:image" content="http://i2.muimg.com/567571/acc3eef5f3c299bb.png">
-<meta property="og:updated_time" content="2017-05-16T09:59:42.638Z">
+<meta property="og:description" content="上篇博文我们说到，单独使用原型模式存在着两个弊端：一个是当原型的属性值是引用类型值的时候，在实例上操作属性会修改原型对象中的属性值；其二是不能利用传入参数创建具有特定属性值的实例。而组合使构造函数和原型模式就能克服这两个弊端。">
+<meta property="og:updated_time" content="2017-05-17T08:04:57.522Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="详解绝对定位和相对定位">
-<meta name="twitter:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
-<meta name="twitter:image" content="http://i2.muimg.com/567571/93940c469d4a4df1.png">
+<meta name="twitter:title" content="创建对象（三）——组合使用构造函数和原型模式以及其他模式">
+<meta name="twitter:description" content="上篇博文我们说到，单独使用原型模式存在着两个弊端：一个是当原型的属性值是引用类型值的时候，在实例上操作属性会修改原型对象中的属性值；其二是不能利用传入参数创建具有特定属性值的实例。而组合使构造函数和原型模式就能克服这两个弊端。">
 
 
 
@@ -130,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/25/css-position/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/17/js-object3/"/>
 
 
 
 
 
-  <title> 详解绝对定位和相对定位 | Higanbana </title>
+  <title> 创建对象（三）——组合使用构造函数和原型模式以及其他模式 | Higanbana </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/css-position/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/17/js-object3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wanghan">
@@ -296,7 +287,7 @@
             
             
               
-                详解绝对定位和相对定位
+                创建对象（三）——组合使用构造函数和原型模式以及其他模式
               
             
           </h1>
@@ -311,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T23:11:44+08:00">
-                2017-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T13:09:45+08:00">
+                2017-05-17
               </time>
             
 
@@ -352,111 +343,16 @@
       
 
       
-        <p>上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。<br><a id="more"></a></p>
-<h1 id="position_u7684_u4E0D_u540C_u53D6_u503C"><a href="#position_u7684_u4E0D_u540C_u53D6_u503C" class="headerlink" title="position的不同取值"></a>position的不同取值</h1><blockquote>
-<p>不管是哪种定位，都必须有一个参照物，理清参照物我们就对这些定位方式了解了一半。  </p>
-</blockquote>
-<ol>
-<li>static，默认值。位置设置为static的元素，它始终会处于页面流给予的位置（static 元素会忽略任何 top、bottom、left、right和z-index 声明）。</li>
-<li>inherit，规定应该从父元素继承 position 属性的值。但是任何的版本的 Internet Explorer （包括 IE8）都不支持属性值 “inherit”。</li>
-<li>fixed，生成绝对定位的元素，可定位于相对于<strong>浏览器窗口</strong>的指定坐标。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。不论窗口滚动与否，元素都会留在那个位置。</li>
-<li>absolute，生成绝对定位的元素，相对于<strong>距该元素最近的已定位（position不为static）的祖先元素</strong>进行定位。此元素的位置可通过 “left”、”top”、”right” 以及 “bottom” 属性来规定。</li>
-<li>relative，生成相对定位的元素，相对于<strong>该元素在文档中的初始位置</strong>进行定位。通过 “left”、”top”、”right” 以及 “bottom” 属性来设置此元素相对于自身位置的偏移。    </li>
-</ol>
-<h1 id="u76F8_u5BF9_u5B9A_u4F4Drelative"><a href="#u76F8_u5BF9_u5B9A_u4F4Drelative" class="headerlink" title="相对定位relative"></a>相对定位relative</h1><blockquote>
-<p>相对定位的参照物是它本身  </p>
-</blockquote>
-<p>每一个元素都可以看作一个盒子，文档流就是由这些盒子堆砌而成，而每个盒子都在这个文档流中占据了一个位置，如果我们把这个盒子设置成相对定位，那么就可以拿起这个盒子相对于它原来所占据的位置向别的地方移动，如设置left:50px就是相对于盒子原来位置向左移动了50个像素，我们用具体的例子来说明。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i2.muimg.com/567571/93940c469d4a4df1.png" alt=""> </p>
-<p>我们把box-2设置成相对定位并向左移动60像素，向下移动120像素。   </p>
-<pre><code> .box-2{
-    background-color: #00A5FF;
-    position: relative;
-    left: 110px;
-    top:60px;
-}
-</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/18c32c5aa0ad754e.png" alt="">   </p>
-<ul>
-<li>从上图我们可以发现box-2相对于它原来的位置向下且向右移动了，并且原来的位置留下了一片空白，但是其他的元素并没有占据它，说明<strong>元素设置相对定位后，可以相对于其在普通流中的位置偏移，原本所占的空间仍保留</strong>。</li>
-<li>同时我们从图上可以看出，box-2移动之后覆盖了其他的元素，这说明<strong>当元素被设置相对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。此时如果给box-5也设置 position: relative，那么box-5又会覆盖box-2。<h1 id="u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><a href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute" class="headerlink" title="绝对定位absolute"></a>绝对定位absolute</h1><blockquote>
-<p>绝对定位的参照物是相对于该元素最近的已定位的祖先元素，如果没有一个祖先元素设置定位，那么参照物是body。</p>
-</blockquote>
-</li>
-</ul>
-<p>绝对定位与相对定位的一大不同之处就是，当我们把一个元素设置成相对定位，那么这个元素将会脱离文档流，漂浮在文档流上方，并且后面的元素将会填充它原来的位置。绝对定位元素根据它的参照物移动自己的位置，而参照物则需要根据它祖先元素的定位设置来确定。我们就用实例说明绝对定位的特点和需要注意的地方。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i4.buimg.com/567571/4fc39b922c9d5b77.png" alt=""> </p>
-<ol>
-<li><p>祖先元素都没有设置定位，元素相对于body转移位置。<br>给box-2设置成position: absolute;   </p>
-<pre><code>  .box-2{
-    background-color: #00A5FF;
-    position: absolute;
-}     
-</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/fd605722d2831cee.png" alt="">      </p>
-<ul>
-<li>我们可以看到最后一个box存在的位置空了出来，这是因为box-2脱离文档流漂浮到文档上方，并且后面的元素填补了上去，说明<strong>元素设置绝对定位后脱离文档流，后面的元素将填补它的位置</strong>。</li>
-<li>接着你可能就会发现box-3失踪了，其实它没有失踪，它是在box-2下面，就像相对定位一样，<strong>当元素被设置绝对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。</li>
-</ul>
-</li>
-<li><p>你可能会问了，不是说祖先元素都没有定位时，元素会相对于body来改变自己的位置吗，为什么它还是飘在原来的位置，而没有飘到body顶头呢，那么请看，我把left和top属性加上会出现什么样的结果。         </p>
-<pre><code>.box-2{
-      background-color: #00A5FF;
-      position: absolute;
-      left: 0;
-      top:0;
-  }   
-</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/1c236a0b4a7a558e.png" alt="">   </p>
-<ul>
-<li>现在可以看到它与body顶头了，因为光设置一个元素的相对定位它只会漂浮到原来位置的上空，并不会漂浮到参照物的文档流最前方，而只有设置了left、top、right、bottom这些参数的时候才能激活它相对于参照物移动的效果。   </li>
-</ul>
-</li>
-<li><p>祖先元素grandpa设置定位，元素相对于grandpa转移位置。 </p>
-<pre><code>.grandpa{
-    background-color: #55a532;
-    height: 500px;
-    width: 600px;
-    margin: 40px;
-    position: relative;
-} 
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i4.buimg.com/567571/f1f48c9074e588f4.png" alt="">   </p>
-</li>
-<li><p>祖先元素father设置定位，元素相对于father转移位置。 </p>
-<pre><code>.father{
-    background-color: #55a532;
-    height: 400px;
-    width: 500px;
-    margin: 50px;
-    position: relative;
-} 
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/2b16f8fdff209fbd.png" alt="">   </p>
-</li>
-<li><p>父元素son以及祖先元素father、grandpa都设置定位，元素相对于son转移位置。 </p>
-<pre><code>.grandpa,.father,.son{
-       position: relative;
-}
-.box-2{
-    background-color: #00A5FF;
-    position: absolute;
-    left: 20px;
-    top:20px;
-}   
-</code></pre><p>得到下面的效果<br><img src="http://i2.muimg.com/567571/acc3eef5f3c299bb.png" alt="">   </p>
-<ul>
-<li><strong>当祖先元素不止一个设置了定位的时候，选择最近的一个作为参照物</strong>。 </li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>现在你应该就能明白为什么上一篇博文中那么多居中方式都要设置其父元素的position为relative了吧，其实虽然absolute要求的是祖先元素的定位方式是除static都可以，但是最好还是设置成相对定位，因为你只设置relative而不设置left、top等参数的话对元素自身和其他元素是没有影响的，但如果你设置成fixed，元素就有可能受到浏览器窗口的影响（如果有特殊需要当然可以使用），而你设置成inherit也没有什么意义，况且浏览器对它的支持性也不是很好，显然用来限制absolute的话用relative是最合适的。</p>
+        <p>上篇博文我们说到，单独使用原型模式存在着两个弊端：一个是当原型的属性值是引用类型值的时候，在实例上操作属性会修改原型对象中的属性值；其二是不能利用传入参数创建具有特定属性值的实例。而组合使构造函数和原型模式就能克服这两个弊端。<br><a id="more"></a></p>
+<h1 id="u7EC4_u5408_u4F7F_u7528_u6784_u9020_u51FD_u6570_u6A21_u5F0F_u548C_u539F_u578B_u6A21_u5F0F"><a href="#u7EC4_u5408_u4F7F_u7528_u6784_u9020_u51FD_u6570_u6A21_u5F0F_u548C_u539F_u578B_u6A21_u5F0F" class="headerlink" title="组合使用构造函数模式和原型模式"></a>组合使用构造函数模式和原型模式</h1><p>目前使用最广泛、认同度最高的创建自定义类型的方法就是组合使用构造函数模式和原型模式。构造函数用于定义实例属性，原型模式用于定义方法和共享的属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = a;</div><div class="line">    <span class="keyword">this</span>.age = b;</div><div class="line">    <span class="keyword">this</span>.friends = [<span class="string">"zhangmin"</span>,<span class="string">"yangfan"</span>]</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    <span class="attr">constructor</span>: Person,</div><div class="line">    <span class="attr">getName</span> : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> fun1 = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> fun2 = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>,<span class="number">26</span>);</div><div class="line">fun1.friends.push(<span class="string">"Van"</span>);</div><div class="line"><span class="built_in">console</span>.log(fun1.friends);   <span class="comment">//["zhangmin", "yangfan", "Van"]</span></div><div class="line"><span class="built_in">console</span>.log(fun2.friends);   <span class="comment">//["zhangmin", "yangfan"]</span></div><div class="line"><span class="built_in">console</span>.log(fun1.name);      <span class="comment">//wanghan</span></div><div class="line"><span class="built_in">console</span>.log(fun2.name);      <span class="comment">//Tom</span></div></pre></td></tr></table></figure></p>
+<p>例子非常简单，这里就不作过多解释了。   </p>
+<h1 id="u52A8_u6001_u539F_u578B_u6A21_u5F0F"><a href="#u52A8_u6001_u539F_u578B_u6A21_u5F0F" class="headerlink" title="动态原型模式"></a>动态原型模式</h1><p>这个模式在构造函数中完成对原型的创建，具有更好的封装性，又保持了同时使用构造函数和原型的优点。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = a;</div><div class="line">    <span class="keyword">this</span>.age = b;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span>.getName !=<span class="string">"function"</span>)&#123;</div><div class="line">        Person.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">        &#125;;</div><div class="line">        Person.prototype.getAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun1 = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> fun2 = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>,<span class="number">26</span>);</div><div class="line">fun1.getName();  <span class="comment">//wanghan</span></div><div class="line">fun2.getAge();   <span class="comment">//26</span></div></pre></td></tr></table></figure></p>
+<p>这个方法的重点在于构造函数中的<code>if</code>语句。在函数首次调用时，也就是创建实例<code>fun1</code>时判断是否存在<code>getName</code>方法，发现不存在后开始初始化原型对象，为原型添加了两个方法。创建第二个实例<code>fun2</code>时，因为<code>getName</code>方法已经存在，所以不再执行<code>if</code>语句，所以我们说，<code>if</code>语句中的代码只在构造函数第一次调用时执行一次。并且<code>if</code>中的判断条件只需要写其中一个方法或者属性就可以检查到原型有没有初始化。使用这个模式时，不能使用对象字面量重写原型。   </p>
+<h1 id="u5BC4_u751F_u6784_u9020_u51FD_u6570_u6A21_u5F0F"><a href="#u5BC4_u751F_u6784_u9020_u51FD_u6570_u6A21_u5F0F" class="headerlink" title="寄生构造函数模式"></a>寄生构造函数模式</h1><p>这个模式跟工厂模式非常类似，但它又是使用操作符<code>new</code>调用的构造函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> o =&#123; &#125;;</div><div class="line">    o.name = a;</div><div class="line">    o.age = b;</div><div class="line">    o.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun1 = <span class="keyword">new</span> Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line">fun1.getName();  <span class="comment">//wanghan</span></div></pre></td></tr></table></figure></p>
+<p>构造函数在不返回值的情况下，默认会返回新对象实例。而如果返回了一个值，这个值就会重写调用构造函数返回的值。这个模式并不常用，而且它跟工厂模式一样，不能解决对象识别问题。但是利用这个模式，可以为数组、字符串这种原生引用类型添加额外的方法。</p>
+<h1 id="u7A33_u59A5_u6784_u9020_u51FD_u6570_u6A21_u5F0F"><a href="#u7A33_u59A5_u6784_u9020_u51FD_u6570_u6A21_u5F0F" class="headerlink" title="稳妥构造函数模式"></a>稳妥构造函数模式</h1><p>与寄生构造函数模式类似，但是有两点不同，一是新创建对象的实例方法不引用this，二是不使用操作符<code>new</code>调用构造函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> o =&#123; &#125;;</div><div class="line">    o.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fun1 = Person(<span class="string">"wanghan"</span>,<span class="number">20</span>);</div><div class="line">fun1.getName();  <span class="comment">//wanghan</span></div></pre></td></tr></table></figure></p>
+<p>这个模式也不能解决对象识别问题。</p>
+<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>我们总共讲了八种创建对象的方法，各有各得缺点也各有各的优点。其实方法不在你会多少，而是你遇到一个问题，能快速找到解决这个问题的最佳方法，这才是最重要的，不要成天老整一些花里胡哨的，彰显自己会的多。</p>
 
       
     </div>
@@ -480,7 +376,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/css/" rel="tag"># css</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -489,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/css-center/" rel="next" title="CSS各种居中实现方式">
-                <i class="fa fa-chevron-left"></i> CSS各种居中实现方式
+              <a href="/2017/05/16/js-object2/" rel="next" title="创建对象（二）——原型模式">
+                <i class="fa fa-chevron-left"></i> 创建对象（二）——原型模式
               </a>
             
           </div>
@@ -498,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/26/flex/" rel="prev" title="flex布局语法篇">
-                flex布局语法篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -618,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#position_u7684_u4E0D_u540C_u53D6_u503C"><span class="nav-number">1.</span> <span class="nav-text">position的不同取值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u76F8_u5BF9_u5B9A_u4F4Drelative"><span class="nav-number">2.</span> <span class="nav-text">相对定位relative</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><span class="nav-number">3.</span> <span class="nav-text">绝对定位absolute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u7EC4_u5408_u4F7F_u7528_u6784_u9020_u51FD_u6570_u6A21_u5F0F_u548C_u539F_u578B_u6A21_u5F0F"><span class="nav-number">1.</span> <span class="nav-text">组合使用构造函数模式和原型模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u52A8_u6001_u539F_u578B_u6A21_u5F0F"><span class="nav-number">2.</span> <span class="nav-text">动态原型模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5BC4_u751F_u6784_u9020_u51FD_u6570_u6A21_u5F0F"><span class="nav-number">3.</span> <span class="nav-text">寄生构造函数模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7A33_u59A5_u6784_u9020_u51FD_u6570_u6A21_u5F0F"><span class="nav-number">4.</span> <span class="nav-text">稳妥构造函数模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C0F_u7ED3"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

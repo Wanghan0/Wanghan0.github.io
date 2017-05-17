@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://i2.muimg.com/588926/bab31421a568731f.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-16/95600146-file_1494943701379_5592.png">
 <meta property="og:image" content="http://ojrf5xxvp.bkt.clouddn.com/17-5-17/65754476-file_1494956622939_13d01.png">
-<meta property="og:updated_time" content="2017-05-17T02:42:57.055Z">
+<meta property="og:updated_time" content="2017-05-17T08:20:04.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建对象（二）——原型模式">
 <meta name="twitter:description" content="理解原型对象我们创建的每一个函数都有一个默认的prototype属性，它指向一个对象，对象中默认的有一个叫做constructor的属性，指向这个函数本身。">
@@ -373,8 +373,10 @@
 </ul>
 <p>原型对象中有一个字符串数组，然后创建了两个实例，操作实例<code>fun1</code>向原型对象的数组中又添加了一个字符串<code>Tom</code>，由于数组是引用类型值，并且两个实例共享原型对象中的属性，所以我们刚刚的修改也会在实例<code>fun2</code>中体现出来。这个问题正是我们极少看到有人单独使用原型模式的原因所在。</p>
 <ul>
-<li>原型对象直接在原型对象里定义了属性值，使所有实例默认情况下都取得相同的属性值，要克服这一缺点可以组合使用原型模式和构造函数模式。   </li>
+<li>原型对象直接在原型对象里定义了属性值，使所有实例默认情况下都取得相同的属性值，要克服这一缺点可以组合使用原型模式和构造函数模式。     </li>
 </ul>
+<hr>
+<h1 id="u540E_u8BB0"><a href="#u540E_u8BB0" class="headerlink" title="后记"></a>后记</h1><p>嗨呀，好气呀。我画框图是用电脑自带的画图软件画的你敢信，举得例子也是自己手打出来的，运行正确之后就剪切到markdown上面。眼看着快要写完了，时间也快凌晨两点了，喜滋滋地准备收尾，谁知道电脑突然一黑，重启了。再次打开markdown之后我就绝望了，就剩下前两段摆在上面。我冷静了二十分钟，发了个朋友圈，然后重写到凌晨四点。</p>
 
       
     </div>
@@ -416,6 +418,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/js-object3/" rel="prev" title="创建对象（三）——组合使用构造函数和原型模式以及其他模式">
+                创建对象（三）——组合使用构造函数和原型模式以及其他模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -486,7 +492,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -497,7 +503,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -532,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u7406_u89E3_u539F_u578B_u5BF9_u8C61"><span class="nav-number">1.</span> <span class="nav-text">理解原型对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B9E_u4F8B_u4E0E_u539F_u578B_u4E2D_u5C5E_u6027_u7684_u7EA0_u845B"><span class="nav-number">2.</span> <span class="nav-text">实例与原型中属性的纠葛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5224_u65AD_u5C5E_u6027_u7684_u4F4D_u7F6E"><span class="nav-number">2.1.</span> <span class="nav-text">判断属性的位置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u66F4_u7B80_u5355_u7684_u539F_u578B_u8BED_u6CD5"><span class="nav-number">3.</span> <span class="nav-text">更简单的原型语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u91CD_u5199_u539F_u578B_u5BF9_u8C61_u7684_u5F0A_u7AEF"><span class="nav-number">3.1.</span> <span class="nav-text">重写原型对象的弊端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u539F_u578B_u5BF9_u8C61_u7684_u95EE_u9898"><span class="nav-number">4.</span> <span class="nav-text">原型对象的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u7406_u89E3_u539F_u578B_u5BF9_u8C61"><span class="nav-number">1.</span> <span class="nav-text">理解原型对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B9E_u4F8B_u4E0E_u539F_u578B_u4E2D_u5C5E_u6027_u7684_u7EA0_u845B"><span class="nav-number">2.</span> <span class="nav-text">实例与原型中属性的纠葛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5224_u65AD_u5C5E_u6027_u7684_u4F4D_u7F6E"><span class="nav-number">2.1.</span> <span class="nav-text">判断属性的位置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u66F4_u7B80_u5355_u7684_u539F_u578B_u8BED_u6CD5"><span class="nav-number">3.</span> <span class="nav-text">更简单的原型语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u91CD_u5199_u539F_u578B_u5BF9_u8C61_u7684_u5F0A_u7AEF"><span class="nav-number">3.1.</span> <span class="nav-text">重写原型对象的弊端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u539F_u578B_u5BF9_u8C61_u7684_u95EE_u9898"><span class="nav-number">4.</span> <span class="nav-text">原型对象的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u540E_u8BB0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
