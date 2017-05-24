@@ -98,7 +98,7 @@ float：left | right | none | inherit
 <meta property="og:image" content="http://i2.muimg.com/567571/e60e008811894460.png">
 <meta property="og:image" content="http://i4.buimg.com/567571/0bb23758df610ecb.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/307bed609bb36a1c.png">
-<meta property="og:updated_time" content="2017-05-16T09:59:32.774Z">
+<meta property="og:updated_time" content="2017-05-24T07:48:51.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浮动与清除浮动">
 <meta name="twitter:description" content="浮动浮动的概念浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。     
@@ -366,7 +366,8 @@ float：left | right | none | inherit
 <h2 id="u6D6E_u52A8_u7684_u7279_u6027"><a href="#u6D6E_u52A8_u7684_u7279_u6027" class="headerlink" title="浮动的特性"></a>浮动的特性</h2><ol>
 <li>脱离文档：元素设置为浮动后脱离文档流，并不占据空间，而此浮动元素在文档流空出的位置，由后续的非浮动元素填充，块级元素直接填充上去，内联元素则有空隙就插入。</li>
 <li>浮动可以内联排列：浮动会向左/向右浮动，直到碰到另一个浮动元素为止，这是浮动可以内联排列的特征。也就是说，浮动可以设置宽高，并且能够一行多个，类似于inline-block属性的效果。</li>
-<li><p>父元素高度坍塌：浮动元素脱离了文档流，并不占据文档流的位置，自然父元素也就不能被撑开，所以没了高度。</p>
+<li>父元素高度坍塌：浮动元素脱离了文档流，并不占据文档流的位置，自然父元素也就不能被撑开，所以没了高度。   </li>
+</ol>
 <h1 id="u6E05_u9664_u6D6E_u52A8"><a href="#u6E05_u9664_u6D6E_u52A8" class="headerlink" title="清除浮动"></a>清除浮动</h1><h2 id="u6E05_u9664_u6D6E_u52A8_u7684_u6982_u5FF5"><a href="#u6E05_u9664_u6D6E_u52A8_u7684_u6982_u5FF5" class="headerlink" title="清除浮动的概念"></a>清除浮动的概念</h2><p>在非IE浏览器（如Firefox）下，当容器的高度为auto，且容器的内容中有浮动（float为left或right）的元素，在这种情况下，容器的高度不能自动伸长以适应内容的高度，使得内容溢出到容器外面而影响（甚至破坏）布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的CSS处理，就叫CSS清除浮动。<br>举个栗子：<br>html：   </p>
 <pre><code>&lt;div class=&quot;out&quot;&gt;
     &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
@@ -391,12 +392,10 @@ float：left | right | none | inherit
     width: 50px;
     float: left;
 }   
-</code></pre><p><img src="http://i4.buimg.com/567571/0bb23758df610ecb.png" alt=""><br>我们可以看到，子元素设置浮动后父元素只剩下了重合后的边框，这是因为元素脱离了文档流，不能撑开父元素，所以父元素的高度坍塌了，而子元素也溢出到容器外面，这就是浮动溢出现象。要消除这个现象就得清除浮动。</p>
+</code></pre><p><img src="http://i4.buimg.com/567571/0bb23758df610ecb.png" alt=""><br>我们可以看到，子元素设置浮动后父元素只剩下了重合后的边框，这是因为元素脱离了文档流，不能撑开父元素，所以父元素的高度坍塌了，而子元素也溢出到容器外面，这就是浮动溢出现象。要消除这个现象就得清除浮动。   </p>
 <h2 id="u6E05_u9664_u6D6E_u52A8_u7684_u65B9_u6CD5"><a href="#u6E05_u9664_u6D6E_u52A8_u7684_u65B9_u6CD5" class="headerlink" title="清除浮动的方法"></a>清除浮动的方法</h2><h3 id="u65B9_u6CD5_u4E00_uFF1A_u6DFB_u52A0_u5E26clear_u5C5E_u6027_u7684_u7A7A_u5143_u7D20"><a href="#u65B9_u6CD5_u4E00_uFF1A_u6DFB_u52A0_u5E26clear_u5C5E_u6027_u7684_u7A7A_u5143_u7D20" class="headerlink" title="方法一：添加带clear属性的空元素"></a>方法一：添加带clear属性的空元素</h3><p>clear 属性规定元素的哪一侧不允许其他浮动元素。  </p>
 <pre><code>clear ：left | right | both | none | inherit   
-</code></pre></li>
-</ol>
-<p>我们给浮动元素后面添加一个空元素   </p>
+</code></pre><p>我们给浮动元素后面添加一个空元素   </p>
 <pre><code>&lt;div class=&quot;out&quot;&gt;
     &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
     &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;

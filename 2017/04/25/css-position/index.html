@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://i4.buimg.com/567571/f1f48c9074e588f4.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/2b16f8fdff209fbd.png">
 <meta property="og:image" content="http://i2.muimg.com/567571/acc3eef5f3c299bb.png">
-<meta property="og:updated_time" content="2017-05-16T09:59:42.638Z">
+<meta property="og:updated_time" content="2017-05-24T07:35:19.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解绝对定位和相对定位">
 <meta name="twitter:description" content="上一篇博文中对元素的居中方式进行了总结，其中很多方法中都用到了相对定位和绝对定位，关于这两种定位方式确实是CSS中的一大难点，如果不能深入了解这两种定位方式，进行页面排版时就容易出现混乱，所以今天我对position的所有属性取值进行一个总结，重点剖析绝对定位和相对定位之间的联系和区别。">
@@ -366,23 +366,23 @@
 <h1 id="u76F8_u5BF9_u5B9A_u4F4Drelative"><a href="#u76F8_u5BF9_u5B9A_u4F4Drelative" class="headerlink" title="相对定位relative"></a>相对定位relative</h1><blockquote>
 <p>相对定位的参照物是它本身  </p>
 </blockquote>
-<p>每一个元素都可以看作一个盒子，文档流就是由这些盒子堆砌而成，而每个盒子都在这个文档流中占据了一个位置，如果我们把这个盒子设置成相对定位，那么就可以拿起这个盒子相对于它原来所占据的位置向别的地方移动，如设置left:50px就是相对于盒子原来位置向左移动了50个像素，我们用具体的例子来说明。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i2.muimg.com/567571/93940c469d4a4df1.png" alt=""> </p>
-<p>我们把box-2设置成相对定位并向左移动60像素，向下移动120像素。   </p>
+<p>每一个元素都可以看作一个盒子，文档流就是由这些盒子堆砌而成，而每个盒子都在这个文档流中占据了一个位置，如果我们把这个盒子设置成相对定位，那么就可以拿起这个盒子相对于它原来所占据的位置向别的地方移动，如设置left:50px就是相对于盒子原来位置向右移动了50个像素，我们用具体的例子来说明。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i2.muimg.com/567571/93940c469d4a4df1.png" alt=""> </p>
+<p>我们把box-2设置成相对定位并向右移动60像素，向下移动120像素。   </p>
 <pre><code> .box-2{
     background-color: #00A5FF;
     position: relative;
-    left: 110px;
-    top:60px;
+    left: 60px;
+    top:120px;
 }
 </code></pre><p>得到下面的效果<br><img src="http://i1.piimg.com/567571/18c32c5aa0ad754e.png" alt="">   </p>
 <ul>
 <li>从上图我们可以发现box-2相对于它原来的位置向下且向右移动了，并且原来的位置留下了一片空白，但是其他的元素并没有占据它，说明<strong>元素设置相对定位后，可以相对于其在普通流中的位置偏移，原本所占的空间仍保留</strong>。</li>
-<li>同时我们从图上可以看出，box-2移动之后覆盖了其他的元素，这说明<strong>当元素被设置相对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。此时如果给box-5也设置 position: relative，那么box-5又会覆盖box-2。<h1 id="u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><a href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute" class="headerlink" title="绝对定位absolute"></a>绝对定位absolute</h1><blockquote>
+<li>同时我们从图上可以看出，box-2移动之后覆盖了其他的元素，这说明<strong>当元素被设置相对定位后，将激活z-index属性，其层叠级别高于原本的文档流</strong>。此时如果给box-5也设置 position: relative，那么box-5又会覆盖box-2。   </li>
+</ul>
+<h1 id="u7EDD_u5BF9_u5B9A_u4F4Dabsolute"><a href="#u7EDD_u5BF9_u5B9A_u4F4Dabsolute" class="headerlink" title="绝对定位absolute"></a>绝对定位absolute</h1><blockquote>
 <p>绝对定位的参照物是相对于该元素最近的已定位的祖先元素，如果没有一个祖先元素设置定位，那么参照物是body。</p>
 </blockquote>
-</li>
-</ul>
-<p>绝对定位与相对定位的一大不同之处就是，当我们把一个元素设置成相对定位，那么这个元素将会脱离文档流，漂浮在文档流上方，并且后面的元素将会填充它原来的位置。绝对定位元素根据它的参照物移动自己的位置，而参照物则需要根据它祖先元素的定位设置来确定。我们就用实例说明绝对定位的特点和需要注意的地方。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i4.buimg.com/567571/4fc39b922c9d5b77.png" alt=""> </p>
+<p>绝对定位与相对定位的一大不同之处就是，当我们把一个元素设置成绝对定位，那么这个元素将会脱离文档流，漂浮在文档流上方，并且后面的元素将会填充它原来的位置。绝对定位元素根据它的参照物移动自己的位置，而参照物则需要根据它祖先元素的定位设置来确定。我们就用实例说明绝对定位的特点和需要注意的地方。<br>下面是一个所有元素都没有设置过任何定位方式的原始页面布局。<br><img src="http://i4.buimg.com/567571/4fc39b922c9d5b77.png" alt=""> </p>
 <ol>
 <li><p>祖先元素都没有设置定位，元素相对于body转移位置。<br>给box-2设置成position: absolute;   </p>
 <pre><code>  .box-2{
